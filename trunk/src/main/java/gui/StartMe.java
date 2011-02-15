@@ -8,7 +8,12 @@ public class StartMe {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new BaseFrame();
+		System.out.println("App started");
+		java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+            	new BaseFrame();
+            }
+        }); 
 
 	}
 
