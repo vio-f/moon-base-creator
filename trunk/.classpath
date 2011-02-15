@@ -4,5 +4,10 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="lib/gdal.jar"/>
+	<classpathentry kind="lib" path="lib/gluegen-rt.jar"/>
+	<classpathentry kind="lib" path="lib/jogl.jar"/>
+	<classpathentry kind="lib" path="lib/netscape.jar"/>
+	<classpathentry kind="lib" path="lib/worldwind.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
