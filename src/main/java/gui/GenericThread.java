@@ -1,0 +1,63 @@
+package gui;
+
+import java.awt.Toolkit;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+import javax.swing.JFrame;
+import javax.swing.SwingWorker;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
+
+public class GenericThread extends Thread{ 
+	Method runMyMet;
+	Object[] arguments;
+	
+	//constructor1
+	public GenericThread(Method meth, Object[] args) {
+		this.runMyMet = meth;
+		this.arguments = args;
+	}
+	
+	//constructor1
+	public GenericThread(Method meth){
+		this.runMyMet = meth;
+		this.arguments = null;
+	}
+
+	public GenericThread(boolean showDiag, JFrame f){
+		if(showDiag){
+			new ProgressDialog(f);
+		}
+	}
+	
+    
+    public void run() {
+
+        /*************Aici se cheama metoda runMyMet******************/        
+                try {
+					runMyMet.invoke(runMyMet.getClass(), arguments);
+					
+				} catch (IllegalArgumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+    }
+        
+		/*************************************************************/       
+            
+        
+        
+
+    public void done() {
+    	System.out.println("I'm gone");
+        Toolkit.getDefaultToolkit().beep();
+        
+        //TODO add "when done" orders
+    }
+}
