@@ -12,22 +12,19 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.lang.reflect.Method;
 import java.util.Random;
-import java.util.concurrent.ExecutionException;
 
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ProgressMonitor;
-import javax.swing.RepaintManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 //TODO explore EVENTHANDLER
-public class GuiActions extends AbstractAction {
-	static JFrame f;
+public class CopyOfGuiActionswithprogressmonitor extends AbstractAction implements PropertyChangeListener {
+	JFrame f;
+	ProgressMonitor progressMonitor;
 	GenericNewTask task;
-	GenericNewTask showProgDiag;
 	
-	GuiActions(JFrame f){
+	CopyOfGuiActionswithprogressmonitor(JFrame f){
 		this.f = f;
 	}
 
@@ -38,26 +35,16 @@ public class GuiActions extends AbstractAction {
 		
 		if (e.getSource().equals(BaseFrame.fileNewItem)){
 			System.out.println("New has been pressed"); // TODO remove this
-
-			//new ProgressDialog(f);
-				initMoon();
-
-			/*task = new GenericNewTask(initMoon());
-			showProgDiag = new GenericNewTask(true, f);
+			progressMonitor = new ProgressMonitor(f,
+                    "Rabdarea este o virtute!!!",
+                    "", 0, 100);
+			task = new GenericNewTask(initMoon());
 			
-			//TODO ad property change listener
+			
+			task.addPropertyChangeListener(this);
 			task.execute();
-			
-			
-			
-			if (task.isDone()){
-				showProgDiag.cancel(true);
-			}*/
-			
-		
+			//startMoon();
 		}
-		
-		
 		
 		if (e.getSource().equals(BaseFrame.fileExitItem)){
 			if (JOptionPane.showConfirmDialog
@@ -71,11 +58,26 @@ public class GuiActions extends AbstractAction {
 	}
 
 
-	
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+        Random random = new Random();
+        if ("progress" == evt.getPropertyName() ) {
+            int progress = (Integer) evt.getNewValue();
+            progressMonitor.setProgress(random.nextInt(100));
+            
+            
+            if (progressMonitor.isCanceled() || task.isDone()) {
+                Toolkit.getDefaultToolkit().beep();
+                if (progressMonitor.isCanceled()) {
+                    task.cancel(true);
+                } 
+            }
+        }
+		
+	}
 	
 
 	public Method initMoon() {
-		System.out.println("Starting Moon");//TODO remove this
 		//setarile necesare ptr vizualizarea Lunii
 		
 		Configuration.setValue(AVKey.GLOBE_CLASS_NAME, gov.nasa.worldwind.globes.Moon.class.getName());// seteaza tipul astrului care urmeaza a fi vizualiza
@@ -83,20 +85,14 @@ public class GuiActions extends AbstractAction {
         Configuration.setValue(AVKey.LAYERS_CLASS_NAMES, BaseFrame.LAYERS);// LAYERS a fost definit mai sus
         Configuration.setValue(AVKey.INITIAL_ALTITUDE, 60000e3);  // 6000km
         
-        System.out.println("Config Done");//TODO remove this
         // se creaza canvasul ptr luna
     	gov.nasa.worldwind.awt.WorldWindowGLCanvas worldWindowGLCanvas;
-		worldWindowGLCanvas = new gov.nasa.worldwind.awt.WorldWindowGLCanvas();
-
     	Model m = (Model) WorldWind.createConfigurationComponent(AVKey.MODEL_CLASS_NAME);
-        System.out.println("Still here");
+    	
 		//initializam Canvasul ptr Luna
+		worldWindowGLCanvas = new gov.nasa.worldwind.awt.WorldWindowGLCanvas();
 	    worldWindowGLCanvas.setModel(m); //adauga model-ul la canvas
 		BaseFrame.canvasPanel.add(worldWindowGLCanvas);
-		
-		//firePropertyChange(AVKey.LAYERS_CLASS_NAMES, null, this);
-		
-		System.out.println("I'm outta here");//TODO remove this
 		return null;
 	
 	}

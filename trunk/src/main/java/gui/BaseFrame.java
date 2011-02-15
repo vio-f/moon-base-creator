@@ -29,20 +29,7 @@ public class BaseFrame extends JFrame {
 		super ("That's right!!! Its a \"Moon Base creator\""); //TODO think of a decent title
 		
 		
-		//setarile necesare ptr vizualizarea Lunii
-		
-		Configuration.setValue(AVKey.GLOBE_CLASS_NAME, gov.nasa.worldwind.globes.Moon.class.getName());// seteaza tipul astrului care urmeaza a fi vizualiza
-        Configuration.setValue(AVKey.MOON_ELEVATION_MODEL_CONFIG_FILE, "config/Moon/MoonElevationModel.xml");//seteaza  ce fisier de elevatie (inaltimi) sa se foloseasca
-        Configuration.setValue(AVKey.LAYERS_CLASS_NAMES, LAYERS);// LAYERS a fost dfinit mai sus
-        Configuration.setValue(AVKey.INITIAL_ALTITUDE, 60000e3);  // 6000km
-        
-        // se creaza canvasul ptr luna
-    	gov.nasa.worldwind.awt.WorldWindowGLCanvas worldWindowGLCanvas;
-    	Model m = (Model) WorldWind.createConfigurationComponent(AVKey.MODEL_CLASS_NAME);
-    	
-		//initializam Canvasul ptr Luna
-		worldWindowGLCanvas = new gov.nasa.worldwind.awt.WorldWindowGLCanvas();
-	    worldWindowGLCanvas.setModel(m); //adauga model-ul la canvas
+
 		/**********************************************************************/
 	    
 	    
@@ -93,7 +80,8 @@ public class BaseFrame extends JFrame {
 		this.setJMenuBar(menuBar);
 		/**********************************************************************/
 		fileExitItem.addActionListener(theActions);
-
+		fileNewItem.addActionListener(theActions);
+		//TODO add more action listeners
 		
 		/**********************************************************************/
 		leftTools.setSize(50, this.getHeight()-50);
@@ -109,14 +97,14 @@ public class BaseFrame extends JFrame {
 		
 		
 		/**********************************************************************/
-		// adaugam un container ptr WW model 
-		canvasPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-		//canvasPanel.setVisible(true);
-		canvasPanel.add(worldWindowGLCanvas);
-
 		
 		//adaugam canvasPanel la frame
 		this.add(canvasPanel);
+		
+
+
+		
+
 		/**********************************************************************/
 
 	
@@ -125,8 +113,7 @@ public class BaseFrame extends JFrame {
 		/**********************************************************************/
 		//pornim
 		this.setVisible(true);
-		System.out.println("Frame visible"); //TODO remove this latter
-		pack();	
+		//pack();	
 		
 	}
 	
@@ -173,10 +160,10 @@ public class BaseFrame extends JFrame {
 	
 	JToolBar leftTools = new JToolBar(SwingConstants.VERTICAL);
 
-	JPanel canvasPanel = new JPanel(new java.awt.BorderLayout()); 
+	static JPanel canvasPanel = new JPanel(new java.awt.BorderLayout()); 
 
 	//definim layer-ele care vor fi incarcate
-	final String LAYERS = "gov.nasa.worldwind.layers.StarsLayer"
+	final static String LAYERS = "gov.nasa.worldwind.layers.StarsLayer"
         + ",gov.nasa.worldwind.layers.Moon.Clementine40BaseLayer"
         + ",gov.nasa.worldwind.layers.Moon.Clementine40Layer"
         + ",gov.nasa.worldwind.layers.Moon.Clementine30Layer"
