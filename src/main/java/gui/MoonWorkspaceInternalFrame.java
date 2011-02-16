@@ -3,9 +3,12 @@ package gui;
 import gov.nasa.worldwind.Model;
 import gov.nasa.worldwind.WorldWind;
 import gov.nasa.worldwind.avlist.AVKey;
+import gov.nasa.worldwind.util.StatusBar;
 
-import javax.swing.JFrame;
+import java.awt.BorderLayout;
+
 import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
 
 public class MoonWorkspaceInternalFrame extends JInternalFrame implements Runnable{
 	static int openFrameCount = 0;
@@ -32,7 +35,11 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements Runnab
 		    
 		    this.setSize(480, 320);
 		    this.setLocation(xOffset*openFrameCount, yOffset*openFrameCount);
-		    getContentPane().add(worldWindowGLCanvas);
+		    JPanel jPanel=new JPanel(new BorderLayout());
+		    jPanel.add(worldWindowGLCanvas);
+		    StatusBar status=new StatusBar();
+		    jPanel.add(status,BorderLayout.SOUTH);
+		    getContentPane().add(jPanel);
 	    	System.out.println("Moon Canvas added");
 			BaseFrame.desktop.add(this);
 
