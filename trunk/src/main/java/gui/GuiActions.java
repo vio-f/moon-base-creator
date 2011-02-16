@@ -24,8 +24,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 //TODO explore EVENTHANDLER
 public class GuiActions extends AbstractAction {
 	static JFrame f;
-	GenericNewTask task;
-	GenericNewTask showProgDiag;
+	GenericThread task;
+	//GenericNewTask showProgDiag;
 	
 	GuiActions(JFrame f){
 		this.f = f;
@@ -37,22 +37,9 @@ public class GuiActions extends AbstractAction {
 	public void actionPerformed(ActionEvent e) {
 		
 		if (e.getSource().equals(BaseFrame.fileNewItem)){
-			System.out.println("New has been pressed"); // TODO remove this
-
-			//new ProgressDialog(f);
-				initMoon();
-
-			/*task = new GenericNewTask(initMoon());
-			showProgDiag = new GenericNewTask(true, f);
+			System.out.println("New has been pressed"); 
+			// TODO remove this
 			
-			//TODO ad property change listener
-			task.execute();
-			
-			
-			
-			if (task.isDone()){
-				showProgDiag.cancel(true);
-			}*/
 			
 		
 		}
@@ -71,35 +58,7 @@ public class GuiActions extends AbstractAction {
 	}
 
 
-	
-	
 
-	public Method initMoon() {
-		System.out.println("Starting Moon");//TODO remove this
-		//setarile necesare ptr vizualizarea Lunii
-		
-		Configuration.setValue(AVKey.GLOBE_CLASS_NAME, gov.nasa.worldwind.globes.Moon.class.getName());// seteaza tipul astrului care urmeaza a fi vizualiza
-        Configuration.setValue(AVKey.MOON_ELEVATION_MODEL_CONFIG_FILE, "config/Moon/MoonElevationModel.xml");//seteaza  ce fisier de elevatie (inaltimi) sa se foloseasca
-        Configuration.setValue(AVKey.LAYERS_CLASS_NAMES, BaseFrame.LAYERS);// LAYERS a fost definit mai sus
-        Configuration.setValue(AVKey.INITIAL_ALTITUDE, 60000e3);  // 6000km
-        
-        System.out.println("Config Done");//TODO remove this
-        // se creaza canvasul ptr luna
-    	gov.nasa.worldwind.awt.WorldWindowGLCanvas worldWindowGLCanvas;
-		worldWindowGLCanvas = new gov.nasa.worldwind.awt.WorldWindowGLCanvas();
-
-    	Model m = (Model) WorldWind.createConfigurationComponent(AVKey.MODEL_CLASS_NAME);
-        System.out.println("Still here");
-		//initializam Canvasul ptr Luna
-	    worldWindowGLCanvas.setModel(m); //adauga model-ul la canvas
-		BaseFrame.canvasPanel.add(worldWindowGLCanvas);
-		
-		//firePropertyChange(AVKey.LAYERS_CLASS_NAMES, null, this);
-		
-		System.out.println("I'm outta here");//TODO remove this
-		return null;
-	
-	}
 	
 
 	

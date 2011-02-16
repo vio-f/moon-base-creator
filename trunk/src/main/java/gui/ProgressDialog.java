@@ -1,12 +1,7 @@
 package gui;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -29,7 +24,6 @@ class ProgressDialog extends JDialog{
 		progDiag.setResizable(false);
 		progDiag.setLocationRelativeTo(bf);
 		
-		progDiag.setLayout(new BorderLayout());
 		
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

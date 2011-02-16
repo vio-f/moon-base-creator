@@ -16,24 +16,30 @@ public class GenericThread extends Thread{
 	public GenericThread(Method meth, Object[] args) {
 		this.runMyMet = meth;
 		this.arguments = args;
+		this.setPriority(MAX_PRIORITY);
+		
 	}
 	
 	//constructor1
 	public GenericThread(Method meth){
 		this.runMyMet = meth;
 		this.arguments = null;
+		//this.setPriority(MAX_PRIORITY);
+
 	}
 
 	public GenericThread(boolean showDiag, JFrame f){
 		if(showDiag){
 			new ProgressDialog(f);
+			this.setPriority(MAX_PRIORITY);
+
 		}
 	}
 	
     
     public void run() {
-
-        /*************Aici se cheama metoda runMyMet******************/        
+/*
+        *//*************Aici se cheama metoda runMyMet******************//*        
                 try {
 					runMyMet.invoke(runMyMet.getClass(), arguments);
 					
@@ -46,7 +52,7 @@ public class GenericThread extends Thread{
 				} catch (InvocationTargetException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				}*/
     }
         
 		/*************************************************************/       
@@ -54,10 +60,10 @@ public class GenericThread extends Thread{
         
         
 
-    public void done() {
+   /* public void done() {
     	System.out.println("I'm gone");
         Toolkit.getDefaultToolkit().beep();
         
         //TODO add "when done" orders
-    }
+    }*/
 }

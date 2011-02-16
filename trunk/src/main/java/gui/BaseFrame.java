@@ -1,6 +1,5 @@
 package gui;
 
-import gov.nasa.worldwind.Configuration;
 import gov.nasa.worldwind.Model;
 import gov.nasa.worldwind.WorldWind;
 import gov.nasa.worldwind.avlist.AVKey;
@@ -100,7 +99,17 @@ public class BaseFrame extends JFrame {
 		
 		//adaugam canvasPanel la frame
 		this.add(canvasPanel);
-		
+
+        
+        // se creaza canvasul ptr luna
+    	gov.nasa.worldwind.awt.WorldWindowGLCanvas worldWindowGLCanvas;
+		worldWindowGLCanvas = new gov.nasa.worldwind.awt.WorldWindowGLCanvas();
+
+    	Model m = (Model) WorldWind.createConfigurationComponent(AVKey.MODEL_CLASS_NAME);
+    	
+		//initializam Canvasul ptr Luna
+	    worldWindowGLCanvas.setModel(m); //adauga model-ul la canvas
+		BaseFrame.canvasPanel.add(worldWindowGLCanvas);
 
 
 		

@@ -16,6 +16,7 @@ public class GenericNewTask extends SwingWorker<Void, Void> {
 	public GenericNewTask(Method meth, Object[] args) {
 		this.runMyMet = meth;
 		this.arguments = args;
+		
 	}
 	
 	//constructor2
