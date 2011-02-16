@@ -6,7 +6,6 @@ import java.lang.reflect.Method;
 
 import javax.swing.JFrame;
 import javax.swing.SwingWorker;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
 
 public class GenericNewTask extends SwingWorker<Void, Void> { 
 	Method runMyMet;

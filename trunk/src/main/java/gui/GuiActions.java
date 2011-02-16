@@ -37,7 +37,7 @@ public class GuiActions extends AbstractAction {
 		             (null,"Are you sure you wish to exit?")==JOptionPane.YES_OPTION) {
 				f.setVisible(false);
 		        f.dispose();
-		        
+		        System.exit(0);
 		           }
 
 		}
