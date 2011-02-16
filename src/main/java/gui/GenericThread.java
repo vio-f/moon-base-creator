@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.SwingWorker;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
 
-public class GenericThread extends Thread{ 
+public class GenericThread extends Thread  { 
 	Method runMyMet;
 	Object[] arguments;
 	

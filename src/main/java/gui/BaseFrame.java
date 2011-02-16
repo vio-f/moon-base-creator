@@ -7,6 +7,7 @@ import gov.nasa.worldwind.avlist.AVKey;
 import java.awt.Color;
 
 import javax.swing.BorderFactory;
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -18,9 +19,50 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class BaseFrame extends JFrame {
-
+	/***********Mai jos sunt toate variabilele folosite************************/
+	/********************Unele sunt initializate cu valori, altele nu**********/
+	/**************************************************************************/
+	/**********Astfel componentele sunt accesibile la nevoie,******************/
+	/******in afara acestei clase**********************************************/
+	
+    GuiActions theActions = new GuiActions(this); //cream o intstanta al clasei de actiuni
 
 	
+	
+	JMenuBar menuBar = new JMenuBar();
+	
+	//meniul file
+	JMenu fileMenu = new JMenu("File");
+	
+	static JMenuItem fileNewItem = new JMenuItem("New...");
+	static JMenuItem fileOpenItem = new JMenuItem("Open...");
+	static JMenuItem fileSaveItem = new JMenuItem("Save...");
+	static JMenuItem fileExitItem = new JMenuItem("Exit...");
+	
+	//meniul About
+	JMenu helpMenu = new JMenu("Help");
+	
+	static JMenuItem helpHelpcontentsItem = new JMenuItem("Help contents");
+	static JMenuItem helpAboutItem = new JMenuItem("About");
+	//TODO: Add more menu items
+	
+	JToolBar leftTools = new JToolBar(SwingConstants.VERTICAL);
+
+	static JDesktopPane desktop = new JDesktopPane();
+
+	//definim layer-ele care vor fi incarcate
+	final static String LAYERS = "gov.nasa.worldwind.layers.StarsLayer"
+        + ",gov.nasa.worldwind.layers.Moon.Clementine40BaseLayer"
+        + ",gov.nasa.worldwind.layers.Moon.Clementine40Layer"
+        + ",gov.nasa.worldwind.layers.Moon.Clementine30Layer"
+        //+ ",gov.nasa.worldwind.layers.Moon.ShadedElevationLayer"
+        + ",gov.nasa.worldwind.layers.ScalebarLayer"
+        + ",gov.nasa.worldwind.layers.CompassLayer";
+	//TODO add more layers
+
+
+	/**********************************************************************/
+	/**********************************************************************/
 	
 	
 	//the almighty constructor
@@ -83,33 +125,30 @@ public class BaseFrame extends JFrame {
 		//TODO add more action listeners
 		
 		/**********************************************************************/
-		leftTools.setSize(50, this.getHeight()-50);
+		leftTools.setSize(50, 300);
 		leftTools.setBorder(BorderFactory.createLineBorder(Color.black));
-		leftTools.setFloatable(false);
+		leftTools.setFloatable(true);
 		
 		// TODO butoane ptr leftTools
 		
 		
 		// adaugam leftTools la frame
-		this.add(leftTools);
+		desktop.add(leftTools);
+		
+		//makeMeAMoonWorkspaceInternalFrame("New workspace " + (++MoonWorkspaceInternalFrame.openFrameCount));
+		desktop.setBackground(Color.LIGHT_GRAY);
+		desktop.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
+		this.add(desktop);
+		new Thread (new MoonWorkspaceInternalFrame()).setName("" 
+				+ (++MoonWorkspaceInternalFrame.openFrameCount));
 		/**********************************************************************/
 		
 		
 		/**********************************************************************/
 		
-		//adaugam canvasPanel la frame
-		this.add(canvasPanel);
 
         
-        // se creaza canvasul ptr luna
-    	gov.nasa.worldwind.awt.WorldWindowGLCanvas worldWindowGLCanvas;
-		worldWindowGLCanvas = new gov.nasa.worldwind.awt.WorldWindowGLCanvas();
 
-    	Model m = (Model) WorldWind.createConfigurationComponent(AVKey.MODEL_CLASS_NAME);
-    	
-		//initializam Canvasul ptr Luna
-	    worldWindowGLCanvas.setModel(m); //adauga model-ul la canvas
-		BaseFrame.canvasPanel.add(worldWindowGLCanvas);
 
 
 		
@@ -125,61 +164,17 @@ public class BaseFrame extends JFrame {
 		//pack();	
 		
 	}
+
+
+	 static void makeMeAMoonWorkspaceInternalFrame(String title) {
+		
+		
+	}
 	
 	
 
 	
-	/***********Mai jos sunt toate variabilele folosite************************/
-	/********************Unele sunt initializate cu valori, altele nu**********/
-	/**************************************************************************/
-	/**********Astfel componentele sunt accesibile la nevoie,******************/
-	/******in afara acestei clase**********************************************/
-	
-
-
-    
-	//try {
-    	GuiActions theActions = new GuiActions(this); //cream o intstanta al clasei de actiuni
-   // } catch(StackOverflowError t) {
-   //     // more general: catch(Error t)
-        // anything: catch(Throwable t)
-    //    System.out.println("Caught "+t);
-  //      t.printStackTrace();
-  //  };
-	
-	
-	
-	JMenuBar menuBar = new JMenuBar();
-	
-	
-	//meniul file
-	JMenu fileMenu = new JMenu("File");
-	
-	static JMenuItem fileNewItem = new JMenuItem("New...");
-	static JMenuItem fileOpenItem = new JMenuItem("Open...");
-	static JMenuItem fileSaveItem = new JMenuItem("Save...");
-	static JMenuItem fileExitItem = new JMenuItem("Exit...");
-	
-	//meniul About
-	JMenu helpMenu = new JMenu("Help");
-	
-	static JMenuItem helpHelpcontentsItem = new JMenuItem("Help contents");
-	static JMenuItem helpAboutItem = new JMenuItem("About");
-	//TODO: Add more menu items
-	
-	JToolBar leftTools = new JToolBar(SwingConstants.VERTICAL);
-
-	static JPanel canvasPanel = new JPanel(new java.awt.BorderLayout()); 
-
-	//definim layer-ele care vor fi incarcate
-	final static String LAYERS = "gov.nasa.worldwind.layers.StarsLayer"
-        + ",gov.nasa.worldwind.layers.Moon.Clementine40BaseLayer"
-        + ",gov.nasa.worldwind.layers.Moon.Clementine40Layer"
-        + ",gov.nasa.worldwind.layers.Moon.Clementine30Layer"
-        //+ ",gov.nasa.worldwind.layers.Moon.ShadedElevationLayer"
-        + ",gov.nasa.worldwind.layers.ScalebarLayer"
-        + ",gov.nasa.worldwind.layers.CompassLayer";
-	//TODO add more layers	
+		
 }
 
 

@@ -18,7 +18,7 @@ class ProgressDialog extends JDialog{
 
 	public ProgressDialog (JFrame f) {
 		this.bf = f;
-		progDiag = new JDialog(bf, "Patience is a virtue...", true);
+		progDiag = new JDialog(bf, "Patience is a virtue...", false);
 		//progDiag.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		progDiag.setSize(250, 50);
 		progDiag.setResizable(false);
