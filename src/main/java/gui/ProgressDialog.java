@@ -1,69 +1,88 @@
 package gui;
 
-import javax.swing.JDialog;
+import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-class ProgressDialog extends JDialog{
-	
-	JFrame bf;
-	JDialog progDiag;
-	JProgressBar pBar = new JProgressBar(0, 500); 		
-	//TODO JButton cancelButton = new JButton("Cancel process...");
-	
+/**
+ * 
+ * @author Viorel Florian
+ * 
+ *
+ */
+class ProgressDialog extends JFrame {
 
-	
+	JProgressBar pBar = new JProgressBar(0, 500);
 
-	public ProgressDialog (JFrame f) {
-		this.bf = f;
-		progDiag = new JDialog(bf, "Patience is a virtue...", false);
-		//progDiag.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		progDiag.setSize(250, 50);
-		progDiag.setResizable(false);
-		progDiag.setLocationRelativeTo(bf);
-		
-		
+	boolean keepRunning = false;
+
+	// TODO JButton cancelButton = new JButton("Cancel process...");
+
+	public ProgressDialog(JFrame f) {
+		super("Patience is a virtue...");
+
+		// progDiag.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+		this.setAlwaysOnTop(true);
+		this.setResizable(false);
+		this.setLocationRelativeTo(f);
+		this.setUndecorated(true);
+		this.setBackground(new Color(0, 0, 0, 0));
+
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-								} catch (ClassNotFoundException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-									} catch (InstantiationException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-										} catch (IllegalAccessException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-											} catch (UnsupportedLookAndFeelException e) {
-												// TODO Auto-generated catch block
-												e.printStackTrace();
-											}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		
-		
-		progDiag.add(pBar);
 		pBar.setString("Good things in progress...");
 		pBar.setStringPainted(true);
-		//pBar.setValue(0);
+		// pBar.setValue(0);
 		pBar.setIndeterminate(true);
-		progDiag.addWindowListener(   
-						new java.awt.event.WindowAdapter(){
-							public void windowClosing( java.awt.event.WindowEvent e ){
-								System.out.println( "good bye" );
-								dispose() ;
-							//TODO Stop task
-							} 
-						}  
-				 );
+		
+		this.add(this.pBar);
+		this.pack();
+	}
 
-		progDiag.setVisible(true);
+	/**
+	 * 
+	 */
+	public void start() {
+
+		this.keepRunning = true;
+		this.update();
+	}
+
+	/**
+	 * 
+	 */
+	public void stop() {
+
+		this.keepRunning = false;
+		this.update();
+	}
+
+	/**
+	 * 
+	 */
+	private void update() {
+
+		this.setVisible(this.keepRunning);
+		this.pBar.setVisible(this.keepRunning);
+		this.pBar.setEnabled(this.keepRunning);
 	}
 
 }
-		
-
-	
-
-
