@@ -10,7 +10,7 @@ import java.awt.BorderLayout;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 
-public class MoonWorkspaceInternalFrame extends JInternalFrame implements Runnable{
+public class MoonWorkspaceInternalFrame extends JInternalFrame {
 	static int openFrameCount = 0;
 	static final int xOffset = 30, yOffset = 30;
 	static gov.nasa.worldwind.awt.WorldWindowGLCanvas worldWindowGLCanvas;
@@ -53,13 +53,6 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements Runnab
 	
 	}
 
-	@Override
-	public void run() {
-		
-
-	    
-		
-		
-	}
+	
 
 }

@@ -129,29 +129,12 @@ public class BaseFrame extends JFrame {
 		
 		// adaugam leftTools la frame
 		desktop.add(leftTools);
-		
-		//makeMeAMoonWorkspaceInternalFrame("New workspace " + (++MoonWorkspaceInternalFrame.openFrameCount));
 		desktop.setBackground(Color.LIGHT_GRAY);
 		desktop.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
 		this.add(desktop);
-		new Thread (new MoonWorkspaceInternalFrame()).setName("" 
-				+ (++MoonWorkspaceInternalFrame.openFrameCount));
-		/**********************************************************************/
-		
 		
 		/**********************************************************************/
 		
-
-        
-
-
-
-		
-
-		/**********************************************************************/
-
-	
-
 		
 		/**********************************************************************/
 		//pornim
@@ -161,10 +144,7 @@ public class BaseFrame extends JFrame {
 	}
 
 
-	 static void makeMeAMoonWorkspaceInternalFrame(String title) {
-		
-		
-	}
+
 	
 	
 
