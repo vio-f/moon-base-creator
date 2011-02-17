@@ -120,19 +120,18 @@ public class BaseFrame extends JFrame {
 		//TODO add more action listeners
 		
 		/**********************************************************************/
-		leftTools.setSize(50, 300);
+/*		leftTools.setSize(50, 300);
 		leftTools.setBorder(BorderFactory.createLineBorder(Color.black));
 		leftTools.setFloatable(true);
 		
 		// TODO butoane ptr leftTools
-		
-		
 		// adaugam leftTools la frame
-		desktop.add(leftTools);
+		this.getRootPane().add(leftTools);*/
+		
 		desktop.setBackground(Color.LIGHT_GRAY);
 		desktop.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
 		this.add(desktop);
-		
+		desktop.add(new InternalPalleteWindowsToobar());
 		/**********************************************************************/
 		
 		
