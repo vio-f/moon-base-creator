@@ -51,7 +51,7 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame {
 		    getContentPane().add(jPanel);
 	    	System.out.println("Moon Canvas added");
 	    	
-	    	new ShapesExample(this);
+	    	new MyShapesExample();
 	    	wwGLCanvas.redrawNow();
 	    	
 			BaseFrame.desktop.add(this);
