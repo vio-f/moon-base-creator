@@ -18,9 +18,21 @@ import java.util.ArrayList;
 
 import javax.swing.JInternalFrame;
 
-public class ShapesExample{
+public class MyShapesExample{
 	
-	ShapesExample(){
+	/**
+	 * 
+	 */
+	/**
+	 * 
+	 */
+	/**
+	 * 
+	 */
+	/**
+	 * 
+	 */
+	MyShapesExample(){
 		 RenderableLayer layer = new RenderableLayer();
 
          // Create and set an attribute bundle.
@@ -46,32 +58,59 @@ public class ShapesExample{
 
          // Create a path, set some of its properties and set its attributes.
          ArrayList<Position> pathPositions = new ArrayList<Position>();
-         pathPositions.add(Position.fromDegrees(28, -106, 3e4));//28, -106, 3e4));
-         pathPositions.add(Position.fromDegrees(35, -104, 3e4));//(35, -104, 3e4));
-         pathPositions.add(Position.fromDegrees(35, -107, 9e4));//(35, -107, 9e4));
-         pathPositions.add(Position.fromDegrees(28, -107, 9e4));//(28, -107, 9e4));
-         pathPositions.add(Position.fromDegrees(28, -106, 3e4));//(28, -106, 3e4));
+         pathPositions.add(Position.fromDegrees(0, -4.5, 3e5));
+         pathPositions.add(Position.fromDegrees(4, -6, 3e5));
+         pathPositions.add(Position.fromDegrees(4, -5, 3e5));
+         pathPositions.add(Position.fromDegrees(1.5, -4, 3e5));
+         pathPositions.add(Position.fromDegrees(4, -3, 3e5));
+         pathPositions.add(Position.fromDegrees(4, -2, 3e5));
+         pathPositions.add(Position.fromDegrees(0, -3.5, 3e5));
+         
          ExtrudedPolygon pgon = new ExtrudedPolygon(pathPositions);
-
-         pathPositions.clear();
-         pathPositions.add(Position.fromDegrees(29, -106.4, 4e4));//(29, -106.4, 4e4));
-         pathPositions.add(Position.fromDegrees(30, -106.4, 4e4));//(30, -106.4, 4e4));
-         pathPositions.add(Position.fromDegrees(29, -106.8, 7e4));//(29, -106.8, 7e4));
-         pathPositions.add(Position.fromDegrees(29, -106.4, 4e4));//(29, -106.4, 4e4));
-        pgon.addInnerBoundary(pathPositions);
          pgon.setAltitudeMode(WorldWind.RELATIVE_TO_GROUND);
          pgon.setSideAttributes(sideAttributes);
          pgon.setSideHighlightAttributes(sideHighlightAttributes);
          pgon.setCapAttributes(capAttributes);
          layer.addRenderable(pgon);
+         
 
          ArrayList<LatLon> pathLocations = new ArrayList<LatLon>();
-         pathLocations.add(LatLon.fromDegrees(28, -110));
-         pathLocations.add(LatLon.fromDegrees(35, -108));
-         pathLocations.add(LatLon.fromDegrees(35, -111));
-         pathLocations.add(LatLon.fromDegrees(28, -111));
-         pathLocations.add(LatLon.fromDegrees(28, -110));
-         pgon = new ExtrudedPolygon(pathLocations, 6e4);
+         pathLocations.add(LatLon.fromDegrees(0, -0.5));
+         pathLocations.add(LatLon.fromDegrees(4, -0.5));
+         pathLocations.add(LatLon.fromDegrees(4, 0.5));
+         pathLocations.add(LatLon.fromDegrees(0, 0.5));
+         pgon = new ExtrudedPolygon(pathLocations, 3e5);
+         pgon.setSideAttributes(sideAttributes);
+         pgon.setSideHighlightAttributes(sideHighlightAttributes);
+         pgon.setCapAttributes(capAttributes);
+         layer.addRenderable(pgon);
+         
+         
+         ArrayList<LatLon> pathLocations1 = new ArrayList<LatLon>();
+         pathLocations1.add(LatLon.fromDegrees(0, 3));
+         pathLocations1.add(LatLon.fromDegrees(1, 2));
+         pathLocations1.add(LatLon.fromDegrees(3, 2));
+         pathLocations1.add(LatLon.fromDegrees(4, 3));
+         pathLocations1.add(LatLon.fromDegrees(4, 4));
+         pathLocations1.add(LatLon.fromDegrees(3, 5));
+         pathLocations1.add(LatLon.fromDegrees(1, 5));
+         pathLocations1.add(LatLon.fromDegrees(0, 4));
+         pgon = new ExtrudedPolygon(pathLocations1, 3e5);
+         
+         pathLocations1.clear();
+         pathLocations1.add(LatLon.fromDegrees(0.5, 3));
+         pathLocations1.add(LatLon.fromDegrees(1, 2.5));
+         pathLocations1.add(LatLon.fromDegrees(3, 2.5));
+         pathLocations1.add(LatLon.fromDegrees(3.5, 3));
+         pathLocations1.add(LatLon.fromDegrees(3.5, 4));
+         pathLocations1.add(LatLon.fromDegrees(3, 4.5));
+         pathLocations1.add(LatLon.fromDegrees(1, 4.5));
+         pathLocations1.add(LatLon.fromDegrees(0.5, 4));
+         
+        pgon.addInnerBoundary(pathLocations1);
+         
+         
+         
          pgon.setSideAttributes(sideAttributes);
          pgon.setSideHighlightAttributes(sideHighlightAttributes);
          pgon.setCapAttributes(capAttributes);
