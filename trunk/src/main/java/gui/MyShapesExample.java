@@ -58,13 +58,13 @@ public class MyShapesExample{
 
          // Create a path, set some of its properties and set its attributes.
          ArrayList<Position> pathPositions = new ArrayList<Position>();
-         pathPositions.add(Position.fromDegrees(0, -4.5, 3e5));
-         pathPositions.add(Position.fromDegrees(4, -6, 3e5));
-         pathPositions.add(Position.fromDegrees(4, -5, 3e5));
-         pathPositions.add(Position.fromDegrees(1.5, -4, 3e5));
-         pathPositions.add(Position.fromDegrees(4, -3, 3e5));
-         pathPositions.add(Position.fromDegrees(4, -2, 3e5));
-         pathPositions.add(Position.fromDegrees(0, -3.5, 3e5));
+         pathPositions.add(Position.fromDegrees(0, -9, 3e5));
+         pathPositions.add(Position.fromDegrees(8, -12, 3e5));
+         pathPositions.add(Position.fromDegrees(8, -10, 3e5));
+         pathPositions.add(Position.fromDegrees(3, -8, 3e5));
+         pathPositions.add(Position.fromDegrees(8, -6, 3e5));
+         pathPositions.add(Position.fromDegrees(8, -4, 3e5));
+         pathPositions.add(Position.fromDegrees(0, -7, 3e5));
          
          ExtrudedPolygon pgon = new ExtrudedPolygon(pathPositions);
          pgon.setAltitudeMode(WorldWind.RELATIVE_TO_GROUND);
@@ -75,10 +75,10 @@ public class MyShapesExample{
          
 
          ArrayList<LatLon> pathLocations = new ArrayList<LatLon>();
-         pathLocations.add(LatLon.fromDegrees(0, -0.5));
-         pathLocations.add(LatLon.fromDegrees(4, -0.5));
-         pathLocations.add(LatLon.fromDegrees(4, 0.5));
-         pathLocations.add(LatLon.fromDegrees(0, 0.5));
+         pathLocations.add(LatLon.fromDegrees(0, -1));
+         pathLocations.add(LatLon.fromDegrees(8, -1));
+         pathLocations.add(LatLon.fromDegrees(8, 1));
+         pathLocations.add(LatLon.fromDegrees(0, 1));
          pgon = new ExtrudedPolygon(pathLocations, 3e5);
          pgon.setSideAttributes(sideAttributes);
          pgon.setSideHighlightAttributes(sideHighlightAttributes);
@@ -87,25 +87,25 @@ public class MyShapesExample{
          
          
          ArrayList<LatLon> pathLocations1 = new ArrayList<LatLon>();
-         pathLocations1.add(LatLon.fromDegrees(0, 3));
-         pathLocations1.add(LatLon.fromDegrees(1, 2));
-         pathLocations1.add(LatLon.fromDegrees(3, 2));
-         pathLocations1.add(LatLon.fromDegrees(4, 3));
-         pathLocations1.add(LatLon.fromDegrees(4, 4));
-         pathLocations1.add(LatLon.fromDegrees(3, 5));
-         pathLocations1.add(LatLon.fromDegrees(1, 5));
-         pathLocations1.add(LatLon.fromDegrees(0, 4));
+         pathLocations1.add(LatLon.fromDegrees(0, 6));
+         pathLocations1.add(LatLon.fromDegrees(2, 4));
+         pathLocations1.add(LatLon.fromDegrees(6, 4));
+         pathLocations1.add(LatLon.fromDegrees(8, 6));
+         pathLocations1.add(LatLon.fromDegrees(8, 8));
+         pathLocations1.add(LatLon.fromDegrees(6, 10));
+         pathLocations1.add(LatLon.fromDegrees(2, 10));
+         pathLocations1.add(LatLon.fromDegrees(0, 8));
          pgon = new ExtrudedPolygon(pathLocations1, 3e5);
          
          pathLocations1.clear();
-         pathLocations1.add(LatLon.fromDegrees(0.5, 3));
-         pathLocations1.add(LatLon.fromDegrees(1, 2.5));
-         pathLocations1.add(LatLon.fromDegrees(3, 2.5));
-         pathLocations1.add(LatLon.fromDegrees(3.5, 3));
-         pathLocations1.add(LatLon.fromDegrees(3.5, 4));
-         pathLocations1.add(LatLon.fromDegrees(3, 4.5));
-         pathLocations1.add(LatLon.fromDegrees(1, 4.5));
-         pathLocations1.add(LatLon.fromDegrees(0.5, 4));
+         pathLocations1.add(LatLon.fromDegrees(1, 6));
+         pathLocations1.add(LatLon.fromDegrees(2, 5));
+         pathLocations1.add(LatLon.fromDegrees(6, 5));
+         pathLocations1.add(LatLon.fromDegrees(7, 6));
+         pathLocations1.add(LatLon.fromDegrees(7, 8));
+         pathLocations1.add(LatLon.fromDegrees(6, 9));
+         pathLocations1.add(LatLon.fromDegrees(2, 9));
+         pathLocations1.add(LatLon.fromDegrees(1, 8));
          
         pgon.addInnerBoundary(pathLocations1);
          
