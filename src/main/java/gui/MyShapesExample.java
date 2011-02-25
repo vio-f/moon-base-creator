@@ -3,20 +3,16 @@ package gui;
 import gov.nasa.worldwind.WorldWind;
 import gov.nasa.worldwind.geom.LatLon;
 import gov.nasa.worldwind.geom.Position;
-import gov.nasa.worldwind.layers.AbstractLayer;
-import gov.nasa.worldwind.layers.CompassLayer;
-import gov.nasa.worldwind.layers.Layer;
 import gov.nasa.worldwind.layers.LayerList;
 import gov.nasa.worldwind.layers.RenderableLayer;
 import gov.nasa.worldwind.render.BasicShapeAttributes;
-import gov.nasa.worldwind.render.DrawContext;
 import gov.nasa.worldwind.render.ExtrudedPolygon;
 import gov.nasa.worldwind.render.Material;
 import gov.nasa.worldwind.render.ShapeAttributes;
 
 import java.util.ArrayList;
 
-import javax.swing.JInternalFrame;
+import utility.MyLogger;
 
 public class MyShapesExample{
 	
@@ -33,9 +29,11 @@ public class MyShapesExample{
 	 * 
 	 */
 	MyShapesExample(){
+		MyLogger.getLogger().info("Instacing RenderableLayer");
 		 RenderableLayer layer = new RenderableLayer();
 
          // Create and set an attribute bundle.
+		 MyLogger.getLogger().info("Creating sideAttributes.");
          ShapeAttributes sideAttributes = new BasicShapeAttributes();
          sideAttributes.setInteriorMaterial(Material.MAGENTA);
          sideAttributes.setOutlineOpacity(0.5);
@@ -46,10 +44,12 @@ public class MyShapesExample{
          sideAttributes.setDrawInterior(true);
          sideAttributes.setEnableLighting(true);
 
+         MyLogger.getLogger().info("Creating \"sideHighlightAttributes\".");
          ShapeAttributes sideHighlightAttributes = new BasicShapeAttributes(sideAttributes);
          sideHighlightAttributes.setOutlineMaterial(Material.WHITE);
          sideHighlightAttributes.setOutlineOpacity(1);
 
+         MyLogger.getLogger().info("Creating \"capAttributes\".");
          ShapeAttributes capAttributes = new BasicShapeAttributes(sideAttributes);
          capAttributes.setInteriorMaterial(Material.YELLOW);
          capAttributes.setInteriorOpacity(0.8);
@@ -57,6 +57,7 @@ public class MyShapesExample{
          capAttributes.setEnableLighting(true);
 
          // Create a path, set some of its properties and set its attributes.
+         MyLogger.getLogger().info("Creating the letter  \"V\".");
          ArrayList<Position> pathPositions = new ArrayList<Position>();
          pathPositions.add(Position.fromDegrees(0, -9, 3e5));
          pathPositions.add(Position.fromDegrees(8, -12, 3e5));
@@ -66,6 +67,7 @@ public class MyShapesExample{
          pathPositions.add(Position.fromDegrees(8, -4, 3e5));
          pathPositions.add(Position.fromDegrees(0, -7, 3e5));
          
+         
          ExtrudedPolygon pgon = new ExtrudedPolygon(pathPositions);
          pgon.setAltitudeMode(WorldWind.RELATIVE_TO_GROUND);
          pgon.setSideAttributes(sideAttributes);
@@ -73,7 +75,7 @@ public class MyShapesExample{
          pgon.setCapAttributes(capAttributes);
          layer.addRenderable(pgon);
          
-
+         MyLogger.getLogger().info("Creating the letter  \"I\".");
          ArrayList<LatLon> pathLocations = new ArrayList<LatLon>();
          pathLocations.add(LatLon.fromDegrees(0, -1));
          pathLocations.add(LatLon.fromDegrees(8, -1));
@@ -85,7 +87,7 @@ public class MyShapesExample{
          pgon.setCapAttributes(capAttributes);
          layer.addRenderable(pgon);
          
-         
+         MyLogger.getLogger().info("Creating the letter  \"O\".");
          ArrayList<LatLon> pathLocations1 = new ArrayList<LatLon>();
          pathLocations1.add(LatLon.fromDegrees(0, 6));
          pathLocations1.add(LatLon.fromDegrees(2, 4));
@@ -121,10 +123,11 @@ public class MyShapesExample{
          
          //TODO finish this quik
          
-         
+         MyLogger.getLogger().info("Adding shapes to layers");
          LayerList layers = MoonWorkspaceInternalFrame.getStuff();
          layers.add(layer);
-         System.out.println("Shape added");
+         // System.out.println("Shape added");
+         MyLogger.getLogger().info("Shapes added");
          
          
          // Add the layer to the model.

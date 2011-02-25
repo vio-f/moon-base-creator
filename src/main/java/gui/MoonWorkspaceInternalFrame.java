@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 
+import utility.MyLogger;
+
 public class MoonWorkspaceInternalFrame extends JInternalFrame {
 	static int openFrameCount = 0;
 	static final int xOffset = 30, yOffset = 30;
@@ -32,7 +34,8 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame {
 		          true);//iconifiable
 		    
 	        // se creaza canvasul ptr luna
-	    	System.out.println("Creating Moon");
+	    	//System.out.println("Creating Moon");
+	    	MyLogger.info(this, "Creating Moon canvas");
 			wwGLCanvas = new gov.nasa.worldwind.awt.WorldWindowGLCanvas();
 
 	    	Model m = (Model) WorldWind.createConfigurationComponent(AVKey.MODEL_CLASS_NAME);
@@ -49,8 +52,8 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame {
 		    StatusBar status=new StatusBar();
 		    jPanel.add(status,BorderLayout.SOUTH);
 		    getContentPane().add(jPanel);
-	    	System.out.println("Moon Canvas added");
-	    	
+	    	//System.out.println("Moon Canvas added");
+		    MyLogger.info(this, "Moon Canvas added");
 	    	new MyShapesExample();
 	    	wwGLCanvas.redrawNow();
 	    	
