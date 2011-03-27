@@ -54,10 +54,15 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame {
 		    getContentPane().add(jPanel);
 	    	//System.out.println("Moon Canvas added");
 		    MyLogger.info(this, "Moon Canvas added");
-	    	new MyShapesExample();
+		    
+			MyLogger.info(this, "Adding LayerTree");
+			new CanvasLayerTree(this);
+		    
+		    new MyShapesExample();
 	    	wwGLCanvas.redrawNow();
 	    	
 			BaseFrame.desktop.add(this);
+
 
 			this.setVisible(true);
 		    try {
@@ -68,12 +73,9 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame {
 	
 	
 	public static LayerList getStuff(){
-	LayerList layers = wwGLCanvas.getModel().getLayers();
-	return layers;
+		LayerList layers = wwGLCanvas.getModel().getLayers();
+		return layers;
 	}
-	
-	
-	
 	
 	
 	

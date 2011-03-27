@@ -13,6 +13,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/gluegen-rt.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jogl.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/netscape.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/worldwind.jar" sourcepath="D:/work/_workspace/ww"/>
+	<classpathentry exported="true" kind="lib" path="lib/worldwind.jar" sourcepath="/worldwind-0.6.749.14783"/>
+	<classpathentry kind="lib" path="/worldwind-0.6.749.14783/worldwind.jar" sourcepath="lib/worldwind.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
