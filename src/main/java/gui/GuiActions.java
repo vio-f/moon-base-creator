@@ -65,7 +65,7 @@ public class GuiActions extends AbstractAction {
 					"Are you sure you wish to exit?") == JOptionPane.YES_OPTION) {
 				f.setVisible(false);
 				f.dispose();
-				MyLogger.info(this, "Application will now close");
+				MyLogger.info(this, "Application closed on request of user");
 				System.exit(0);
 			}
 
