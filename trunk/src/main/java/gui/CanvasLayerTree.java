@@ -21,11 +21,11 @@ public class CanvasLayerTree {
 
 	
 	 protected LayerTree layerTree;
-     protected RenderableLayer hiddenLayer;
+     protected static RenderableLayer hiddenLayer;
 
      protected HotSpotController controller;
 
-     public CanvasLayerTree(MoonWorkspaceInternalFrame f)
+     public CanvasLayerTree()
      {
 
 
@@ -40,9 +40,9 @@ public class CanvasLayerTree {
          // Set up a layer to display the on-screen layer tree in the WorldWindow. This layer is not displayed in
          // the layer tree's model. Doing so would enable the user to hide the layer tree display with no way of
          // bringing it back.
-         this.hiddenLayer = new RenderableLayer();
-         this.hiddenLayer.addRenderable(this.layerTree);
-         MoonWorkspaceInternalFrame.getStuff().add(this.hiddenLayer);
+         hiddenLayer = new RenderableLayer();
+         hiddenLayer.addRenderable(this.layerTree);
+         MoonWorkspaceInternalFrame.getStuff().add(hiddenLayer);
 
          // Add a controller to handle input events on the layer tree.
          this.controller = new HotSpotController(MoonWorkspaceInternalFrame.wwGLCanvas);
