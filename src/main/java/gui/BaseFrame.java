@@ -34,6 +34,12 @@ public class BaseFrame extends JFrame {
 	static JMenuItem fileSaveItem = new JMenuItem("Save...");
 	static JMenuItem fileExitItem = new JMenuItem("Exit...");
 	
+	//meniul Edit..
+	JMenu editMenu = new JMenu("Edit");
+	
+	static JMenuItem editShowHideLayerTreeItem = new JMenuItem("Show/Hide LayerTree");
+	
+	
 	//meniul About
 	JMenu helpMenu = new JMenu("Help");
 	
@@ -108,6 +114,10 @@ public class BaseFrame extends JFrame {
 		fileMenu.addSeparator();// adaugam un separator
 		fileMenu.add(fileExitItem);
 		
+		menuBar.add(editMenu);
+		editShowHideLayerTreeItem.setEnabled(false);
+		editMenu.add(editShowHideLayerTreeItem);
+		
 		menuBar.add(helpMenu);
 		helpMenu.add(helpHelpcontentsItem);
 		helpMenu.add(helpAboutItem);
@@ -115,8 +125,11 @@ public class BaseFrame extends JFrame {
 		// adaugam menuBar la frame
 		this.setJMenuBar(menuBar);
 		/**********************************************************************/
+		//definim listener ptr obiecte
 		fileExitItem.addActionListener(theActions);
 		fileNewItem.addActionListener(theActions);
+		
+		editShowHideLayerTreeItem.addActionListener(theActions);
 		//TODO add more action listeners
 		
 		/**********************************************************************/

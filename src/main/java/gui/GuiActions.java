@@ -16,6 +16,7 @@ import utility.MyLogger;
 public class GuiActions extends AbstractAction {
 	JFrame f;
 	GenericThread task;
+	
 
 	// GenericNewTask showProgDiag;
 
@@ -29,6 +30,7 @@ public class GuiActions extends AbstractAction {
 		if (e.getSource().equals(BaseFrame.fileNewItem)) {
 			//System.out.println("New has been pressed");
 			MyLogger.info(this, "New has been pressed");
+			BaseFrame.editShowHideLayerTreeItem.setEnabled(true);
 			// TODO remove this
 			final ProgressDialog progressDialog = new ProgressDialog(f);
 			// final Thread progressBarThread = new Thread(progressDialog);
@@ -69,6 +71,17 @@ public class GuiActions extends AbstractAction {
 				System.exit(0);
 			}
 
+		}
+		
+		if (e.getSource().equals(BaseFrame.editShowHideLayerTreeItem)) {
+			MyLogger.info(this, "Show/hide has been pressed");
+
+			if(MoonWorkspaceInternalFrame.isLayerTreeVisible() == true){
+				MoonWorkspaceInternalFrame.setLayerTreeVisible(false);
+			}
+			else
+				MoonWorkspaceInternalFrame.setLayerTreeVisible(true);
+		
 		}
 	}
 

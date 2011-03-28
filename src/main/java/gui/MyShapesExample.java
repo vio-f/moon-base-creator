@@ -29,11 +29,11 @@ public class MyShapesExample{
 	 * 
 	 */
 	MyShapesExample(){
-		MyLogger.getLogger().info("Instacing RenderableLayer");
+		MyLogger.info(this, "Instacing RenderableLayer");
 		 RenderableLayer layer = new RenderableLayer();
 
          // Create and set an attribute bundle.
-		 MyLogger.getLogger().info("Creating sideAttributes.");
+		 MyLogger.info(this, "Creating sideAttributes.");
          ShapeAttributes sideAttributes = new BasicShapeAttributes();
          sideAttributes.setInteriorMaterial(Material.MAGENTA);
          sideAttributes.setOutlineOpacity(0.5);
@@ -44,12 +44,12 @@ public class MyShapesExample{
          sideAttributes.setDrawInterior(true);
          sideAttributes.setEnableLighting(true);
 
-         MyLogger.getLogger().info("Creating \"sideHighlightAttributes\".");
+         MyLogger.info(this, "Creating \"sideHighlightAttributes\".");
          ShapeAttributes sideHighlightAttributes = new BasicShapeAttributes(sideAttributes);
          sideHighlightAttributes.setOutlineMaterial(Material.WHITE);
          sideHighlightAttributes.setOutlineOpacity(1);
 
-         MyLogger.getLogger().info("Creating \"capAttributes\".");
+         MyLogger.info(this, "Creating \"capAttributes\".");
          ShapeAttributes capAttributes = new BasicShapeAttributes(sideAttributes);
          capAttributes.setInteriorMaterial(Material.YELLOW);
          capAttributes.setInteriorOpacity(0.8);
@@ -57,7 +57,7 @@ public class MyShapesExample{
          capAttributes.setEnableLighting(true);
 
          // Create a path, set some of its properties and set its attributes.
-         MyLogger.getLogger().info("Creating the letter  \"V\".");
+         MyLogger.info(this, "Creating the letter  \"V\".");
          ArrayList<Position> pathPositions = new ArrayList<Position>();
          pathPositions.add(Position.fromDegrees(0, -9, 3e5));
          pathPositions.add(Position.fromDegrees(8, -12, 3e5));
@@ -75,7 +75,7 @@ public class MyShapesExample{
          pgon.setCapAttributes(capAttributes);
          layer.addRenderable(pgon);
          
-         MyLogger.getLogger().info("Creating the letter  \"I\".");
+         MyLogger.info(this, "Creating the letter  \"I\".");
          ArrayList<LatLon> pathLocations = new ArrayList<LatLon>();
          pathLocations.add(LatLon.fromDegrees(0, -1));
          pathLocations.add(LatLon.fromDegrees(8, -1));
@@ -87,7 +87,7 @@ public class MyShapesExample{
          pgon.setCapAttributes(capAttributes);
          layer.addRenderable(pgon);
          
-         MyLogger.getLogger().info("Creating the letter  \"O\".");
+         MyLogger.info(this, "Creating the letter  \"O\".");
          ArrayList<LatLon> pathLocations1 = new ArrayList<LatLon>();
          pathLocations1.add(LatLon.fromDegrees(0, 6));
          pathLocations1.add(LatLon.fromDegrees(2, 4));
@@ -123,11 +123,12 @@ public class MyShapesExample{
          
          //TODO finish this quik
          
-         MyLogger.getLogger().info("Adding shapes to layers");
+         MyLogger.info(this, "Adding shapes to layers");
          LayerList layers = MoonWorkspaceInternalFrame.getStuff();
+         layer.setName("Vio");
          layers.add(layer);
          // System.out.println("Shape added");
-         MyLogger.getLogger().info("Shapes added");
+         MyLogger.info(this, "Shapes added");
          
          
          // Add the layer to the model.
