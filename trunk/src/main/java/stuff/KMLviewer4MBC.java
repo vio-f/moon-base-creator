@@ -1,5 +1,5 @@
 
-package gui;
+package stuff;
 /**
  * 
  * @author Vio

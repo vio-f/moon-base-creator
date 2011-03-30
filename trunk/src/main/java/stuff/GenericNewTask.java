@@ -1,4 +1,4 @@
-package gui;
+package stuff;
 
 import java.awt.Toolkit;
 import java.lang.reflect.InvocationTargetException;
@@ -27,7 +27,7 @@ public class GenericNewTask extends SwingWorker<Void, Void> {
 	//constructor2
 	public GenericNewTask(boolean showDiag, JFrame f){
 		if(showDiag){
-			new ProgressDialog(f);
+			new gui.ProgressDialog(f);
 		}
 	}
 	
