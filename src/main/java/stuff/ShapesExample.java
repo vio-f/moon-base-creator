@@ -1,4 +1,4 @@
-package gui;
+package stuff;
 
 import gov.nasa.worldwind.WorldWind;
 import gov.nasa.worldwind.geom.LatLon;
@@ -83,7 +83,7 @@ public class ShapesExample{
          //TODO finish this quik
          
          
-         LayerList layers = MoonWorkspaceInternalFrame.getStuff();
+         LayerList layers = gui.MoonWorkspaceInternalFrame.getStuff();
          layers.add(layer);
          System.out.println("Shape added");
          

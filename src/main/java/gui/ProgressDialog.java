@@ -13,7 +13,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  * 
  *
  */
-class ProgressDialog extends JFrame {
+public class ProgressDialog extends JFrame {
 
 	JProgressBar pBar = new JProgressBar(0, 500);
 

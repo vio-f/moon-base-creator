@@ -1,4 +1,4 @@
-package gui;
+package stuff;
 
 import java.lang.reflect.Method;
 
@@ -26,7 +26,7 @@ public class GenericThread extends Thread  {
 
 	public GenericThread(boolean showDiag, JFrame f){
 		if(showDiag){
-			new ProgressDialog(f);
+			new gui.ProgressDialog(f);
 			this.setPriority(MAX_PRIORITY);
 
 		}

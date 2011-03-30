@@ -15,10 +15,6 @@ import utility.MyLogger;
  */
 public class GuiActions extends AbstractAction {
 	JFrame f;
-	GenericThread task;
-	
-
-	// GenericNewTask showProgDiag;
 
 	GuiActions(JFrame f) {
 		this.f = f;
@@ -28,12 +24,11 @@ public class GuiActions extends AbstractAction {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource().equals(BaseFrame.fileNewItem)) {
-			//System.out.println("New has been pressed");
+			// System.out.println("New has been pressed");
 			MyLogger.info(this, "New has been pressed");
 			BaseFrame.editShowHideLayerTreeItem.setEnabled(true);
 			// TODO remove this
 			final ProgressDialog progressDialog = new ProgressDialog(f);
-			// final Thread progressBarThread = new Thread(progressDialog);
 
 			@SuppressWarnings("rawtypes")
 			SwingWorker sw = new SwingWorker() {
@@ -42,14 +37,16 @@ public class GuiActions extends AbstractAction {
 				protected Object doInBackground() throws Exception {
 
 					try {
-					progressDialog.start();					
-					
-					new MoonWorkspaceInternalFrame();
-					
-					progressDialog.stop();
-					} catch(Exception e) {
-						Exception e1 = new Exception("Error while workspace creation.", e);
-						MyLogger.error(this, "Error while workspace creation.", e1);
+						progressDialog.start();
+
+						new MoonWorkspaceInternalFrame();
+
+						progressDialog.stop();
+					} catch (Exception e) {
+						Exception e1 = new Exception(
+								"Error while workspace creation.", e);
+						MyLogger.error(this, "Error while workspace creation.",
+								e1);
 						throw e1;
 					}
 
@@ -72,16 +69,15 @@ public class GuiActions extends AbstractAction {
 			}
 
 		}
-		
+
 		if (e.getSource().equals(BaseFrame.editShowHideLayerTreeItem)) {
 			MyLogger.info(this, "Show/hide has been pressed");
 
-			if(MoonWorkspaceInternalFrame.isLayerTreeVisible() == true){
+			if (MoonWorkspaceInternalFrame.isLayerTreeVisible() == true) {
 				MoonWorkspaceInternalFrame.setLayerTreeVisible(false);
-			}
-			else
+			} else
 				MoonWorkspaceInternalFrame.setLayerTreeVisible(true);
-		
+
 		}
 	}
 
