@@ -1,5 +1,6 @@
 package gui;
 
+import gov.nasa.worldwind.Movable;
 import gov.nasa.worldwind.WorldWind;
 import gov.nasa.worldwind.geom.LatLon;
 import gov.nasa.worldwind.geom.Position;
@@ -9,12 +10,15 @@ import gov.nasa.worldwind.render.BasicShapeAttributes;
 import gov.nasa.worldwind.render.ExtrudedPolygon;
 import gov.nasa.worldwind.render.Material;
 import gov.nasa.worldwind.render.ShapeAttributes;
+import gov.nasa.worldwind.util.Logging;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import utility.MyLogger;
 
 public class MyShapesExample{
+	ExtrudedPolygon pgon;
 	
 	/**
 	 * 
@@ -68,14 +72,14 @@ public class MyShapesExample{
          pathPositions.add(Position.fromDegrees(0, -7, 3e5));
          
          
-         ExtrudedPolygon pgon = new ExtrudedPolygon(pathPositions);
+         pgon = new ExtrudedPolygon(pathPositions);
          pgon.setAltitudeMode(WorldWind.RELATIVE_TO_GROUND);
          pgon.setSideAttributes(sideAttributes);
          pgon.setSideHighlightAttributes(sideHighlightAttributes);
          pgon.setCapAttributes(capAttributes);
          layer.addRenderable(pgon);
          
-         MyLogger.info(this, "Creating the letter  \"I\".");
+         /*MyLogger.info(this, "Creating the letter  \"I\".");
          ArrayList<LatLon> pathLocations = new ArrayList<LatLon>();
          pathLocations.add(LatLon.fromDegrees(0, -1));
          pathLocations.add(LatLon.fromDegrees(8, -1));
@@ -110,7 +114,7 @@ public class MyShapesExample{
          pathLocations1.add(LatLon.fromDegrees(1, 8));
          
         pgon.addInnerBoundary(pathLocations1);
-         
+         */
          
          
          pgon.setSideAttributes(sideAttributes);
@@ -118,7 +122,6 @@ public class MyShapesExample{
          pgon.setCapAttributes(capAttributes);
          layer.addRenderable(pgon);
 
-         //LayerList layers = BaseFrame.desktop.getSelectedFrame().getContentPane().getjPanel.worldWindowGLCanvas.getModel().getLayers();
          
          
          //TODO finish this quik
@@ -137,6 +140,11 @@ public class MyShapesExample{
          // Update layer panel
          //this.getLayerPanel().update(this.getWwd());
      }
+
+	public void moveMe(Position pos){
+		pgon.move(pos);
+		
+	}
 
 
 	

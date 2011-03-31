@@ -3,7 +3,11 @@ package gui;
 import gov.nasa.worldwind.Model;
 import gov.nasa.worldwind.WorldWind;
 import gov.nasa.worldwind.avlist.AVKey;
+import gov.nasa.worldwind.examples.util.ExtrudedPolygonEditor;
+import gov.nasa.worldwind.geom.Position;
 import gov.nasa.worldwind.layers.LayerList;
+import gov.nasa.worldwind.layers.RenderableLayer;
+import gov.nasa.worldwind.render.ExtrudedPolygon;
 import gov.nasa.worldwind.util.StatusBar;
 
 import java.awt.BorderLayout;
@@ -19,7 +23,7 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame {
 	public static gov.nasa.worldwind.awt.WorldWindowGLCanvas wwGLCanvas;
 	static CanvasLayerTree canvasLT;
 	private static Boolean statusLayerTree = false;
-	private static Object thisClass=null;
+	public static MyShapesExample vio;
 
 	public MoonWorkspaceInternalFrame() {
 		super("New workspace " + (++openFrameCount), true, // resizable
@@ -50,10 +54,15 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame {
 
 
 
-		new MyShapesExample();
-
+		vio = new MyShapesExample();
 		
-		MyLogger.info(this, "Adding LayerTree");
+		
+		
+		
+		//new MyFirstExtrudedShape();
+		
+		
+		//MyLogger.info(this, "Adding LayerTree");
 		//canvasLT = new CanvasLayerTree();
 		
 		wwGLCanvas.redrawNow();

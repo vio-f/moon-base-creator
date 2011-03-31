@@ -1,5 +1,9 @@
 package gui;
 
+import gov.nasa.worldwind.geom.LatLon;
+import gov.nasa.worldwind.geom.Position;
+import gov.nasa.worldwind.render.ExtrudedPolygon;
+
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
@@ -78,6 +82,13 @@ public class GuiActions extends AbstractAction {
 			} else
 				MoonWorkspaceInternalFrame.setLayerTreeVisible(true);
 
+		}
+		
+		if (e.getSource().equals(BaseFrame.editMoveItem)) {
+			MyLogger.getLogger().info("open pressed");
+			MoonWorkspaceInternalFrame.vio.moveMe(Position.fromDegrees(10, -9, 3e5));
+			MoonWorkspaceInternalFrame.wwGLCanvas.redraw();
+			
 		}
 	}
 

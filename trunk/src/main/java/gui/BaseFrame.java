@@ -38,7 +38,7 @@ public class BaseFrame extends JFrame {
 	JMenu editMenu = new JMenu("Edit");
 	
 	static JMenuItem editShowHideLayerTreeItem = new JMenuItem("Show/Hide LayerTree");
-	
+	static JMenuItem editMoveItem = new JMenuItem("MoveIt");
 	
 	//meniul About
 	JMenu helpMenu = new JMenu("Help");
@@ -117,6 +117,7 @@ public class BaseFrame extends JFrame {
 		menuBar.add(editMenu);
 		editShowHideLayerTreeItem.setEnabled(false);
 		editMenu.add(editShowHideLayerTreeItem);
+		editMenu.add(editMoveItem);
 		
 		menuBar.add(helpMenu);
 		helpMenu.add(helpHelpcontentsItem);
@@ -128,8 +129,10 @@ public class BaseFrame extends JFrame {
 		//definim listener ptr obiecte
 		fileExitItem.addActionListener(theActions);
 		fileNewItem.addActionListener(theActions);
+		fileOpenItem.addActionListener(theActions);
 		
 		editShowHideLayerTreeItem.addActionListener(theActions);
+		editMoveItem.addActionListener(theActions);
 		//TODO add more action listeners
 		
 		/**********************************************************************/
