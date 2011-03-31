@@ -3,19 +3,16 @@
  */
 package gui;
 
-import gov.nasa.worldwind.avlist.AVKey;
+//import gov.nasa.worldwind.avlist.AVKey;
 import gov.nasa.worldwind.examples.LayerTree;
 import gov.nasa.worldwind.examples.util.HotSpotController;
 import gov.nasa.worldwind.layers.RenderableLayer;
-import gov.nasa.worldwind.util.WWUtil;
+//import gov.nasa.worldwind.util.WWUtil;
 
-import java.awt.Dimension;
-
-import javax.swing.JFrame;
 
 /**
  * @author Vio
- *
+ * This class has been adapted to fit the needs of this project
  */
 public class CanvasLayerTree {
 
