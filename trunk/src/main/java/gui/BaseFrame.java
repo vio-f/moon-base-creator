@@ -2,7 +2,6 @@ package gui;
 
 import java.awt.Color;
 
-import javax.swing.BorderFactory;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -49,17 +48,9 @@ public class BaseFrame extends JFrame {
 	
 	JToolBar leftTools = new JToolBar(SwingConstants.VERTICAL);
 
-	static JDesktopPane desktop = new JDesktopPane();
+	public static JDesktopPane desktop = new JDesktopPane();
 
-	//definim layer-ele care vor fi incarcate
-	final static String LAYERS = "gov.nasa.worldwind.layers.StarsLayer"
-        + ",gov.nasa.worldwind.layers.Moon.Clementine40BaseLayer"
-        + ",gov.nasa.worldwind.layers.Moon.Clementine40Layer"
-        + ",gov.nasa.worldwind.layers.Moon.Clementine30Layer"
-        //+ ",gov.nasa.worldwind.layers.Moon.ShadedElevationLayer"
-        + ",gov.nasa.worldwind.layers.ScalebarLayer"
-        + ",gov.nasa.worldwind.layers.CompassLayer";
-	//TODO add more layers
+
 
 
 	/**********************************************************************/
@@ -147,7 +138,7 @@ public class BaseFrame extends JFrame {
 		desktop.setBackground(Color.LIGHT_GRAY);
 		desktop.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
 		this.add(desktop);
-		desktop.add(new InternalPalleteWindowsToobar());
+		desktop.add(new InternalPalleteToobar());
 		/**********************************************************************/
 		
 		

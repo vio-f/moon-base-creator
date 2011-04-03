@@ -4,48 +4,58 @@
 package gui;
 
 //import gov.nasa.worldwind.avlist.AVKey;
+import gov.nasa.worldwind.WorldWindow;
 import gov.nasa.worldwind.examples.LayerTree;
 import gov.nasa.worldwind.examples.util.HotSpotController;
+import gov.nasa.worldwind.layers.CompassLayer;
+import gov.nasa.worldwind.layers.Layer;
+import gov.nasa.worldwind.layers.LayerList;
 import gov.nasa.worldwind.layers.RenderableLayer;
-//import gov.nasa.worldwind.util.WWUtil;
-
+import gov.nasa.worldwind.examples.ApplicationTemplate;
 
 /**
- * @author Vio
- * This class has been adapted to fit the needs of this project
+ * @author Vio This class has been adapted to fit the needs of this project
  */
-public class CanvasLayerTree {
-
+public class CanvasLayerTree extends RenderableLayer {
 	
-	 protected LayerTree layerTree;
-     protected static RenderableLayer hiddenLayer;
 
-     protected HotSpotController controller;
+	protected LayerTree layerTree;
+	protected HotSpotController controller;
+	protected RenderableLayer hiddenLayer; 
+	public MoonWorkspaceInternalFrame parantframe = null;
 
-     public CanvasLayerTree()
-     {
+	public CanvasLayerTree(MoonWorkspaceInternalFrame f) {
+		this.parantframe = f;
 
-
-
-         // Add the on-screen layer tree, refreshing model with the WorldWindow's current layer list. We
-         // intentionally refresh the tree's model before adding the layer that contains the tree itself. This
-         // prevents the tree's layer from being displayed in the tree itself.
-         this.layerTree = new LayerTree();
-         this.layerTree.getModel().refresh(MoonWorkspaceInternalFrame.getStuff());
-         
-
-         // Set up a layer to display the on-screen layer tree in the WorldWindow. This layer is not displayed in
-         // the layer tree's model. Doing so would enable the user to hide the layer tree display with no way of
-         // bringing it back.
-         hiddenLayer = new RenderableLayer();
-         hiddenLayer.addRenderable(this.layerTree);
-         MoonWorkspaceInternalFrame.getStuff().add(hiddenLayer);
-
-         // Add a controller to handle input events on the layer tree.
-         this.controller = new HotSpotController(MoonWorkspaceInternalFrame.wwGLCanvas);
+		this.layerTree = new LayerTree();
+		this.layerTree.getModel().refresh(parantframe.getStuff());
 
 
-         //WWUtil.alignComponent(null, this, AVKey.CENTER);
-     }
+		/*this.hiddenLayer = new RenderableLayer();
+		this.hiddenLayer.addRenderable(this.layerTree);
+		selectedIntFr.getStuff().add(this.hiddenLayer);*/
+		
+		this.addRenderable(this.layerTree);
+		insertBeforeCompass(this);
+		//parantframe.getStuff().add(this);;
+		
+
+		// Add a controller to handle input events on the layer tree.
+		this.controller = new HotSpotController(parantframe.wwGLCanvas);
+
+	}
+	
+    public void insertBeforeCompass(Layer layer)
+    {
+        // Insert the layer into the layer list just before the compass.
+        int compassPosition = 0;
+        LayerList layers = parantframe.getStuff();
+        for (Layer l : layers)
+        {
+            if (l instanceof CompassLayer)
+                compassPosition = layers.indexOf(l);
+        }
+        layers.add(compassPosition, layer);
+    }
 
 }

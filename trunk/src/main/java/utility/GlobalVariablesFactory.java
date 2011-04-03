@@ -3,14 +3,14 @@
  */
 package utility;
 
-import gui.MoonWorkspaceInternalFrame;
+import gui.MoonWorkspace;
 
 /**
  * @author Vio
  *
  */
 public final class GlobalVariablesFactory {
-	MoonWorkspaceInternalFrame internalFrames[];
+	MoonWorkspace internalFrames[];
 	
 	public Object makeIt(){
 		Object obj = null;

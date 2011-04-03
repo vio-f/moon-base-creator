@@ -1,24 +1,24 @@
 package gui;
 
-import gov.nasa.worldwind.Movable;
 import gov.nasa.worldwind.WorldWind;
-import gov.nasa.worldwind.geom.LatLon;
 import gov.nasa.worldwind.geom.Position;
 import gov.nasa.worldwind.layers.LayerList;
 import gov.nasa.worldwind.layers.RenderableLayer;
 import gov.nasa.worldwind.render.BasicShapeAttributes;
+import gov.nasa.worldwind.render.Ellipsoid;
 import gov.nasa.worldwind.render.ExtrudedPolygon;
 import gov.nasa.worldwind.render.Material;
 import gov.nasa.worldwind.render.ShapeAttributes;
-import gov.nasa.worldwind.util.Logging;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import utility.MyLogger;
 
 public class MyShapesExample{
 	ExtrudedPolygon pgon;
+	MoonWorkspaceInternalFrame selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
+
+	
 	
 	/**
 	 * 
@@ -78,6 +78,8 @@ public class MyShapesExample{
          pgon.setSideHighlightAttributes(sideHighlightAttributes);
          pgon.setCapAttributes(capAttributes);
          layer.addRenderable(pgon);
+                  
+         
          
          /*MyLogger.info(this, "Creating the letter  \"I\".");
          ArrayList<LatLon> pathLocations = new ArrayList<LatLon>();
@@ -127,7 +129,8 @@ public class MyShapesExample{
          //TODO finish this quik
          
          MyLogger.info(this, "Adding shapes to layers");
-         LayerList layers = MoonWorkspaceInternalFrame.getStuff();
+         LayerList layers = new LayerList(selectedIntFr.getStuff());
+        	 
          layer.setName("Vio");
          layers.add(layer);
          // System.out.println("Shape added");
