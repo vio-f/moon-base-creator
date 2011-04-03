@@ -3,22 +3,20 @@ package stuff;
 import gov.nasa.worldwind.WorldWind;
 import gov.nasa.worldwind.geom.LatLon;
 import gov.nasa.worldwind.geom.Position;
-import gov.nasa.worldwind.layers.AbstractLayer;
-import gov.nasa.worldwind.layers.CompassLayer;
-import gov.nasa.worldwind.layers.Layer;
 import gov.nasa.worldwind.layers.LayerList;
 import gov.nasa.worldwind.layers.RenderableLayer;
 import gov.nasa.worldwind.render.BasicShapeAttributes;
-import gov.nasa.worldwind.render.DrawContext;
 import gov.nasa.worldwind.render.ExtrudedPolygon;
 import gov.nasa.worldwind.render.Material;
 import gov.nasa.worldwind.render.ShapeAttributes;
+import gui.MoonWorkspaceFactory;
+import gui.MoonWorkspaceInternalFrame;
 
 import java.util.ArrayList;
 
-import javax.swing.JInternalFrame;
-
 public class ShapesExample{
+	MoonWorkspaceInternalFrame selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
+
 	
 	ShapesExample(){
 		 RenderableLayer layer = new RenderableLayer();
@@ -83,7 +81,7 @@ public class ShapesExample{
          //TODO finish this quik
          
          
-         LayerList layers = gui.MoonWorkspaceInternalFrame.getStuff();
+         LayerList layers = selectedIntFr.getStuff();
          layers.add(layer);
          System.out.println("Shape added");
          

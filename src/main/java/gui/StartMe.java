@@ -6,6 +6,15 @@ import gov.nasa.worldwind.avlist.AVKey;
 
 
 public class StartMe {
+	//definim layer-ele care vor fi incarcate
+	final static String LAYERS = "gov.nasa.worldwind.layers.StarsLayer"
+        + ",gov.nasa.worldwind.layers.Moon.Clementine40BaseLayer"
+        + ",gov.nasa.worldwind.layers.Moon.Clementine40Layer"
+        + ",gov.nasa.worldwind.layers.Moon.Clementine30Layer"
+        //+ ",gov.nasa.worldwind.layers.Moon.ShadedElevationLayer"
+        + ",gov.nasa.worldwind.layers.ScalebarLayer"
+        + ",gov.nasa.worldwind.layers.CompassLayer";
+	//TODO add more layers
 	
 
 	/**
@@ -18,8 +27,8 @@ public class StartMe {
 		
 		Configuration.setValue(AVKey.GLOBE_CLASS_NAME, gov.nasa.worldwind.globes.Moon.class.getName());// seteaza tipul astrului care urmeaza a fi vizualiza
         Configuration.setValue(AVKey.MOON_ELEVATION_MODEL_CONFIG_FILE, "config/Moon/MoonElevationModel.xml");//seteaza  ce fisier de elevatie (inaltimi) sa se foloseasca
-        Configuration.setValue(AVKey.LAYERS_CLASS_NAMES, BaseFrame.LAYERS);// LAYERS a fost definit mai sus
-        Configuration.setValue(AVKey.INITIAL_ALTITUDE, 600e3);  // 6000km
+        Configuration.setValue(AVKey.LAYERS_CLASS_NAMES, LAYERS);// LAYERS a fost definit mai sus
+        Configuration.setValue(AVKey.INITIAL_ALTITUDE, 5000e3);  // 50000km
         MyLogger.getLogger().info("Settings made");
 		new BaseFrame();
 

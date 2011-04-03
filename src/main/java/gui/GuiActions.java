@@ -1,9 +1,5 @@
 package gui;
 
-import gov.nasa.worldwind.geom.LatLon;
-import gov.nasa.worldwind.geom.Position;
-import gov.nasa.worldwind.render.ExtrudedPolygon;
-
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
@@ -26,6 +22,7 @@ public class GuiActions extends AbstractAction {
 
 	// @Override
 	public void actionPerformed(ActionEvent e) {
+		MoonWorkspaceInternalFrame selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
 
 		if (e.getSource().equals(BaseFrame.fileNewItem)) {
 			// System.out.println("New has been pressed");
@@ -39,30 +36,22 @@ public class GuiActions extends AbstractAction {
 
 				@Override
 				protected Object doInBackground() throws Exception {
-
 					try {
 						progressDialog.start();
-
-						new MoonWorkspaceInternalFrame();
-
+						
+						MoonWorkspaceFactory.getInstance().newMoonWorkspace();
 						progressDialog.stop();
 					} catch (Exception e) {
-						Exception e1 = new Exception(
-								"Error while workspace creation.", e);
-						MyLogger.error(this, "Error while workspace creation.",
-								e1);
-						throw e1;
+						//Exception e1 = new Exception("Error while workspace creation.", e);
+						MyLogger.error(this, "Error while workspace creation.",e);
+						
 					}
-
 					return null;
 				}
-
 			};
 
 			sw.execute();
-
 		}
-
 		if (e.getSource().equals(BaseFrame.fileExitItem)) {
 			if (JOptionPane.showConfirmDialog(null,
 					"Are you sure you wish to exit?") == JOptionPane.YES_OPTION) {
@@ -71,24 +60,23 @@ public class GuiActions extends AbstractAction {
 				MyLogger.info(this, "Application closed on request of user");
 				System.exit(0);
 			}
-
 		}
 
 		if (e.getSource().equals(BaseFrame.editShowHideLayerTreeItem)) {
 			MyLogger.info(this, "Show/hide has been pressed");
-
-			if (MoonWorkspaceInternalFrame.isLayerTreeVisible() == true) {
-				MoonWorkspaceInternalFrame.setLayerTreeVisible(false);
+			
+			if (selectedIntFr != null) {
+				selectedIntFr.showHideLayerTree();
+				
+				
 			} else
-				MoonWorkspaceInternalFrame.setLayerTreeVisible(true);
-
+			MyLogger.error(this, "No suitable wwCanvas was found"); //new NullPointerException()
 		}
 		
 		if (e.getSource().equals(BaseFrame.editMoveItem)) {
-			MyLogger.getLogger().info("open pressed");
-			MoonWorkspaceInternalFrame.vio.moveMe(Position.fromDegrees(10, -9, 3e5));
-			MoonWorkspaceInternalFrame.wwGLCanvas.redraw();
-			
+			MyLogger.getLogger().info("Move pressed");
+			//selectedIntFr.moveMe(Position.fromDegrees(1, 1, 2));
+			//selectedIntFr.wwGLCanvas.redraw();
 		}
 	}
 
