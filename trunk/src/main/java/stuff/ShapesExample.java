@@ -81,7 +81,7 @@ public class ShapesExample{
          //TODO finish this quik
          
          
-         LayerList layers = selectedIntFr.getStuff();
+         LayerList layers = selectedIntFr.getLayers();
          layers.add(layer);
          System.out.println("Shape added");
          

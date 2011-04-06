@@ -1,6 +1,7 @@
 package gui;
 
 import gov.nasa.worldwind.WorldWind;
+import gov.nasa.worldwind.geom.LatLon;
 import gov.nasa.worldwind.geom.Position;
 import gov.nasa.worldwind.layers.LayerList;
 import gov.nasa.worldwind.layers.RenderableLayer;
@@ -81,7 +82,7 @@ public class MyShapesExample{
                   
          
          
-         /*MyLogger.info(this, "Creating the letter  \"I\".");
+         MyLogger.info(this, "Creating the letter  \"I\".");
          ArrayList<LatLon> pathLocations = new ArrayList<LatLon>();
          pathLocations.add(LatLon.fromDegrees(0, -1));
          pathLocations.add(LatLon.fromDegrees(8, -1));
@@ -116,7 +117,7 @@ public class MyShapesExample{
          pathLocations1.add(LatLon.fromDegrees(1, 8));
          
         pgon.addInnerBoundary(pathLocations1);
-         */
+         
          
          
          pgon.setSideAttributes(sideAttributes);
@@ -129,7 +130,7 @@ public class MyShapesExample{
          //TODO finish this quik
          
          MyLogger.info(this, "Adding shapes to layers");
-         LayerList layers = new LayerList(selectedIntFr.getStuff());
+         LayerList layers = new LayerList(selectedIntFr.getLayers());
         	 
          layer.setName("Vio");
          layers.add(layer);
@@ -137,11 +138,7 @@ public class MyShapesExample{
          MyLogger.info(this, "Shapes added");
          
          
-         // Add the layer to the model.
-        // insertBeforeCompass(getWwd(), layer);
-
-         // Update layer panel
-         //this.getLayerPanel().update(this.getWwd());
+        
      }
 
 	public void moveMe(Position pos){
