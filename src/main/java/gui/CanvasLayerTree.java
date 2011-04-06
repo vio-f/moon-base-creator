@@ -28,7 +28,7 @@ public class CanvasLayerTree extends RenderableLayer {
 		this.parantframe = f;
 
 		this.layerTree = new LayerTree();
-		this.layerTree.getModel().refresh(parantframe.getStuff());
+		this.layerTree.getModel().refresh(parantframe.getLayers());
 
 
 		/*this.hiddenLayer = new RenderableLayer();
@@ -49,7 +49,7 @@ public class CanvasLayerTree extends RenderableLayer {
     {
         // Insert the layer into the layer list just before the compass.
         int compassPosition = 0;
-        LayerList layers = parantframe.getStuff();
+        LayerList layers = parantframe.getLayers();
         for (Layer l : layers)
         {
             if (l instanceof CompassLayer)

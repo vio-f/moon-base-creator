@@ -24,7 +24,7 @@ import java.awt.*;
  * @version $Id: LayerManagerLayer.java 14485 2011-01-17 23:11:50Z pabercrombie $
  * Modified to fit Moon-Base-Creator needs
  */
-public class CopyOfLayerManagerLayer extends RenderableLayer implements SelectListener
+public class CustomLayerManager extends RenderableLayer implements SelectListener
 {
     protected WorldWindow wwd;
     protected boolean update = true;
@@ -56,7 +56,7 @@ public class CopyOfLayerManagerLayer extends RenderableLayer implements SelectLi
     protected int dragRefIndex = -1;
     protected Color dragColor = Color.RED;
 
-    public CopyOfLayerManagerLayer(WorldWindow wwd)
+    public CustomLayerManager(WorldWindow wwd)
     {
         if (wwd == null)
         {

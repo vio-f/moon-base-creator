@@ -28,19 +28,30 @@ public class ToolbarActions extends AbstractAction {
 	public void actionPerformed(ActionEvent e) {
 		MoonWorkspaceInternalFrame selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
 
-		if (e.getSource().equals(InternalPalleteToobar.sphereButt)) {
+		if (e.getSource().equals(InternalPalleteToobar.toolButtons.get(0))) {
 			MyLogger.info(this, "New sphere pressed");
 			if (selectedIntFr != null) {
-				//TODO  this is NOT acceptable!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-				Ellipsoid elip = EllipsoidFactory.getInstance().makeNewEllipsoid(selectedIntFr.wwGLCanvas);
-				RenderableLayer layer = new RenderableLayer();
-				layer.addRenderable(elip);
-				selectedIntFr.getStuff().add(layer);
-				MyLogger.info(this, "Sphere painted");
+				DomeShape d = new DomeShape(selectedIntFr.wwGLCanvas);
+				MyLogger.info(this, "" + d.getName() + " added");
 			} else
 				MyLogger.error(this, "No suitable workspace was found"); //new NullPointerException() can be added
 		}
+		
+		
+		if (e.getSource().equals(InternalPalleteToobar.toolButtons.get(1))) {
+			MyLogger.info(this, "New CompoundConnector pressed");
+			if (selectedIntFr != null) {
+				new CompoundConnector();
+				
 
+				selectedIntFr.wwGLCanvas.redrawNow();
+				MyLogger.info(this, "CompoundConnector added");
+			} else
+				MyLogger.error(this, "No suitable workspace was found"); //new NullPointerException() can be added
+		}
+		
+		
+		
 	}
 
 	public static ToolbarActions getInstance() {

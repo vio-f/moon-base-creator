@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import utility.MyLogger;
 
 
@@ -31,13 +33,14 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements
 	public CanvasLayerTree canvasLT;
 	private Boolean layerTreeStatus = false;
 	private Boolean intframeStatus = false;
-	
+	public RenderableLayer rendLayer = new RenderableLayer();
+
 
 	protected MoonWorkspaceInternalFrame() {
 		super("New workspace " + (++openFrameCount), true, // resizable
 				true, // closable
 				true, // maximizable
-				true);// iconifiable
+				false);// iconifiable
 		this.addInternalFrameListener(this);
 		setStatus(true);
 		// se creaza canvasul ptr luna
@@ -62,11 +65,9 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements
 		MyLogger.info(this, "Moon Canvas added");
 
 		BaseFrame.desktop.add(this);
-		
-		this.getStuff().add(new CopyOfLayerManagerLayer(wwGLCanvas));
-		
-		
-		
+		this.getLayers().add(rendLayer);
+		//TODO make this optional
+		this.getLayers().add(new CustomLayerManager(wwGLCanvas));
 		wwGLCanvas.redrawNow();
 
 		this.setVisible(true);
@@ -75,11 +76,13 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements
 		} catch (java.beans.PropertyVetoException e) {
 		}
 		
+		rendLayer.setName("Renderable layer");
+		MyShapesExample mm = new MyShapesExample();
 		
 	}
 	
 
-	public LayerList getStuff() {
+	public LayerList getLayers() {
 		LayerList layers = new LayerList();
 		layers = wwGLCanvas.getModel().getLayers();
 		return layers;
@@ -110,7 +113,7 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements
 			System.gc();
 		} else if(this.layerTreeStatus == true){
 			MyLogger.getLogger().info("Removing LayerTree");
-			this.getStuff().remove(this.canvasLT);
+			this.getLayers().remove(this.canvasLT);
 			this.canvasLT = null;
 			this.layerTreeStatus = false;
 			System.gc();
