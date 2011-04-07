@@ -48,8 +48,8 @@ public class InternalPalleteToobar extends JInternalFrame {
 		//make button size relative to icon
 		toolButtons.get(2).setPreferredSize(new Dimension(sphereicon.getIconWidth()+4 ,sphereicon.getIconHeight()+6));
 		toolButtons.get(2).setAlignmentY(BOTTOM_ALIGNMENT);
-		toolButtons.get(2).setToolTipText("Creates a Dome relative to current " +
-										"altitude in the center of the workspace");
+		//toolButtons.get(2).setToolTipText("Creates a Dome relative to current " +
+		//								"altitude in the center of the workspace");
 		toolButtons.get(2).addActionListener(ToolbarActions.getInstance());
 		
 		
@@ -57,8 +57,6 @@ public class InternalPalleteToobar extends JInternalFrame {
 		//make button size relative to icon
 		toolButtons.get(3).setPreferredSize(new Dimension(sphereicon.getIconWidth()+4 ,sphereicon.getIconHeight()+6));
 		toolButtons.get(3).setAlignmentY(BOTTOM_ALIGNMENT);
-		toolButtons.get(3).setToolTipText("Creates a Dome relative to current " +
-										"altitude in the center of the workspace");
 		toolButtons.get(3).addActionListener(ToolbarActions.getInstance());
 		
 		//TODO replace with bulk add 

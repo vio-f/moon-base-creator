@@ -70,5 +70,14 @@ public class MyLogger {
 		getLogger().error(getFormatedMessage(source, text), t);
 	}
 	
+	/**
+     * 
+     * @param source
+     * @param text
+     */
+    public static void error(Object source, Throwable t) {
+        getLogger().error(getFormatedMessage(source, t.getMessage()), t);
+    }
+	
 	
 }

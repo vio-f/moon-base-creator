@@ -15,28 +15,31 @@ import gov.nasa.worldwind.render.Ellipsoid;
  * @author Viorel Florian
  * Creates and manages "Dome" objects
  */
-public class DomeShape extends Ellipsoid{
+public class DomeShape extends Ellipsoid implements IShape {
 	MoonWorkspaceInternalFrame selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
 	Ellipsoid ellips = null;
-	static ArrayList<DomeShape> domes = new ArrayList<DomeShape>();
-	private String DOME_NAME = "";
+	// static ArrayList<DomeShape> domes = new ArrayList<DomeShape>();
+	private String domeName = "";
 	static int nextID = 0;
 
+	
 	/**
 	 * @param
 	 * Creates a "Dome" in the center of the viewport, relative to the altitude 
 	 * the camera is at the time of call, with basic attributes
 	 */
-	public DomeShape(WorldWindow wwd) {
+	public DomeShape(WorldWindow wwd) throws Exception {
 		Position position = ShapeUtils.getNewShapePosition(wwd);
         double sizeInMeters = ShapeUtils.getViewportScaleFactor(wwd) ;
         double diam =sizeInMeters / 2.0;
         ellips = new Ellipsoid(position, diam, diam, diam);
 		ellips.setAttributes(new BasicShapeAttributes());
-		DOME_NAME = generateName();
-		domes.add(this);
+		domeName = generateName();
+		// domes.add(this);
 		selectedIntFr.rendLayer.addRenderable(ellips);
 		selectedIntFr.wwGLCanvas.redrawNow();
+		
+		this.addToPool();
 	}	
 	
 	/**
@@ -52,14 +55,23 @@ public class DomeShape extends Ellipsoid{
 	public DomeShape(WorldWindow wwd, Position pos, 
 			double northSouthRadius, 
 			double verticalRadius, 
-			double eastWestRadius){
+			double eastWestRadius) throws Exception {
 		
 		ellips = new Ellipsoid(pos, northSouthRadius, verticalRadius, eastWestRadius);
 		ellips.setAttributes(new BasicShapeAttributes());
-		DOME_NAME = generateName();
-		domes.add(this);
+		domeName = generateName();
+		// domes.add(this);
+		
+		this.addToPool();
 	}
 	
+	/**
+	 * 
+	 * @throws Exception
+	 */
+	private void addToPool() throws Exception {
+	  ShapesPool.getInstance().addShape(this);
+	}
 	
 	private String generateName(){
 		nextID++;
@@ -77,7 +89,7 @@ public class DomeShape extends Ellipsoid{
 	 * @param new DomeName
 	 */
 	public void setName(String name){
-		this.DOME_NAME = name;
+		this.domeName = name;
 	}
 	
 	/**
@@ -85,8 +97,15 @@ public class DomeShape extends Ellipsoid{
 	 * @return Current name of the Dome
 	 */
 	public String getName(){
-		return this.DOME_NAME;
+		return this.domeName;
 	}
+
+  /**
+   * @see gui.IShape#getIdentifier()
+   */
+  public String getIdentifier() {
+    return this.domeName;
+  }
 	
 	
 

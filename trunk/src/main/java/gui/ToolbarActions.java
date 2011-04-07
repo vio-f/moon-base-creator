@@ -20,6 +20,8 @@ public class ToolbarActions extends AbstractAction {
 	static ToolbarActions instance = null;
 
 
+	private DomeShape lastDome = null;
+	
 	ToolbarActions() {
 		
 	}
@@ -28,10 +30,12 @@ public class ToolbarActions extends AbstractAction {
 	public void actionPerformed(ActionEvent e) {
 		MoonWorkspaceInternalFrame selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
 
+		try {
 		if (e.getSource().equals(InternalPalleteToobar.toolButtons.get(0))) {
 			MyLogger.info(this, "New sphere pressed");
 			if (selectedIntFr != null) {
 				DomeShape d = new DomeShape(selectedIntFr.wwGLCanvas);
+				this.lastDome = d;
 				MyLogger.info(this, "" + d.getName() + " added");
 			} else
 				MyLogger.error(this, "No suitable workspace was found"); //new NullPointerException() can be added
@@ -50,6 +54,21 @@ public class ToolbarActions extends AbstractAction {
 				MyLogger.error(this, "No suitable workspace was found"); //new NullPointerException() can be added
 		}
 		
+		
+		if (e.getSource().equals(InternalPalleteToobar.toolButtons.get(2))) {
+          MyLogger.info(this, "get current domeName pressed");
+          if (selectedIntFr != null) {
+              
+            String lastDomeIdentifier = this.lastDome.getIdentifier();
+              MyLogger.info(this, "Expected last dome: " + lastDomeIdentifier + " VS found last dome: " + ShapesPool.getInstance().getShape(lastDomeIdentifier).getIdentifier());
+              selectedIntFr.wwGLCanvas.redrawNow();
+              MyLogger.info(this, "CompoundConnector added");
+          } else
+              MyLogger.error(this, "No suitable workspace was found"); //new NullPointerException() can be added
+      }
+		} catch(Exception e1) {
+		  MyLogger.error(this, e1); //new NullPointerException() can be added
+		}
 		
 		
 	}
