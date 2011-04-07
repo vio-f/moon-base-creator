@@ -14,7 +14,7 @@ import gov.nasa.worldwind.render.*;
  * @author Viorel Florian
  *
  */
-public class CompoundConnector /*extends ExtrudedPolygon*/{
+public class CompoundConnector /*extends ExtrudedPolygon*/ implements IShape {
 	MoonWorkspaceInternalFrame selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
 
     ShapeAttributes sideAttributes = new BasicShapeAttributes();
@@ -60,6 +60,18 @@ public CompoundConnector(){
     
     selectedIntFr.rendLayer.addRenderable(pgon);
    
+}
+
+
+
+/**
+ * @see gui.IShape#getIdentifier()
+ */
+public String getIdentifier() {
+  /**
+   * TODO add identifier / name
+   */
+  return null;
 }
 	
 
