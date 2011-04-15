@@ -76,18 +76,10 @@ public class BaseFrame extends JFrame {
 	        UIManager.setLookAndFeel(
 	            UIManager.getSystemLookAndFeelClassName());
 	    } 
-	    catch (UnsupportedLookAndFeelException e) {
+	    catch (Exception e) {
 	    	// TODO adauga rasp ptr exceptie
 	    }
-	    catch (ClassNotFoundException e) {
-	    	// TODO adauga rasp ptr exceptie
-	    }
-	    catch (InstantiationException e) {
-	    	// TODO adauga rasp ptr exceptie
-	    }
-	    catch (IllegalAccessException e) {
-	    	// TODO adauga rasp ptr exceptie
-	    }
+	   
 		/**********************************************************************/
 	    
 	    
@@ -125,6 +117,10 @@ public class BaseFrame extends JFrame {
 		editShowHideLayerTreeItem.addActionListener(theActions);
 		editMoveItem.addActionListener(theActions);
 		//TODO add more action listeners
+		
+		MyAction a = new MyAction();
+		fileOpenItem.setAction(a);
+		fileSaveItem.setAction(a);
 		
 		/**********************************************************************/
 /*		leftTools.setSize(50, 300);
