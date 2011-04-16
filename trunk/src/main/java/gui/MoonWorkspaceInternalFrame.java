@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 
+import _workspace.shapes.MyShapesExample;
+
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import utility.MyLogger;

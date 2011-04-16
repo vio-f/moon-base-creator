@@ -1,4 +1,4 @@
-package gui;
+package _workspace.shapes;
 
 import gov.nasa.worldwind.WorldWindow;
 import gov.nasa.worldwind.examples.util.ShapeUtils;

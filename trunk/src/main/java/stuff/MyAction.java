@@ -1,9 +1,5 @@
-/*
- * Copyright (C) TBA BV
- * All rights reserved.
- * www.tba.nl
- */
-package gui;
+
+package stuff;
 
 import java.awt.event.ActionEvent;
 

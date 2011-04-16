@@ -5,6 +5,8 @@ package gui;
 
 import java.util.ArrayList;
 
+import _workspace.shapes.IShape;
+
 import gov.nasa.worldwind.WorldWindow;
 import gov.nasa.worldwind.geom.Position;
 import gov.nasa.worldwind.layers.RenderableLayer;
@@ -65,7 +67,7 @@ public CompoundConnector(){
 
 
 /**
- * @see gui.IShape#getIdentifier()
+ * @see _workspace.shapes.IShape#getIdentifier()
  */
 public String getIdentifier() {
   /**
