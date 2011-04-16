@@ -1,5 +1,7 @@
 package gui;
 
+import gui.actions.intToolbar.AddDome;
+
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -10,13 +12,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 
-public class InternalPalleteToobar extends JInternalFrame {
-	//TODO make JButton Array
-	static ArrayList<JButton> toolButtons = new ArrayList<JButton>();
-	Icon sphereicon = new ImageIcon(getClass().getResource("/res/sphere.png"));
+import stuff.ToolbarActions;
 
+public class InternalPalleteToobar extends JInternalFrame {
+	public static ArrayList<JButton> toolButtons = new ArrayList<JButton>();
+	AddDome addDome = new AddDome();
 	
-	
+	/**
+	 * Returns a new instance of the tool bars
+	 */
 	public InternalPalleteToobar() {
 		super("Tools", //title
 			  true,//resizable
@@ -29,16 +33,15 @@ public class InternalPalleteToobar extends JInternalFrame {
 		// index 0 - sphere button + icon
 		toolButtons.add(new JButton(""));
 		//make button size relative to icon
-		toolButtons.get(0).setPreferredSize(new Dimension(sphereicon.getIconWidth()+4 ,sphereicon.getIconHeight()+6));
-		toolButtons.get(0).setIcon(sphereicon);
+		toolButtons.get(0).setPreferredSize(new Dimension(20, 22));
 		toolButtons.get(0).setAlignmentY(BOTTOM_ALIGNMENT);
 		toolButtons.get(0).setToolTipText("Creates a Dome relative to current " +
 										"altitude in the center of the workspace");
-		toolButtons.get(0).addActionListener(ToolbarActions.getInstance());
+		toolButtons.get(0).setAction(addDome);
 
 		toolButtons.add(new JButton(""));
 		//make button size relative to icon
-		toolButtons.get(1).setPreferredSize(new Dimension(sphereicon.getIconWidth()+4 ,sphereicon.getIconHeight()+6));
+		toolButtons.get(1).setPreferredSize(new Dimension(20, 22));
 		toolButtons.get(1).setAlignmentY(BOTTOM_ALIGNMENT);
 		toolButtons.get(1).setToolTipText("Creates a Dome relative to current " +
 										"altitude in the center of the workspace");
@@ -46,7 +49,7 @@ public class InternalPalleteToobar extends JInternalFrame {
 		
 		toolButtons.add(new JButton(""));
 		//make button size relative to icon
-		toolButtons.get(2).setPreferredSize(new Dimension(sphereicon.getIconWidth()+4 ,sphereicon.getIconHeight()+6));
+		toolButtons.get(2).setPreferredSize(new Dimension(20, 22));
 		toolButtons.get(2).setAlignmentY(BOTTOM_ALIGNMENT);
 		//toolButtons.get(2).setToolTipText("Creates a Dome relative to current " +
 		//								"altitude in the center of the workspace");
@@ -55,7 +58,7 @@ public class InternalPalleteToobar extends JInternalFrame {
 		
 		toolButtons.add(new JButton(""));
 		//make button size relative to icon
-		toolButtons.get(3).setPreferredSize(new Dimension(sphereicon.getIconWidth()+4 ,sphereicon.getIconHeight()+6));
+		toolButtons.get(3).setPreferredSize(new Dimension(20, 22));
 		toolButtons.get(3).setAlignmentY(BOTTOM_ALIGNMENT);
 		toolButtons.get(3).addActionListener(ToolbarActions.getInstance());
 		

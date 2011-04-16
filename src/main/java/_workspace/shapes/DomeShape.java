@@ -1,15 +1,18 @@
 /**
  * 
  */
-package gui;
+package _workspace.shapes;
 
 import java.util.ArrayList;
 
+import gov.nasa.worldwind.WWObject;
 import gov.nasa.worldwind.WorldWindow;
 import gov.nasa.worldwind.examples.util.ShapeUtils;
 import gov.nasa.worldwind.geom.Position;
 import gov.nasa.worldwind.render.BasicShapeAttributes;
 import gov.nasa.worldwind.render.Ellipsoid;
+import gui.MoonWorkspaceFactory;
+import gui.MoonWorkspaceInternalFrame;
 
 /**
  * @author Viorel Florian
@@ -21,6 +24,7 @@ public class DomeShape extends Ellipsoid implements IShape {
 	// static ArrayList<DomeShape> domes = new ArrayList<DomeShape>();
 	private String domeName = "";
 	static int nextID = 0;
+	DomeActions d = new DomeActions();
 
 	
 	/**
@@ -38,7 +42,6 @@ public class DomeShape extends Ellipsoid implements IShape {
 		// domes.add(this);
 		selectedIntFr.rendLayer.addRenderable(ellips);
 		selectedIntFr.wwGLCanvas.redrawNow();
-		
 		this.addToPool();
 	}	
 	
@@ -101,14 +104,12 @@ public class DomeShape extends Ellipsoid implements IShape {
 	}
 
   /**
-   * @see gui.IShape#getIdentifier()
+   * @see _workspace.shapes.IShape#getIdentifier()
    */
   public String getIdentifier() {
     return this.domeName;
   }
 	
-	
-
 	
 
 	

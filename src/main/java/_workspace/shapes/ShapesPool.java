@@ -1,4 +1,4 @@
-package gui;
+package _workspace.shapes;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,14 +1,21 @@
-package gui;
+package stuff;
 
 import gov.nasa.worldwind.geom.Position;
 import gov.nasa.worldwind.layers.RenderableLayer;
 import gov.nasa.worldwind.render.Ellipsoid;
+import gui.CompoundConnector;
+import gui.InternalPalleteToobar;
+import gui.MoonWorkspaceFactory;
+import gui.MoonWorkspaceInternalFrame;
 
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.event.AncestorListener;
+
+import _workspace.shapes.DomeShape;
+import _workspace.shapes.ShapesPool;
 
 import utility.MyLogger;
 

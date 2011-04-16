@@ -1,4 +1,4 @@
-package gui;
+package _workspace.shapes;
 
 import gov.nasa.worldwind.WorldWind;
 import gov.nasa.worldwind.geom.LatLon;
@@ -10,6 +10,8 @@ import gov.nasa.worldwind.render.Ellipsoid;
 import gov.nasa.worldwind.render.ExtrudedPolygon;
 import gov.nasa.worldwind.render.Material;
 import gov.nasa.worldwind.render.ShapeAttributes;
+import gui.MoonWorkspaceFactory;
+import gui.MoonWorkspaceInternalFrame;
 
 import java.util.ArrayList;
 
@@ -33,7 +35,7 @@ public class MyShapesExample{
 	/**
 	 * 
 	 */
-	MyShapesExample(){
+	public MyShapesExample(){
 		MyLogger.info(this, "Instacing RenderableLayer");
 		 RenderableLayer layer = new RenderableLayer();
 

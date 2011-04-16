@@ -1,16 +1,25 @@
 package gui;
 
-import java.awt.Color;
+import gui.actions.menubar.FileExitAct;
+import gui.actions.menubar.FileNewAct;
+import gui.actions.menubar.EditShowHideLayerTreeAct;
 
+import java.awt.Color;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+
+import javax.swing.Action;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JToolBar;
+import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+
+import stuff.MyAction;
 
 public class BaseFrame extends JFrame {
 	/***********Mai jos sunt toate variabilele folosite************************/
@@ -19,34 +28,36 @@ public class BaseFrame extends JFrame {
 	/**********Astfel componentele sunt accesibile la nevoie,******************/
 	/******in afara acestei clase**********************************************/
 	
-    GuiActions theActions = new GuiActions(this); //cream o intstanta al clasei de actiuni
-
+	//public GuiActions theActions = new GuiActions(this); //cream o intstanta al clasei de actiuni
+	FileNewAct fileNewAction = new FileNewAct(this);
+	Action fileExitAction = new FileExitAct();
+	Action editShowHide = new EditShowHideLayerTreeAct();
 	
 	
-	JMenuBar menuBar = new JMenuBar();
+	public static JMenuBar menuBar = new JMenuBar();
 	
 	//meniul file
-	JMenu fileMenu = new JMenu("File");
+	public static JMenu fileMenu = new JMenu("File");
 	
-	static JMenuItem fileNewItem = new JMenuItem("New...");
-	static JMenuItem fileOpenItem = new JMenuItem("Open...");
-	static JMenuItem fileSaveItem = new JMenuItem("Save...");
-	static JMenuItem fileExitItem = new JMenuItem("Exit...");
+	public static JMenuItem fileNewItem = new JMenuItem();
+	public static JMenuItem fileOpenItem = new JMenuItem("Open...");
+	public static JMenuItem fileSaveItem = new JMenuItem("Save...");
+	public static JMenuItem fileExitItem = new JMenuItem("Exit...");
 	
 	//meniul Edit..
 	JMenu editMenu = new JMenu("Edit");
 	
-	static JMenuItem editShowHideLayerTreeItem = new JMenuItem("Show/Hide LayerTree");
-	static JMenuItem editMoveItem = new JMenuItem("MoveIt");
+	public static JMenuItem editShowHideLayerTreeItem = new JMenuItem("Show/Hide LayerTree");
+	public static JMenuItem editMoveItem = new JMenuItem("MoveIt");
 	
 	//meniul About
 	JMenu helpMenu = new JMenu("Help");
 	
-	static JMenuItem helpHelpcontentsItem = new JMenuItem("Help contents");
-	static JMenuItem helpAboutItem = new JMenuItem("About");
+	public static JMenuItem helpHelpcontentsItem = new JMenuItem("Help contents");
+	public static JMenuItem helpAboutItem = new JMenuItem("About");
 	//TODO: Add more menu items
 	
-	JToolBar leftTools = new JToolBar(SwingConstants.VERTICAL);
+	public static JToolBar leftTools = new JToolBar(SwingConstants.VERTICAL);
 
 	public static JDesktopPane desktop = new JDesktopPane();
 
@@ -83,10 +94,6 @@ public class BaseFrame extends JFrame {
 		/**********************************************************************/
 	    
 	    
-		/**********************************************************************/
-
-		
-		
 		
 		menuBar.add(fileMenu);
 		
@@ -110,18 +117,13 @@ public class BaseFrame extends JFrame {
 		this.setJMenuBar(menuBar);
 		/**********************************************************************/
 		//definim listener ptr obiecte
-		fileExitItem.addActionListener(theActions);
-		fileNewItem.addActionListener(theActions);
-		fileOpenItem.addActionListener(theActions);
+		fileNewItem.setAction(fileNewAction);
 		
-		editShowHideLayerTreeItem.addActionListener(theActions);
-		editMoveItem.addActionListener(theActions);
+		fileExitItem.setAction(fileExitAction);
+		
+		editShowHideLayerTreeItem.setAction(editShowHide);
 		//TODO add more action listeners
-		
-		MyAction a = new MyAction();
-		fileOpenItem.setAction(a);
-		fileSaveItem.setAction(a);
-		
+
 		/**********************************************************************/
 /*		leftTools.setSize(50, 300);
 		leftTools.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -130,7 +132,7 @@ public class BaseFrame extends JFrame {
 		// TODO butoane ptr leftTools
 		// adaugam leftTools la frame
 		this.getRootPane().add(leftTools);*/
-		
+		/**********************************************************************/
 		desktop.setBackground(Color.LIGHT_GRAY);
 		desktop.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
 		this.add(desktop);

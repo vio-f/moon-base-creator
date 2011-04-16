@@ -1,4 +1,9 @@
-package gui;
+package stuff;
+
+import gui.BaseFrame;
+import gui.MoonWorkspaceFactory;
+import gui.MoonWorkspaceInternalFrame;
+import gui.ProgressDialog;
 
 import java.awt.event.ActionEvent;
 
