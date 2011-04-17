@@ -91,24 +91,28 @@ public class DomeShape extends Ellipsoid implements IShape {
 	 * 
 	 * @param new DomeName
 	 */
-	public void setName(String name){
+	public void setIdentifier(String name){
 		this.domeName = name;
 	}
 	
-	/**
-	 * 
-	 * @return Current name of the Dome
-	 */
-	public String getName(){
-		return this.domeName;
-	}
+
 
   /**
+   * @return Current name of the Dome
    * @see _workspace.shapes.IShape#getIdentifier()
    */
   public String getIdentifier() {
     return this.domeName;
   }
+
+/* (non-Javadoc)
+ * @see _workspace.shapes.IShape#getAltitudes()
+ */
+@Override
+public double[] getAltitudes() {
+	// TODO Auto-generated method stub
+	return null;
+}
 	
 	
 

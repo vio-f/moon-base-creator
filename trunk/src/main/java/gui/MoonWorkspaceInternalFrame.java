@@ -7,11 +7,16 @@ package gui;
 import gov.nasa.worldwind.Model;
 import gov.nasa.worldwind.WorldWind;
 import gov.nasa.worldwind.avlist.AVKey;
+import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
+import gov.nasa.worldwind.event.SelectEvent;
+import gov.nasa.worldwind.event.SelectListener;
+import gov.nasa.worldwind.layers.AnnotationLayer;
 import gov.nasa.worldwind.layers.LayerList;
 import gov.nasa.worldwind.layers.RenderableLayer;
+import gov.nasa.worldwind.pick.PickedObjectList;
+import gov.nasa.worldwind.render.Renderable;
+import gov.nasa.worldwind.util.BasicDragger;
 import gov.nasa.worldwind.util.StatusBar;
-import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
-import gov.nasa.worldwind.examples.util.LayerManagerLayer;
 
 import java.awt.BorderLayout;
 
@@ -20,12 +25,10 @@ import javax.swing.JPanel;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 
-import _workspace.shapes.MyShapesExample;
-
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 import utility.MyLogger;
-
+import _workspace.CustomLayerManager;
+import _workspace.shapes.MyShapesExample;
+import _workspace.shapes.ShapeListener;
 
 public class MoonWorkspaceInternalFrame extends JInternalFrame implements
 		InternalFrameListener {
@@ -36,7 +39,7 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements
 	private Boolean layerTreeStatus = false;
 	private Boolean intframeStatus = false;
 	public RenderableLayer rendLayer = new RenderableLayer();
-
+	public AnnotationLayer annotationLayer = new AnnotationLayer();
 
 	protected MoonWorkspaceInternalFrame() {
 		super("New workspace " + (++openFrameCount), true, // resizable
@@ -68,21 +71,21 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements
 
 		BaseFrame.desktop.add(this);
 		this.getLayers().add(rendLayer);
-		//TODO make this optional
+		this.getLayers().add(annotationLayer);
+		// TODO make this optional
 		this.getLayers().add(new CustomLayerManager(wwGLCanvas));
 		wwGLCanvas.redrawNow();
 
 		this.setVisible(true);
-		try {
+		/*try {
 			this.setSelected(true);
 		} catch (java.beans.PropertyVetoException e) {
-		}
-		
+			e.printStackTrace();
+		}*/
+		new ShapeListener(this);
 		rendLayer.setName("Renderable layer");
-		MyShapesExample mm = new MyShapesExample();
-		
+		annotationLayer.setName("Anotation Layer");
 	}
-	
 
 	public LayerList getLayers() {
 		LayerList layers = new LayerList();
@@ -113,7 +116,7 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements
 			this.canvasLT = new CanvasLayerTree(this);
 			this.layerTreeStatus = true;
 			System.gc();
-		} else if(this.layerTreeStatus == true){
+		} else if (this.layerTreeStatus == true) {
 			MyLogger.getLogger().info("Removing LayerTree");
 			this.getLayers().remove(this.canvasLT);
 			this.canvasLT = null;
@@ -147,7 +150,7 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements
 
 	@Override
 	public void internalFrameDeactivated(InternalFrameEvent e) {
-		//TODO unimplemented yet
+		// TODO unimplemented yet
 	}
 
 	@Override
@@ -163,14 +166,14 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements
 	@Override
 	public void internalFrameOpened(InternalFrameEvent e) {
 		MoonWorkspaceFactory.getInstance().setLastSelectedIntFr(this);
-		
-	}
-	private void del_This_If_LastSelected(){
-		if (MoonWorkspaceFactory.getInstance().getLastSelectedIntFr() == this){
-			MoonWorkspaceFactory.getInstance().setLastSelectedIntFr(null);
-		}
-		
+
 	}
 
+	private void del_This_If_LastSelected() {
+		if (MoonWorkspaceFactory.getInstance().getLastSelectedIntFr() == this) {
+			MoonWorkspaceFactory.getInstance().setLastSelectedIntFr(null);
+		}
+
+	}
 
 }

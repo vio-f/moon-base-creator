@@ -3,7 +3,6 @@ package stuff;
 import gov.nasa.worldwind.geom.Position;
 import gov.nasa.worldwind.layers.RenderableLayer;
 import gov.nasa.worldwind.render.Ellipsoid;
-import gui.CompoundConnector;
 import gui.InternalPalleteToobar;
 import gui.MoonWorkspaceFactory;
 import gui.MoonWorkspaceInternalFrame;
@@ -14,6 +13,7 @@ import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.event.AncestorListener;
 
+import _workspace.shapes.CompoundConnector;
 import _workspace.shapes.DomeShape;
 import _workspace.shapes.ShapesPool;
 
@@ -43,7 +43,7 @@ public class ToolbarActions extends AbstractAction {
 			if (selectedIntFr != null) {
 				DomeShape d = new DomeShape(selectedIntFr.wwGLCanvas);
 				this.lastDome = d;
-				MyLogger.info(this, "" + d.getName() + " added");
+				MyLogger.info(this, "" + d.getIdentifier() + " added");
 			} else
 				MyLogger.error(this, "No suitable workspace was found"); //new NullPointerException() can be added
 		}
