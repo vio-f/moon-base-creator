@@ -64,7 +64,7 @@ public class AddDome extends AbstractAction {
 				d = new DomeShape(selectedIntFr.wwGLCanvas);
 
 				this.lastDome = d;
-				MyLogger.info(this, "" + d.getName() + " added");
+				MyLogger.info(this, "" + d.getIdentifier() + " added");
 			} else
 				MyLogger.error(this, "No suitable workspace was found"); // new
 																			// NullPointerException()

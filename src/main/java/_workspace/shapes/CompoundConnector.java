@@ -1,16 +1,17 @@
 /**
  * 
  */
-package gui;
+package _workspace.shapes;
 
 import java.util.ArrayList;
 
-import _workspace.shapes.IShape;
 
 import gov.nasa.worldwind.WorldWindow;
 import gov.nasa.worldwind.geom.Position;
 import gov.nasa.worldwind.layers.RenderableLayer;
 import gov.nasa.worldwind.render.*;
+import gui.MoonWorkspaceFactory;
+import gui.MoonWorkspaceInternalFrame;
 
 /**
  * @author Viorel Florian
@@ -74,6 +75,61 @@ public String getIdentifier() {
    * TODO add identifier / name
    */
   return null;
+}
+
+
+
+/* (non-Javadoc)
+ * @see _workspace.shapes.IShape#setAttributes(gov.nasa.worldwind.render.ShapeAttributes)
+ */
+@Override
+public void setAttributes(ShapeAttributes lastAttrs) {
+	// TODO Auto-generated method stub
+	
+}
+
+
+
+/* (non-Javadoc)
+ * @see _workspace.shapes.IShape#getAttributes()
+ */
+@Override
+public ShapeAttributes getAttributes() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+
+
+/* (non-Javadoc)
+ * @see gov.nasa.worldwind.render.Renderable#render(gov.nasa.worldwind.render.DrawContext)
+ */
+@Override
+public void render(DrawContext dc) {
+	// TODO Auto-generated method stub
+	
+}
+
+
+
+/* (non-Javadoc)
+ * @see _workspace.shapes.IShape#getAltitudes()
+ */
+@Override
+public double[] getAltitudes() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+
+
+/* (non-Javadoc)
+ * @see _workspace.shapes.IShape#setIdentifier(java.lang.String)
+ */
+@Override
+public void setIdentifier(String name) {
+	// TODO Auto-generated method stub
+	
 }
 	
 
