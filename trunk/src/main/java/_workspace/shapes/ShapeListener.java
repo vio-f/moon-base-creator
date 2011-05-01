@@ -57,13 +57,13 @@ public class ShapeListener {
 	            // Have rollover events highlight the rolled-over object.
 	            if (event.getEventAction().equals(SelectEvent.ROLLOVER) && !dragger.isDragging())
 	            {
-	                if (highlight(event.getTopObject()))
+	               // if (highlight(event.getTopObject()))
 	                    wwd.redraw();
 	            }
 	            // Have hover events popup an annotation about the hovered-over object.
 	            else if (event.getEventAction().equals(SelectEvent.HOVER) && !dragger.isDragging())
 	            {
-	                if (showToolTip(event.getTopObject(), event))
+	                //if (showToolTip(event.getTopObject(), event))
 	                    wwd.redraw();
 	            }
 	            
@@ -82,7 +82,7 @@ public class ShapeListener {
 	                    PickedObjectList pol = wwd.getObjectsAtCurrentPosition();
 	                    if (pol != null)
                         {
-                            highlight(pol.getTopObject());
+                            //highlight(pol.getTopObject());
                             wwd.repaint();
                         }
 	                    
@@ -92,7 +92,7 @@ public class ShapeListener {
 	    });
 	}
 	
-    protected boolean highlight(Object o)
+/*    protected boolean highlight(Object o)
     {
         if (this.lastHighlit == o)
             return false; // Same thing selected
@@ -119,11 +119,7 @@ public class ShapeListener {
         return true;
     }
     
-
-	
-	
-	
-    protected boolean showToolTip(Object o, SelectEvent e)
+  protected boolean showToolTip(Object o, SelectEvent e)
     {
         if (this.lastToolTip == o)
             return false; // Same thing selected
@@ -148,9 +144,9 @@ public class ShapeListener {
     
     protected Annotation createToolTip(IShape a, SelectEvent e)
     {
-/*        Object o = a.getIdentifier();
+        Object o = a.getIdentifier();
         if (o == null)
-            o = a.getClass().getName();*/
+            o = a.getClass().getName();
 
         java.awt.Point point = e.getPickPoint();
 
@@ -159,8 +155,8 @@ public class ShapeListener {
         Position pos = wwd.getView().computePositionFromScreenPoint(point.x, point.y);
         if (pos != null)
         {
-            double[] altitudes = a.getAltitudes();
-            pos = new Position(pos.getLatitude(), pos.getLongitude(), altitudes[1]);
+            //double[] altitudes = a.getAltitudes();
+            pos = new Position(pos.getLatitude(), pos.getLongitude(), 0);
             annotation = new GlobeAnnotation(a.getIdentifier(), pos);
         }
         else
@@ -172,7 +168,7 @@ public class ShapeListener {
         annotation.setPickEnabled(false);
 
         return annotation;
-    }
+    }*/
 	
 	
 	

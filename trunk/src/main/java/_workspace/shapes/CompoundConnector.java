@@ -113,17 +113,6 @@ public void render(DrawContext dc) {
 
 
 /* (non-Javadoc)
- * @see _workspace.shapes.IShape#getAltitudes()
- */
-@Override
-public double[] getAltitudes() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-
-
-/* (non-Javadoc)
  * @see _workspace.shapes.IShape#setIdentifier(java.lang.String)
  */
 @Override

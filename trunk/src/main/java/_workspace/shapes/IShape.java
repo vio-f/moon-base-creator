@@ -36,8 +36,4 @@ public void setAttributes(ShapeAttributes lastAttrs);
  */
 public ShapeAttributes getAttributes();
 
-/**
- * @return
- */
-public double[] getAltitudes();
 }

@@ -3,9 +3,6 @@
  */
 package _workspace.shapes;
 
-import java.util.ArrayList;
-
-import gov.nasa.worldwind.WWObject;
 import gov.nasa.worldwind.WorldWindow;
 import gov.nasa.worldwind.examples.util.ShapeUtils;
 import gov.nasa.worldwind.geom.Position;
@@ -108,12 +105,7 @@ public class DomeShape extends Ellipsoid implements IShape {
 /* (non-Javadoc)
  * @see _workspace.shapes.IShape#getAltitudes()
  */
-@Override
-public double[] getAltitudes() {
-	// TODO Auto-generated method stub
-	return null;
-}
-	
+
 	
 
 	

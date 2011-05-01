@@ -7,8 +7,12 @@ import gui.MoonWorkspaceFactory;
 import gui.MoonWorkspaceInternalFrame;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.KeyStroke;
 
 import utility.MyLogger;
 
@@ -25,6 +29,7 @@ public class EditShowHideLayerTreeAct extends AbstractAction {
 	 */
 	public EditShowHideLayerTreeAct() {
 		super();
+		setDefaultPropreties();
 	}
 
 	/* (non-Javadoc)
@@ -36,11 +41,17 @@ public class EditShowHideLayerTreeAct extends AbstractAction {
 		
 		if (selectedIntFr != null) {
 			selectedIntFr.showHideLayerTree();
-			
-			
 		} else
 		MyLogger.error(this, "No suitable wwCanvas was found"); //new NullPointerException()
-
 	}
 
+	private void setDefaultPropreties() {
+	    putValue(Action.NAME, "Show/Hide Layer Tree");
+	    /*KeyStroke key = KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK);
+	    putValue(Action.ACCELERATOR_KEY, key);*/
+	    
+	
+	}
+	
+	
 }
