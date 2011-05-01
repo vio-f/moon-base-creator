@@ -1,5 +1,6 @@
 package gui;
 
+import gui.actions.menubar.EditResizeAct;
 import gui.actions.menubar.FileExitAct;
 import gui.actions.menubar.FileNewAct;
 import gui.actions.menubar.EditShowHideLayerTreeAct;
@@ -28,11 +29,6 @@ public class BaseFrame extends JFrame {
 	/**********Astfel componentele sunt accesibile la nevoie,******************/
 	/******in afara acestei clase**********************************************/
 	
-	//public GuiActions theActions = new GuiActions(this); //cream o intstanta al clasei de actiuni
-	FileNewAct fileNewAction = new FileNewAct(this);
-	Action fileExitAction = new FileExitAct();
-	Action editShowHide = new EditShowHideLayerTreeAct();
-	
 	
 	public static JMenuBar menuBar = new JMenuBar();
 	
@@ -47,8 +43,9 @@ public class BaseFrame extends JFrame {
 	//meniul Edit..
 	JMenu editMenu = new JMenu("Edit");
 	
-	public static JMenuItem editShowHideLayerTreeItem = new JMenuItem("Show/Hide LayerTree");
+	public static JMenuItem editShowHideLayerTreeItem = new JMenuItem();
 	public static JMenuItem editMoveItem = new JMenuItem("MoveIt");
+	public static JMenuItem editResize = new JMenuItem();
 	
 	//meniul About
 	JMenu helpMenu = new JMenu("Help");
@@ -62,7 +59,12 @@ public class BaseFrame extends JFrame {
 	public static JDesktopPane desktop = new JDesktopPane();
 
 
-
+	//public GuiActions theActions = new GuiActions(this); //cream o intstanta al clasei de actiuni
+	FileNewAct fileNewAction = new FileNewAct(this);
+	Action fileExitAction = new FileExitAct();
+	Action editShowHideAction = new EditShowHideLayerTreeAct();
+	Action editResizeAction = new EditResizeAct();
+	
 
 	/**********************************************************************/
 	/**********************************************************************/
@@ -71,16 +73,8 @@ public class BaseFrame extends JFrame {
 	//the almighty constructor
 	public BaseFrame() {
 		super ("That's right!!! Its a \"Moon Base creator\""); //TODO think of a decent title
-		
-		
-
-		/**********************************************************************/
-	    
-	    
-		/**********************************************************************/
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(800, 600); //TODO remove this latter    
-			
 		
 		//seteaza frame LookandFeel dupa sistem
 		try {
@@ -92,7 +86,15 @@ public class BaseFrame extends JFrame {
 	    }
 	   
 		/**********************************************************************/
-	    
+		//definim listener ptr obiecte
+		fileNewItem.setAction(fileNewAction);
+		fileExitItem.setAction(fileExitAction);
+		
+		editShowHideLayerTreeItem.setAction(editShowHideAction);
+		editResize.setAction(editResizeAction);
+		//TODO add more action listeners
+
+		/**********************************************************************/	    
 	    
 		
 		menuBar.add(fileMenu);
@@ -108,6 +110,7 @@ public class BaseFrame extends JFrame {
 		editShowHideLayerTreeItem.setEnabled(false);
 		editMenu.add(editShowHideLayerTreeItem);
 		editMenu.add(editMoveItem);
+		editMenu.add(editResize);
 		
 		menuBar.add(helpMenu);
 		helpMenu.add(helpHelpcontentsItem);
@@ -116,15 +119,7 @@ public class BaseFrame extends JFrame {
 		// adaugam menuBar la frame
 		this.setJMenuBar(menuBar);
 		/**********************************************************************/
-		//definim listener ptr obiecte
-		fileNewItem.setAction(fileNewAction);
-		
-		fileExitItem.setAction(fileExitAction);
-		
-		editShowHideLayerTreeItem.setAction(editShowHide);
-		//TODO add more action listeners
 
-		/**********************************************************************/
 /*		leftTools.setSize(50, 300);
 		leftTools.setBorder(BorderFactory.createLineBorder(Color.black));
 		leftTools.setFloatable(true);
