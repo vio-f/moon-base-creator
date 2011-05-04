@@ -10,6 +10,7 @@ import gov.nasa.worldwind.geom.Position;
 import gov.nasa.worldwind.pick.PickedObjectList;
 import gov.nasa.worldwind.render.Annotation;
 import gov.nasa.worldwind.render.BasicShapeAttributes;
+import gov.nasa.worldwind.render.Ellipsoid;
 import gov.nasa.worldwind.render.GlobeAnnotation;
 import gov.nasa.worldwind.render.Material;
 import gov.nasa.worldwind.render.ScreenAnnotation;
@@ -23,14 +24,15 @@ import gui.MoonWorkspaceInternalFrame;
  */
 public class ShapeListener {
 	private WorldWindowGLCanvas wwd;
-	protected IShape aglAirspaces;
+	//protected IShape aglAirspaces;
     
-    protected IShape lastHighlit;
-    protected IShape lastToolTip;
-    protected ShapeAttributes lastAttrs;
-    protected Annotation lastAnnotation;
-    protected BasicDragger dragger;
-    MoonWorkspaceInternalFrame currentWorkspace;
+    //protected IShape lastHighlit;
+    //protected IShape lastToolTip;
+    //protected ShapeAttributes lastAttrs;
+    //protected Annotation lastAnnotation;
+    protected BasicDragger dragger = null;
+    MoonWorkspaceInternalFrame currentWorkspace = null;
+    public static Object lastSelectedObj = null;
 	
 	
 	
@@ -54,6 +56,11 @@ public class ShapeListener {
 	    {
 	        public void selected(SelectEvent event)
 	        {
+	        	
+	        	if (event.getTopObject() instanceof Ellipsoid) {
+	        		//TODO works only on mouse over
+	        		lastSelectedObj = event.getTopObject();
+				}
 	            // Have rollover events highlight the rolled-over object.
 	            if (event.getEventAction().equals(SelectEvent.ROLLOVER) && !dragger.isDragging())
 	            {
