@@ -3,6 +3,8 @@
  */
 package gui;
 
+import gov.nasa.worldwind.render.Ellipsoid;
+
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +14,11 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import utility.MyLogger;
+
+import _workspace.shapes.IShape;
+import _workspace.shapes.ShapeListener;
 
 /**
  * @author Viorel Florian
@@ -28,6 +35,7 @@ public class ResizeDialog extends JDialog {
 	protected static int sizeBoxValue = 100;
 	protected static JFormattedTextField sizeBox = new JFormattedTextField(
 			sizeBoxValue); // defines the format of the JFormattedTextField
+	private static MoonWorkspaceInternalFrame selectedIntFr = null;
 
 	/**
 	 * 
@@ -48,6 +56,8 @@ public class ResizeDialog extends JDialog {
 
 		this.pack();
 		this.setVisible(true);
+		selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
+
 	}
 
 	class SliderChangeListener implements ChangeListener {
@@ -62,6 +72,12 @@ public class ResizeDialog extends JDialog {
 		public void stateChanged(ChangeEvent e) {
 			sizeBoxValue = slider.getValue();
 			sizeBox.setValue(sizeBoxValue);
+			resizeTo(sizeBoxValue);
+			try{
+			selectedIntFr.wwGLCanvas.redraw();
+			}catch (Exception ee) {
+				MyLogger.getLogger().error("No wwd present");
+			} 
 		}
 	}
 
@@ -75,9 +91,34 @@ public class ResizeDialog extends JDialog {
 		public void actionPerformed(ActionEvent arg0) {
 			sizeBoxValue = (Integer)sizeBox.getValue();
 			slider.setValue(sizeBoxValue);
+			resizeTo(sizeBoxValue);
+			selectedIntFr.wwGLCanvas.redraw();
 		}
 
 	}
+	
+	//TODO works only on mouse over
+	private static void resizeTo(double ns){
+		Object obj = null;
+
+		obj = ShapeListener.lastSelectedObj;
+		//String s = ShapeListener.lastSelectedObj.toString();
+		MyLogger.getLogger().error(obj);
+		
+		if (obj == null) {
+			MyLogger.getLogger().error("obj=null");
+			return;
+			
+		}
+		if (obj instanceof Ellipsoid){
+			((Ellipsoid) obj).setEastWestRadius(ns*100);
+			((Ellipsoid) obj).setNorthSouthRadius(ns*100);
+			((Ellipsoid) obj).setVerticalRadius(ns*100);
+		}
+		
+	}
+	
+	
 	
 	//EOF
 }
