@@ -42,8 +42,14 @@ public class ResizeDialog extends JDialog {
 	 */
 	public ResizeDialog() {
 		super();
+		
+        selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
+
 		this.setTitle("Resize Component");
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+	    //this.setModal(true);
+	    this.setAlwaysOnTop(true);
+
 		this.setLayout(new FlowLayout());
 		sizeBox.setColumns(6);
 		
@@ -55,9 +61,7 @@ public class ResizeDialog extends JDialog {
 		this.add(sizeBox);
 
 		this.pack();
-		this.setVisible(true);
-		selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
-
+        this.setVisible(true); 
 	}
 
 	class SliderChangeListener implements ChangeListener {
