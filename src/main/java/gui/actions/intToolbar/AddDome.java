@@ -3,8 +3,6 @@
  */
 package gui.actions.intToolbar;
 
-import gui.MoonWorkspaceFactory;
-import gui.MoonWorkspaceInternalFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
@@ -17,14 +15,18 @@ import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
 import utility.MyLogger;
+import _workspace.MoonWorkspaceFactory;
+import _workspace.MoonWorkspaceInternalFrame;
 import _workspace.shapes.DomeShape;
+import _workspace.shapes.IShape;
 
 /**
  * @author Viorel Florian
  * 
  */
 public class AddDome extends AbstractAction {
-	private DomeShape lastDome = null;
+	@SuppressWarnings("unused")
+	private IShape lastDome = null; //TODO link this to the ShapeListner
 	Icon sphereIcon = new ImageIcon(getClass().getResource("/res/sphere.png"));
 
 	/**
@@ -40,9 +42,8 @@ public class AddDome extends AbstractAction {
 	 */
 	private void setDefaultPropreties() {
 		putValue(Action.NAME, "");
-		KeyStroke key = KeyStroke.getKeyStroke(KeyEvent.VK_D,
-				InputEvent.CTRL_DOWN_MASK);
-		putValue(Action.ACCELERATOR_KEY, key);
+		putValue(Action.SHORT_DESCRIPTION, "Creates a Dome relative to current " +
+				"altitude in the center of the workspace");
 		putValue(Action.SMALL_ICON, sphereIcon);
 
 	}
@@ -57,7 +58,7 @@ public class AddDome extends AbstractAction {
 	public void actionPerformed(ActionEvent arg0) {
 		MoonWorkspaceInternalFrame selectedIntFr = MoonWorkspaceFactory
 				.getInstance().getLastSelectedIntFr();
-		DomeShape d;
+		IShape d;
 		try {
 			MyLogger.info(this, "New sphere pressed");
 			if (selectedIntFr != null) {

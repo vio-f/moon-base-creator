@@ -36,4 +36,7 @@ public void setAttributes(ShapeAttributes lastAttrs);
  */
 public ShapeAttributes getAttributes();
 
+
+
+void removeMe() throws Exception;
 }

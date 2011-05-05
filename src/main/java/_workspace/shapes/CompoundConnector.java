@@ -5,13 +5,14 @@ package _workspace.shapes;
 
 import java.util.ArrayList;
 
+import _workspace.MoonWorkspaceFactory;
+import _workspace.MoonWorkspaceInternalFrame;
+
 
 import gov.nasa.worldwind.WorldWindow;
 import gov.nasa.worldwind.geom.Position;
 import gov.nasa.worldwind.layers.RenderableLayer;
 import gov.nasa.worldwind.render.*;
-import gui.MoonWorkspaceFactory;
-import gui.MoonWorkspaceInternalFrame;
 
 /**
  * @author Viorel Florian
@@ -119,6 +120,39 @@ public void render(DrawContext dc) {
 public void setIdentifier(String name) {
 	// TODO Auto-generated method stub
 	
+}
+
+
+
+/* (non-Javadoc)
+ * @see _workspace.shapes.IShape#removeMe()
+ */
+public void removeMe() throws Exception {
+}
+
+
+
+/* (non-Javadoc)
+ * @see _workspace.shapes.IShape#generateName()
+ */
+protected String generateName() {
+	return null;
+}
+
+
+
+/* (non-Javadoc)
+ * @see _workspace.shapes.IShape#removeFromPool()
+ */
+protected void removeFromPool() throws Exception {
+}
+
+
+
+/* (non-Javadoc)
+ * @see _workspace.shapes.IShape#addToPool()
+ */
+protected void addToPool() throws Exception {
 }
 	
 

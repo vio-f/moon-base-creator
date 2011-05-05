@@ -1,14 +1,12 @@
 package gui;
 
 import gui.actions.menubar.EditResizeAct;
+import gui.actions.menubar.EditShowHideLayerTreeAct;
 import gui.actions.menubar.FileExitAct;
 import gui.actions.menubar.FileNewAct;
-import gui.actions.menubar.EditShowHideLayerTreeAct;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 
 import javax.swing.Action;
 import javax.swing.JDesktopPane;
@@ -17,11 +15,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JToolBar;
-import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
-
-import stuff.MyAction;
 
 public class BaseFrame extends JFrame {
 	/***********Mai jos sunt toate variabilele folosite************************/
@@ -55,8 +50,6 @@ public class BaseFrame extends JFrame {
 	public static JMenuItem helpAboutItem = new JMenuItem("About");
 	//TODO: Add more menu items
 	
-	public static JToolBar leftTools = new JToolBar(SwingConstants.VERTICAL);
-
 	public static JDesktopPane desktop = new JDesktopPane();
 
 
@@ -119,21 +112,14 @@ public class BaseFrame extends JFrame {
 		
 		// adaugam menuBar la frame
 		this.setJMenuBar(menuBar);
-		/**********************************************************************/
 
-/*		leftTools.setSize(50, 300);
-		leftTools.setBorder(BorderFactory.createLineBorder(Color.black));
-		leftTools.setFloatable(true);
-		
-		// TODO butoane ptr leftTools
-		// adaugam leftTools la frame
-		this.getRootPane().add(leftTools);*/
 		/**********************************************************************/
 		desktop.setBackground(Color.LIGHT_GRAY);
 		desktop.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
 		this.getContentPane().setLayout(new BorderLayout());
 		this.getContentPane().add(desktop,BorderLayout.CENTER);
-		this.getContentPane().add(new InternalPalleteToobar(),BorderLayout.WEST);
+		this.getContentPane().add(new InternalPalleteToobar(),BorderLayout.WEST);// TODO optimize for add/remove
+		this.getContentPane().add(new InfoPanel(),BorderLayout.SOUTH);// TODO optimize for add/remove
 		/**********************************************************************/
 		
 		

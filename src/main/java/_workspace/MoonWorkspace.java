@@ -1,4 +1,4 @@
-package gui;
+package _workspace;
 
 public interface MoonWorkspace {
 	 void newMoonWorkspace();

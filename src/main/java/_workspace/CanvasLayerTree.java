@@ -1,7 +1,7 @@
 /**
  * 
  */
-package gui;
+package _workspace;
 
 //import gov.nasa.worldwind.avlist.AVKey;
 import gov.nasa.worldwind.WorldWindow;

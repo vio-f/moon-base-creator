@@ -3,8 +3,6 @@
  */
 package gui.actions.menubar;
 
-import gui.MoonWorkspaceFactory;
-import gui.MoonWorkspaceInternalFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
@@ -13,6 +11,9 @@ import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.KeyStroke;
+
+import _workspace.MoonWorkspaceFactory;
+import _workspace.MoonWorkspaceInternalFrame;
 
 import utility.MyLogger;
 

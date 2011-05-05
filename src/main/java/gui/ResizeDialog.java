@@ -17,6 +17,8 @@ import javax.swing.event.ChangeListener;
 
 import utility.MyLogger;
 
+import _workspace.MoonWorkspaceFactory;
+import _workspace.MoonWorkspaceInternalFrame;
 import _workspace.shapes.IShape;
 import _workspace.shapes.ShapeListener;
 

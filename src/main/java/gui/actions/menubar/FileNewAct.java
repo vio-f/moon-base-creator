@@ -2,7 +2,6 @@
 package gui.actions.menubar;
 
 import gui.BaseFrame;
-import gui.MoonWorkspaceFactory;
 import gui.ProgressDialog;
 
 import java.awt.event.ActionEvent;
@@ -14,6 +13,8 @@ import javax.swing.Action;
 import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 import javax.swing.SwingWorker;
+
+import _workspace.MoonWorkspaceFactory;
 
 import utility.MyLogger;
 
