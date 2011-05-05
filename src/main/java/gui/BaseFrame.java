@@ -5,6 +5,7 @@ import gui.actions.menubar.FileExitAct;
 import gui.actions.menubar.FileNewAct;
 import gui.actions.menubar.EditShowHideLayerTreeAct;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -130,8 +131,9 @@ public class BaseFrame extends JFrame {
 		/**********************************************************************/
 		desktop.setBackground(Color.LIGHT_GRAY);
 		desktop.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
-		this.add(desktop);
-		desktop.add(new InternalPalleteToobar());
+		this.getContentPane().setLayout(new BorderLayout());
+		this.getContentPane().add(desktop,BorderLayout.CENTER);
+		this.getContentPane().add(new InternalPalleteToobar(),BorderLayout.WEST);
 		/**********************************************************************/
 		
 		

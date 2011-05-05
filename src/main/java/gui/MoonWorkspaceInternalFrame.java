@@ -19,6 +19,7 @@ import gov.nasa.worldwind.util.BasicDragger;
 import gov.nasa.worldwind.util.StatusBar;
 
 import java.awt.BorderLayout;
+import java.beans.PropertyVetoException;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
@@ -75,7 +76,13 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements
 		// TODO make this optional
 		this.getLayers().add(new CustomLayerManager(wwGLCanvas));
 		wwGLCanvas.redrawNow();
-
+		
+		try {
+      this.setMaximum(true);
+    } catch (PropertyVetoException e) {
+      // TODO Add your own exception handling here, consider logging
+      e.printStackTrace();
+    }
 		this.setVisible(true);
 		/*try {
 			this.setSelected(true);

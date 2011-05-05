@@ -33,7 +33,7 @@ public class DomeShape extends Ellipsoid implements IShape {
 		Position position = ShapeUtils.getNewShapePosition(wwd);
         double sizeInMeters = ShapeUtils.getViewportScaleFactor(wwd) ;
         double diam =sizeInMeters / 2.0;
-        ellips = new Ellipsoid(position, diam, diam, diam);
+        ellips = new Ellipsoid(position, diam, diam/2, diam);
 		ellips.setAttributes(new BasicShapeAttributes());
 		domeName = generateName();
 		// domes.add(this);
