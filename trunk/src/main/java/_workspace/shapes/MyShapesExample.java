@@ -10,10 +10,11 @@ import gov.nasa.worldwind.render.Ellipsoid;
 import gov.nasa.worldwind.render.ExtrudedPolygon;
 import gov.nasa.worldwind.render.Material;
 import gov.nasa.worldwind.render.ShapeAttributes;
-import gui.MoonWorkspaceFactory;
-import gui.MoonWorkspaceInternalFrame;
 
 import java.util.ArrayList;
+
+import _workspace.MoonWorkspaceFactory;
+import _workspace.MoonWorkspaceInternalFrame;
 
 import utility.MyLogger;
 

@@ -1,8 +1,6 @@
 package stuff;
 
 import gui.BaseFrame;
-import gui.MoonWorkspaceFactory;
-import gui.MoonWorkspaceInternalFrame;
 import gui.ProgressDialog;
 
 import java.awt.event.ActionEvent;
@@ -11,6 +9,9 @@ import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
+
+import _workspace.MoonWorkspaceFactory;
+import _workspace.MoonWorkspaceInternalFrame;
 
 import utility.MyLogger;
 

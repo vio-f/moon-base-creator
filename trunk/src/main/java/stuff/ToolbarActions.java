@@ -4,8 +4,6 @@ import gov.nasa.worldwind.geom.Position;
 import gov.nasa.worldwind.layers.RenderableLayer;
 import gov.nasa.worldwind.render.Ellipsoid;
 import gui.InternalPalleteToobar;
-import gui.MoonWorkspaceFactory;
-import gui.MoonWorkspaceInternalFrame;
 
 import java.awt.event.ActionEvent;
 
@@ -13,6 +11,8 @@ import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.event.AncestorListener;
 
+import _workspace.MoonWorkspaceFactory;
+import _workspace.MoonWorkspaceInternalFrame;
 import _workspace.shapes.CompoundConnector;
 import _workspace.shapes.DomeShape;
 import _workspace.shapes.ShapesPool;
@@ -24,6 +24,7 @@ import utility.MyLogger;
  * 
  */
 public class ToolbarActions extends AbstractAction {
+	/*
 	static ToolbarActions instance = null;
 
 
@@ -32,9 +33,11 @@ public class ToolbarActions extends AbstractAction {
 	ToolbarActions() {
 		
 	}
-
-	// @Override
+*/
+	 @Override
 	public void actionPerformed(ActionEvent e) {
+	 }
+	 /*
 		MoonWorkspaceInternalFrame selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
 
 		try {
@@ -86,5 +89,5 @@ public class ToolbarActions extends AbstractAction {
 		}
 		return instance;
 
-	}
+	}*/
 }

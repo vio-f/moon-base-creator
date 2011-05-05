@@ -2,7 +2,7 @@
  * @author Vio
  * 
  */
-package gui;
+package _workspace;
 
 import gov.nasa.worldwind.Model;
 import gov.nasa.worldwind.WorldWind;
@@ -17,6 +17,7 @@ import gov.nasa.worldwind.pick.PickedObjectList;
 import gov.nasa.worldwind.render.Renderable;
 import gov.nasa.worldwind.util.BasicDragger;
 import gov.nasa.worldwind.util.StatusBar;
+import gui.BaseFrame;
 
 import java.awt.BorderLayout;
 import java.beans.PropertyVetoException;
@@ -27,7 +28,6 @@ import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 
 import utility.MyLogger;
-import _workspace.CustomLayerManager;
 import _workspace.shapes.MyShapesExample;
 import _workspace.shapes.ShapeListener;
 

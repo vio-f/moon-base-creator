@@ -1,4 +1,4 @@
-package gui;
+package _workspace;
 
 import java.util.ArrayList;
 

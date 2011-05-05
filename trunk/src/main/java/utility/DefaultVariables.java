@@ -3,9 +3,9 @@
  */
 package utility;
 
+import _workspace.MoonWorkspace;
 import gov.nasa.worldwind.layers.LayerList;
 import gov.nasa.worldwind.layers.RenderableLayer;
-import gui.MoonWorkspace;
 
 /**
  * @author Vio
