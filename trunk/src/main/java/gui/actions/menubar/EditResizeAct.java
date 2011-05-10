@@ -3,7 +3,8 @@
  */
 package gui.actions.menubar;
 
-import gui.ResizeDialog;
+import gui.ResizeComponent;
+import gui.ToolWindowsPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
@@ -45,7 +46,7 @@ public class EditResizeAct extends AbstractAction {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		new ResizeDialog();
+		ToolWindowsPanel.addCompToThisPanel(new ResizeComponent());
 
 	}
 }
