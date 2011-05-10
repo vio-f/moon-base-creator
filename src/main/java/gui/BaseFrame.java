@@ -7,6 +7,7 @@ import gui.actions.menubar.FileNewAct;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.Action;
 import javax.swing.JDesktopPane;
@@ -14,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -30,7 +32,7 @@ public class BaseFrame extends JFrame {
 	
 	//meniul file
 	public static JMenu fileMenu = new JMenu("File");
-	
+	//file menu items
 	public static JMenuItem fileNewItem = new JMenuItem();
 	public static JMenuItem fileOpenItem = new JMenuItem("Open...");
 	public static JMenuItem fileSaveItem = new JMenuItem("Save...");
@@ -38,7 +40,7 @@ public class BaseFrame extends JFrame {
 	
 	//meniul Edit..
 	JMenu editMenu = new JMenu("Edit");
-	
+	//edit menu items
 	public static JMenuItem editShowHideLayerTreeItem = new JMenuItem();
 	public static JMenuItem editMoveItem = new JMenuItem("MoveIt");
 	public static JMenuItem editResize = new JMenuItem();
@@ -59,6 +61,10 @@ public class BaseFrame extends JFrame {
 	Action editShowHideAction = new EditShowHideLayerTreeAct();
 	Action editResizeAction = new EditResizeAct();
 	
+	
+	public static InfoPanel iPanel = new InfoPanel();
+	public static ToolWindowsPanel tPanel = new ToolWindowsPanel();
+	
 
 	/**********************************************************************/
 	/**********************************************************************/
@@ -68,7 +74,9 @@ public class BaseFrame extends JFrame {
 	public BaseFrame() {
 		super ("That's right!!! Its a \"Moon Base creator\""); //TODO think of a decent title
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setSize(800, 600); //TODO remove this latter    
+		this.setMinimumSize(new Dimension(480, 320));
+		this.setSize(getMaximumSize()); //TODO remove this latter    
+		JPopupMenu.setDefaultLightWeightPopupEnabled(false); //without this the canvas will drawn over the menu
 		
 		//seteaza frame LookandFeel dupa sistem
 		try {
@@ -119,7 +127,9 @@ public class BaseFrame extends JFrame {
 		this.getContentPane().setLayout(new BorderLayout());
 		this.getContentPane().add(desktop,BorderLayout.CENTER);
 		this.getContentPane().add(new InternalPalleteToobar(),BorderLayout.WEST);// TODO optimize for add/remove
-		this.getContentPane().add(new InfoPanel(),BorderLayout.SOUTH);// TODO optimize for add/remove
+		this.getContentPane().add(iPanel, BorderLayout.SOUTH);// TODO optimize for add/remove
+		this.getContentPane().add(tPanel, BorderLayout.EAST);// TODO optimize for add/remove
+		
 		/**********************************************************************/
 		
 		
@@ -127,18 +137,6 @@ public class BaseFrame extends JFrame {
 		//pornim
 		this.setVisible(true);
 		//pack();	
-		
 	}
-
-
-
-	
-	
-
-	
-		
+//EOF		
 }
-
-
-
-

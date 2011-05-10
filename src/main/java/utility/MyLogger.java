@@ -7,8 +7,6 @@ import gui.InfoPanel;
 
 import java.net.URL;
 
-import javax.sound.midi.MidiDevice.Info;
-
 import org.apache.log4j.PropertyConfigurator;
 
 /**
@@ -30,7 +28,7 @@ public class MyLogger {
 
     if (log == null) {
       log = org.apache.log4j.Logger.getLogger(MyLogger.class);
-      URL logURL = MyLogger.class.getResource("log.properties");
+      URL logURL = MyLogger.class.getResource(LOG_FILENAME);
       PropertyConfigurator.configure(logURL);
     }
     return log;
@@ -73,11 +71,11 @@ public class MyLogger {
    * @param text
    * @param t 
    */
-  public static void error(Object source, String text, Throwable t) {
-    String ft = getFormatedMessage(source, text);
+  public static void error(Object source, String text, Throwable trw) {
+    String t = getFormatedMessage(source, text);
 
-    getLogger().error(ft, t);
-    appendToMbcOutput(ft);
+    getLogger().error(t, trw);
+    appendToMbcOutput(t);
 
   }
 
@@ -86,10 +84,10 @@ public class MyLogger {
    * @param source
    * @param t 
    */
-  public static void error(Object source, Throwable t) {
-    String ft = getFormatedMessage(source, t.getMessage());
-    getLogger().error(getFormatedMessage(source, t.getMessage()), t);
-    appendToMbcOutput(ft);
+  public static void error(Object source, Throwable trw) {
+    String t = getFormatedMessage(source, trw.getMessage());
+    getLogger().error(getFormatedMessage(source, trw.getMessage()), trw);
+    appendToMbcOutput(t);
   }
 
   /**

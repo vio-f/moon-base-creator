@@ -5,12 +5,14 @@ package gui;
 
 import gov.nasa.worldwind.render.Ellipsoid;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
+import javax.swing.JInternalFrame;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -26,13 +28,7 @@ import _workspace.shapes.ShapeListener;
  * @author Viorel Florian
  * 
  */
-public class ResizeDialog extends JDialog {
-	/**
-	 * @author Viorel Florian
-	 *
-	 */
-
-
+public class ResizeComponent extends JInternalFrame {
 	protected static JSlider slider = new JSlider(10, 1000, 100);
 	protected static int sizeBoxValue = 100;
 	protected static JFormattedTextField sizeBox = new JFormattedTextField(
@@ -42,16 +38,19 @@ public class ResizeDialog extends JDialog {
 	/**
 	 * 
 	 */
-	public ResizeDialog() {
-		super();
+	public ResizeComponent() {
+		super("Resize component",
+				true,  // resizable
+				true,   // closable
+				false,  // maximizable
+				false); // iconifiable
 		
         selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
 
-		this.setTitle("Resize Component");
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	    //this.setModal(true);
-	    this.setAlwaysOnTop(true);
-
+	    //this.setAlwaysOnTop(true);
+		slider.setPreferredSize(new Dimension(110, 20));
 		this.setLayout(new FlowLayout());
 		sizeBox.setColumns(6);
 		
