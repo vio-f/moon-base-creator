@@ -72,7 +72,7 @@ public final class ShapesPool {
   }
   
   /**
-   * Add shape
+   * Add shape with original identifier
    * 
    * @see ShapesPool#addShape(String, IShape)
    * 
@@ -85,7 +85,7 @@ public final class ShapesPool {
   }
   
   /**
-   * Add shape
+   * Add shape with specific identifier
    * @param identifier
    * @param shape
    * @throws Exception 
@@ -105,7 +105,7 @@ public final class ShapesPool {
   }
   
   /**
-   * Remove shape
+   * Remove shape from list by identifier
    * 
    * @param identifier
    * 
