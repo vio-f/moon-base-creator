@@ -24,11 +24,14 @@ import _workspace.shapes.ShapeListener;
  * @author Viorel Florian
  * 
  */
-public class RemoveShape extends AbstractAction {
+public class RemoveShape extends AbstractIntToolbarAct {
 	Icon remIcon = new ImageIcon(getClass().getResource("/res/cross.png"));
 	private MoonWorkspaceInternalFrame selectedIntFr = null;
 	private static IShape lastshape = null;
 
+	/**
+	 * Constructs a new instance.
+	 */
 	public RemoveShape() {
 		super();
 		setDefaultPropreties();
@@ -37,25 +40,23 @@ public class RemoveShape extends AbstractAction {
 	/**
 	 * Sets the default properties of the button
 	 */
-	private void setDefaultPropreties() {
+	protected void setDefaultPropreties() {
 		putValue(Action.NAME, "");
 		putValue(Action.SHORT_DESCRIPTION, "Removes/deletes selected component");
-		putValue(Action.LARGE_ICON_KEY, remIcon);
+		putValue(Action.LARGE_ICON_KEY, this.remIcon);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+
+	/**
+	 * @see gui.actions.intToolbar.AbstractIntToolbarAct#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		MyLogger.info(this, "Atempting to remove component");
 
-		selectedIntFr = MoonWorkspaceFactory.getInstance()
+		this.selectedIntFr = MoonWorkspaceFactory.getInstance()
 				.getLastSelectedIntFr();
-		if (selectedIntFr != null) {
+		if (this.selectedIntFr != null) {
 			lastshape = (IShape) ShapeListener.lastSelectedObj;
 			try {
 				if (lastshape != null) {

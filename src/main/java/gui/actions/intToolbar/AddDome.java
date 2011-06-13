@@ -24,7 +24,7 @@ import _workspace.shapes.IShape;
  * @author Viorel Florian
  * 
  */
-public class AddDome extends AbstractAction {
+public class AddDome extends AbstractIntToolbarAct {
 	@SuppressWarnings("unused")
 	private IShape lastDome = null; //TODO link this to the ShapeListner
 	Icon sphereIcon = new ImageIcon(getClass().getResource("/res/sphere.png"));
@@ -40,7 +40,8 @@ public class AddDome extends AbstractAction {
 	/**
 	 * Sets the default properties of the button
 	 */
-	private void setDefaultPropreties() {
+	@Override
+  protected void setDefaultPropreties() {
 		putValue(Action.NAME, "");
 		putValue(Action.SHORT_DESCRIPTION, "Creates a Dome relative to current " +
 				"altitude in the center of the workspace");
@@ -48,11 +49,8 @@ public class AddDome extends AbstractAction {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	/**
+	 * @see gui.actions.intToolbar.AbstractIntToolbarAct#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
