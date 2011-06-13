@@ -24,16 +24,21 @@ import _workspace.MoonWorkspaceInternalFrame;
 import _workspace.shapes.IShape;
 import _workspace.shapes.ShapeListener;
 
+import gui.actions.toolWinPan.*;
+
 /**
  * @author Viorel Florian
  * 
  */
 public class ResizeComponent extends JInternalFrame {
-	protected static JSlider slider = new JSlider(10, 1000, 100);
-	protected static int sizeBoxValue = 100;
-	protected static JFormattedTextField sizeBox = new JFormattedTextField(
-			sizeBoxValue); // defines the format of the JFormattedTextField
+    private static JSlider slider = new JSlider(10, 1000, 100);
+	private static int sizeBoxValue = 100;
+	private static JFormattedTextField sizeBox = new JFormattedTextField(
+			getSizeBoxValue()); // defines the format of the JFormattedTextField
 	private static MoonWorkspaceInternalFrame selectedIntFr = null;
+	
+	private static SliderChangeListener scl = new SliderChangeListener();
+	private static BoxListener bl = new BoxListener();
 
 	/**
 	 * 
@@ -50,78 +55,97 @@ public class ResizeComponent extends JInternalFrame {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	    //this.setModal(true);
 	    //this.setAlwaysOnTop(true);
-		slider.setPreferredSize(new Dimension(110, 20));
+		getSlider().setPreferredSize(new Dimension(110, 20));
 		this.setLayout(new FlowLayout());
-		sizeBox.setColumns(6);
+		getSizeBox().setColumns(6);
 		
 		
-		slider.addChangeListener(new SliderChangeListener());
-		sizeBox.addActionListener(new BoxListener());
+		getSlider().addChangeListener(scl);
+		getSizeBox().addActionListener(bl);
 
-		this.add(slider);
-		this.add(sizeBox);
+		this.add(getSlider());
+		this.add(getSizeBox());
 
 		this.pack();
         this.setVisible(true); 
 	}
 
-	class SliderChangeListener implements ChangeListener {
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see
-		 * javax.swing.event.ChangeListener#stateChanged(javax.swing.event.ChangeEvent
-		 * )
-		 */
-		@Override
-		public void stateChanged(ChangeEvent e) {
-			sizeBoxValue = slider.getValue();
-			sizeBox.setValue(sizeBoxValue);
-			resizeTo(sizeBoxValue);
-			try{
-			selectedIntFr.wwGLCanvas.redraw();
-			}catch (Exception ee) {
-				MyLogger.getLogger().error("No wwd present");
-			} 
-		}
-	}
-
-
-	class BoxListener implements ActionListener {
-
-		/* (non-Javadoc)
-		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-		 */
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			sizeBoxValue = (Integer)sizeBox.getValue();
-			slider.setValue(sizeBoxValue);
-			resizeTo(sizeBoxValue);
-			selectedIntFr.wwGLCanvas.redraw();
-		}
-
-	}
-	
 	//TODO works only on mouse over
-	private static void resizeTo(double ns){
-		Object obj = null;
+	public static void resizeTo(double ns){
+	    Object obj = null;
 
-		obj = ShapeListener.lastSelectedObj;
-		//String s = ShapeListener.lastSelectedObj.toString();
-		MyLogger.getLogger().error(obj);
-		
-		if (obj == null) {
-			MyLogger.getLogger().error("obj=null");
-			return;
-			
-		}
-		if (obj instanceof Ellipsoid){
-			((Ellipsoid) obj).setEastWestRadius(ns*100);
-			((Ellipsoid) obj).setNorthSouthRadius(ns*100);
-			((Ellipsoid) obj).setVerticalRadius(ns*100);
-		}
-		
+	    obj = ShapeListener.lastSelectedObj;
+	    //String s = ShapeListener.lastSelectedObj.toString();
+	    MyLogger.getLogger().error(obj);
+	    
+	    if (obj == null) {
+	        MyLogger.getLogger().error("obj=null");
+	        return;
+	        
+	    }
+	    if (obj instanceof Ellipsoid){
+	        ((Ellipsoid) obj).setEastWestRadius(ns*100);
+	        ((Ellipsoid) obj).setNorthSouthRadius(ns*100);
+	        ((Ellipsoid) obj).setVerticalRadius(ns*100);
+	    }
+	    
 	}
+
+  /**
+   * Set slider.
+   * 
+   * @param slider
+   */
+  public static void setSlider(JSlider slider) {
+    ResizeComponent.slider = slider;
+  }
+
+  /**
+   * Get slider.
+   * 
+   * @return slider
+   */
+  public static JSlider getSlider() {
+    return slider;
+  }
+
+  /**
+   * Set sizeBoxValue.
+   * 
+   * @param sizeBoxValue
+   */
+  public static void setSizeBoxValue(int sizeBoxValue) {
+    ResizeComponent.sizeBoxValue = sizeBoxValue;
+  }
+
+  /**
+   * Get sizeBoxValue.
+   * 
+   * @return sizeBoxValue
+   */
+  public static int getSizeBoxValue() {
+    return sizeBoxValue;
+  }
+
+  /**
+   * Set sizeBox.
+   * 
+   * @param sizeBox
+   */
+  public static void setSizeBox(JFormattedTextField sizeBox) {
+    ResizeComponent.sizeBox = sizeBox;
+  }
+
+  /**
+   * Get sizeBox.
+   * 
+   * @return sizeBox
+   */
+  public static JFormattedTextField getSizeBox() {
+    return sizeBox;
+  }
+
+
 	
 	
 	
