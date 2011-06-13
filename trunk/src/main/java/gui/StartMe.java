@@ -1,5 +1,8 @@
 package gui;
 
+import javax.swing.SwingWorker;
+
+import _workspace.MoonWorkspaceFactory;
 import utility.MyLogger;
 import gov.nasa.worldwind.Configuration;
 import gov.nasa.worldwind.avlist.AVKey;
@@ -30,7 +33,31 @@ public class StartMe {
         Configuration.setValue(AVKey.LAYERS_CLASS_NAMES, LAYERS);// LAYERS a fost definit mai sus
         Configuration.setValue(AVKey.INITIAL_ALTITUDE, 5000e3);  // 50000km
         MyLogger.getLogger().info("Settings made");
-		new BaseFrame();
+        
+        final ProgressDialog progressDialog = new ProgressDialog(null);
+        
+        @SuppressWarnings("rawtypes")
+        SwingWorker sw = new SwingWorker() {
+
+            @Override
+            protected Object doInBackground() throws Exception {
+                try {
+                    progressDialog.start();
+                    
+                    BaseFrame.getInstance();
+                    progressDialog.stop();
+                } catch (Exception e) {
+                    //Exception e1 = new Exception("Error while workspace creation.", e);
+                    MyLogger.error(this, "Error while workspace creation.",e);
+                    
+                }
+                return null;
+            }
+        };
+        
+        sw.execute();
+        
+		
 
 	}
 

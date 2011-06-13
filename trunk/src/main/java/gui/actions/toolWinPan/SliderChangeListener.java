@@ -14,8 +14,6 @@ import javax.swing.event.ChangeListener;
 import _workspace.MoonWorkspaceFactory;
 import _workspace.MoonWorkspaceInternalFrame;
 
-import com.sun.org.apache.bcel.internal.generic.GETSTATIC;
-
 import gui.ResizeComponent;
 
 import utility.MyLogger;

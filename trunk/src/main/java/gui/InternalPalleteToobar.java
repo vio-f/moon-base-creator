@@ -3,20 +3,13 @@ package gui;
 import gui.actions.intToolbar.AddDome;
 import gui.actions.intToolbar.RemoveShape;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
-
-import stuff.ToolbarActions;
 
 public class InternalPalleteToobar extends JPanel {
 	public static ArrayList<JButton> toolButtons = new ArrayList<JButton>();
