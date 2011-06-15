@@ -47,13 +47,8 @@ public class FileNewAct extends AbstractAction  {
 	
 	}
 	  
-	  
-	  
-	  
-	  
-	  
-	  
-	/* (non-Javadoc)
+
+	/**
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	@Override
@@ -61,7 +56,7 @@ public class FileNewAct extends AbstractAction  {
 		MyLogger.info(this, "New has been pressed");
 		BaseFrame.editShowHideLayerTreeItem.setEnabled(true);
 		// TODO remove this
-		final ProgressDialog progressDialog = new ProgressDialog(f);
+		final ProgressDialog progressDialog = new ProgressDialog(this.f);
 
 		@SuppressWarnings("rawtypes")
 		SwingWorker sw = new SwingWorker() {

@@ -19,6 +19,7 @@ public class DomeShape extends Ellipsoid implements IShape {
 			.getInstance().getLastSelectedIntFr();
 	// static ArrayList<DomeShape> domes = new ArrayList<DomeShape>();
 	private String domeName = "";
+	/** nextID */
 	static int nextID = 0;
 
 	/**

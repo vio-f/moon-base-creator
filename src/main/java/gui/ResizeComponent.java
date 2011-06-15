@@ -31,6 +31,8 @@ import gui.actions.toolWinPan.*;
  * 
  */
 public class ResizeComponent extends JInternalFrame {
+  
+    private static ResizeComponent INSTANCE = null;
     private static JSlider slider = new JSlider(10, 1000, 100);
 	private static int sizeBoxValue = 100;
 	private static JFormattedTextField sizeBox = new JFormattedTextField(
@@ -43,7 +45,7 @@ public class ResizeComponent extends JInternalFrame {
 	/**
 	 * 
 	 */
-	public ResizeComponent() {
+	private ResizeComponent() {
 		super("Resize component",
 				true,  // resizable
 				true,   // closable
@@ -143,6 +145,20 @@ public class ResizeComponent extends JInternalFrame {
    */
   public static JFormattedTextField getSizeBox() {
     return sizeBox;
+  }
+
+  /**
+   * Get instance.
+   * 
+   * @return instance
+   */
+  public static ResizeComponent getInstance() {
+    if (INSTANCE == null) {
+      INSTANCE = new ResizeComponent();
+    }
+
+    return INSTANCE;
+
   }
 
 
