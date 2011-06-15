@@ -46,7 +46,7 @@ public class EditResizeAct extends AbstractAction {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ToolWindowsPanel.addCompToThisPanel(new ResizeComponent());
+		ToolWindowsPanel.addCompToThisPanel(ResizeComponent.getInstance());
 
 	}
 }
