@@ -36,7 +36,7 @@ public class StartMe {
         
         final ProgressDialog progressDialog = new ProgressDialog(null);
         
-        @SuppressWarnings("rawtypes")
+/*        @SuppressWarnings("rawtypes")
         SwingWorker sw = new SwingWorker() {
 
             @Override
@@ -55,8 +55,8 @@ public class StartMe {
             }
         };
         
-        sw.execute();
-        
+        sw.execute();*/
+        BaseFrame.getInstance();
 		
 
 	}
