@@ -78,7 +78,7 @@ public class BaseFrame extends JFrame {
   public static InfoPanel iPanel = new InfoPanel();
 
  // TODO remove this if other is finished >>>>> public static ToolWindowsPanel tPanel = new ToolWindowsPanel();
-  public static JPropertiesPanel tPanel = new JPropertiesPanel();
+  public static JAccordionMenu tPanel = new JAccordionMenu();
 
   /**********************************************************************/
   /**********************************************************************/
