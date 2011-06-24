@@ -221,11 +221,22 @@ public class JOutlookBar extends JPanel implements ActionListener
   {
     JFrame frame = new JFrame( "JOutlookBar Test" );
     JOutlookBar outlookBar = new JOutlookBar();
-    outlookBar.addBar( "One", getDummyPanel( "One" ) );
+    /*   outlookBar.addBar( "One", getDummyPanel( "One" ) );
     outlookBar.addBar( "Two", getDummyPanel( "Two" ) );
     outlookBar.addBar( "Three", getDummyPanel( "Three" ) );
     outlookBar.addBar( "Four", getDummyPanel( "Four" ) );
-    outlookBar.addBar( "Five", getDummyPanel( "Five" ) );
+    outlookBar.addBar( "Five", getDummyPanel( "Five" ) );*/
+    
+    outlookBar.addBar( "Resize0", new ResizeBar());
+    outlookBar.addBar( "Resize1", new ResizeBar());
+    outlookBar.addBar( "Resize2", new ResizeBar());
+    outlookBar.addBar( "Resize3", new ResizeBar());
+    outlookBar.addBar( "Resize4", new ResizeBar());
+    outlookBar.addBar( "Resize5", new ResizeBar());
+    outlookBar.addBar( "Resize6", new ResizeBar());
+    outlookBar.addBar( "Resize7", new ResizeBar());
+    outlookBar.addBar( "Resize8", new ResizeBar());
+    outlookBar.addBar( "Resize9", new ResizeBar());
     outlookBar.setVisibleBar( 2 );
     frame.getContentPane().add( outlookBar );
 
