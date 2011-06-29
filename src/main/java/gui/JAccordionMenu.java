@@ -79,6 +79,7 @@ public class JAccordionMenu extends JPanel implements ActionListener {
     this.bottomPanel.setLayout(this.southLayout);
 
     this.add(this.topPanel, BorderLayout.NORTH);
+    this.add(this.centerPanel, BorderLayout.CENTER);
     this.add(this.bottomPanel, BorderLayout.SOUTH);
 
     addDummyContent();
@@ -110,7 +111,7 @@ public class JAccordionMenu extends JPanel implements ActionListener {
    */
   public static JPanel getDummyPanel(String name) {
     JPanel panel = new JPanel(new BorderLayout());
-    panel.add(new JLabel(name, JLabel.CENTER));
+    panel.add(new JLabel(name));
     return panel;
   }
 
@@ -363,7 +364,6 @@ public class JAccordionMenu extends JPanel implements ActionListener {
 
     // add everything
     for (Entry<String, JAcordionBar> entry : this.allBars.entrySet()) {
-      System.out.println(entry.getKey());
       getTopList().add(entry.getKey());
       getTopPanel().add(entry.getValue());
     }
@@ -373,7 +373,7 @@ public class JAccordionMenu extends JPanel implements ActionListener {
   }
 
   /**
-   * TODO DESCRIPTION
+   * Refresh the bars in the top panel and reduce the number of rows in the layout to fit the components
    */
   private void refreshTop() {
     getNorthLayout().setRows(getTopList().size());
@@ -420,10 +420,13 @@ public class JAccordionMenu extends JPanel implements ActionListener {
   public void actionPerformed(ActionEvent e) {
 
     if (e.getSource() instanceof JAcordionBar) {
+      this.centerPanel.removeAll();
       JAcordionBar jac = (JAcordionBar) e.getSource();
       String jacName = jac.getName();
       MyLogger.info(this, "Source of the event is " + jacName);
       sortAll(jacName);
+      this.centerPanel.add(jac.getAsocPanel(), BorderLayout.NORTH);
+      this.centerPanel.validate();
 
     }
 
