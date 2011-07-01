@@ -83,6 +83,9 @@ public class ProgressDialog extends JFrame {
 		this.setVisible(this.keepRunning);
 		this.pBar.setVisible(this.keepRunning);
 		this.pBar.setEnabled(this.keepRunning);
+		if (!this.keepRunning){
+		  this.dispose();
+		}
 	}
 
 }

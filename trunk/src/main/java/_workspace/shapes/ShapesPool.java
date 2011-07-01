@@ -1,7 +1,11 @@
 package _workspace.shapes;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 /**
  * Pool of shapes
@@ -149,4 +153,10 @@ public final class ShapesPool {
     }
   }
   
-}
+  public Set<Entry<String, IShape>> getAllShapesEntries(){
+    return this.pool.entrySet();
+  }
+  
+  
+  
+}//EOF

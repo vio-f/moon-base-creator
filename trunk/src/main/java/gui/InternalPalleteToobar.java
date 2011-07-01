@@ -4,6 +4,7 @@ import gui.actions.intToolbar.AddDome;
 import gui.actions.intToolbar.RemoveShape;
 
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
@@ -37,20 +38,19 @@ public class InternalPalleteToobar extends JPanel {
 		this.setLayout(new GridLayout());
 		// index 0 - sphere button + icon
 		toolButtons.add(new JButton(""));
-		//make button size relative to icon
-		//toolButtons.get(0).setPreferredSize(new Dimension(20, 22));
+		toolButtons.get(0).setPreferredSize(new Dimension(40, 42));
 		toolButtons.get(0).setAlignmentY(BOTTOM_ALIGNMENT);
 		toolButtons.get(0).setAction(this.addDome);
 
 		toolButtons.add(new JButton(""));
-		//make button size relative to icon
-		toolButtons.get(1).setPreferredSize(new Dimension(20, 22));
+		toolButtons.get(1).setPreferredSize(new Dimension(40, 42));
 		toolButtons.get(1).setAlignmentY(BOTTOM_ALIGNMENT);
 		toolButtons.get(1).setAction(this.remShape);
 		
 		
 		JToolBar tb = new JToolBar(SwingConstants.VERTICAL);
 		tb.setFloatable(false);
+		tb.setLayout(new FlowLayout());
 		for (JButton b : toolButtons) {
           tb.add(b);
         }
