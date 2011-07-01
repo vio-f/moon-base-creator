@@ -5,6 +5,7 @@ package _workspace.shapes;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -28,6 +29,7 @@ import gov.nasa.worldwind.render.Ellipsoid;
  */
 public class DomeShape extends Ellipsoid implements IShape {
   MoonWorkspaceInternalFrame selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
+
   // static ArrayList<DomeShape> domes = new ArrayList<DomeShape>();
   /** domeName */
   private String domeName = "";
@@ -36,10 +38,9 @@ public class DomeShape extends Ellipsoid implements IShape {
   static int nextID = 0;
 
   /**
-   * @param wwd 
-   * Creates a "Dome" in the center of the viewport, relative to the altitude the camera is
-   *        at the time of call, with basic attributes
-   * @throws Exception 
+   * @param wwd Creates a "Dome" in the center of the viewport, relative to the altitude the camera
+   *        is at the time of call, with basic attributes
+   * @throws Exception
    */
   public DomeShape(WorldWindow wwd) throws Exception {
     super();
@@ -47,7 +48,6 @@ public class DomeShape extends Ellipsoid implements IShape {
     double sizeInMeters = ShapeUtils.getViewportScaleFactor(wwd);
     double diam = sizeInMeters / 2.0;
 
-    
     this.setCenterPosition(position);
     this.setNorthSouthRadius(diam);
     this.setVerticalRadius(diam);
@@ -56,8 +56,8 @@ public class DomeShape extends Ellipsoid implements IShape {
 
     this.domeName = generateName();
     // domes.add(this);
-    selectedIntFr.rendLayer.addRenderable(this);
-    selectedIntFr.wwGLCanvas.redraw();
+    this.selectedIntFr.rendLayer.addRenderable(this);
+    this.selectedIntFr.wwGLCanvas.redraw();
     this.addToPool();
     ShapeListener.lastSelectedObj = this;
   }
@@ -72,14 +72,17 @@ public class DomeShape extends Ellipsoid implements IShape {
    *        <p>
    *        Creates a "Dome" at the provided position, with the provided sizes in meters, , with
    *        basic attributes
-   * @throws Exception 
+   * @throws Exception
    */
   public DomeShape(WorldWindow wwd, Position pos, double northSouthRadius, double verticalRadius,
       double eastWestRadius) throws Exception {
     super(pos, northSouthRadius, verticalRadius, eastWestRadius);
     this.setAttributes(new BasicShapeAttributes());
     this.domeName = generateName();
+    this.selectedIntFr.rendLayer.addRenderable(this);
+    this.selectedIntFr.wwGLCanvas.redraw();
     this.addToPool();
+    ShapeListener.lastSelectedObj = this;
   }
 
   /**
@@ -145,37 +148,46 @@ public class DomeShape extends Ellipsoid implements IShape {
     ShapeListener.lastSelectedObj = null;
   }
 
-  
-  public void saveMe(File file, String name){
-    
+  /**
+   * saves this object to file
+   * @param file - file object
+   * @param name - object identifier
+   */
+  public void saveMe(File file, String name) {
+
     Properties p = new Properties();
 
-    p.setProperty("shape.name", name);
+    p.setProperty("dome.name", name);
 
-    p.setProperty("shape.centerPosition", String.valueOf(this.getCenterPosition()));
+    Position pos = this.getCenterPosition();
 
+    p.setProperty("dome.centerPosition.latitude", String.valueOf(pos.getLatitude().getDegrees()));
+    p.setProperty("dome.centerPosition.longitude", String.valueOf(pos.getLongitude().getDegrees()));
+    p.setProperty("dome.centerPosition.elevation", String.valueOf(pos.getElevation()));
     
+    p.setProperty("dome.nsRadius", String.valueOf(this.getNorthSouthRadius()));
+    p.setProperty("dome.evRadius", String.valueOf(this.getEastWestRadius()));
+    p.setProperty("dome.vertRadius", String.valueOf(this.getVerticalRadius()));
 
+    p.setProperty("dome.tilt", String.valueOf(this.getTilt()));
+    p.setProperty("dome.roll", String.valueOf(this.getRoll()));
 
     try {
 
-    p.store(new FileOutputStream(file), "My Shape's properties");
+      p.store(new FileOutputStream(file), "My Shape's properties");
 
     } catch (FileNotFoundException e) {
 
-    e.printStackTrace();
+      e.printStackTrace();
 
     } catch (IOException e) {
 
-    e.printStackTrace();
+      e.printStackTrace();
 
     }
 
-
-    
-    
   }
   
-  
+ 
 
-}
+}//EOF

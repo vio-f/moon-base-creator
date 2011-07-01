@@ -3,6 +3,7 @@ package gui;
 import gui.actions.menubar.EditResizeAct;
 import gui.actions.menubar.EditShowHideLayerTreeAct;
 import gui.actions.menubar.FileExitAct;
+import gui.actions.menubar.FileLoadAct;
 import gui.actions.menubar.FileNewAct;
 import gui.actions.menubar.FileSaveAct;
 
@@ -70,6 +71,8 @@ public class BaseFrame extends JFrame {
   // cream o intstanta al clasei de actiuni
   FileNewAct fileNewAction = new FileNewAct(this);
   
+  FileLoadAct fileLoadAction = new FileLoadAct(this);  
+  
   FileSaveAct fileSaveAction = new FileSaveAct(this); 
 
   Action fileExitAction = new FileExitAct();
@@ -108,6 +111,7 @@ public class BaseFrame extends JFrame {
     fileNewItem.setAction(fileNewAction);
     fileSaveItem.setAction(fileSaveAction);
     fileExitItem.setAction(fileExitAction);
+    fileOpenItem.setAction(fileLoadAction); 
 
     editShowHideLayerTreeItem.setAction(editShowHideAction);
     editResize.setAction(editResizeAction);
