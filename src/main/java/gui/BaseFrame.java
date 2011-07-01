@@ -4,6 +4,7 @@ import gui.actions.menubar.EditResizeAct;
 import gui.actions.menubar.EditShowHideLayerTreeAct;
 import gui.actions.menubar.FileExitAct;
 import gui.actions.menubar.FileNewAct;
+import gui.actions.menubar.FileSaveAct;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -68,6 +69,8 @@ public class BaseFrame extends JFrame {
 
   // cream o intstanta al clasei de actiuni
   FileNewAct fileNewAction = new FileNewAct(this);
+  
+  FileSaveAct fileSaveAction = new FileSaveAct(this); 
 
   Action fileExitAction = new FileExitAct();
 
@@ -103,6 +106,7 @@ public class BaseFrame extends JFrame {
     /**********************************************************************/
     // definim listener ptr obiecte
     fileNewItem.setAction(fileNewAction);
+    fileSaveItem.setAction(fileSaveAction);
     fileExitItem.setAction(fileExitAction);
 
     editShowHideLayerTreeItem.setAction(editShowHideAction);

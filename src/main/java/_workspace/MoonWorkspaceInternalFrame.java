@@ -53,8 +53,9 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements Intern
     // se creaza canvasul ptr luna
     // System.out.println("Creating Moon");
     MyLogger.info(this, "Creating Moon canvas");
+    
     wwGLCanvas = new gov.nasa.worldwind.awt.WorldWindowGLCanvas();
-
+    MyLogger.info(this, "Canvas is double buffered:  " + this.wwGLCanvas.isDoubleBuffered());
     Model m = (Model) WorldWind.createConfigurationComponent(AVKey.MODEL_CLASS_NAME);
 
     // initializam Canvasul ptr Luna
