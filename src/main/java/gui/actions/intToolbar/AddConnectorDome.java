@@ -5,34 +5,32 @@ package gui.actions.intToolbar;
 
 
 import java.awt.event.ActionEvent;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 
-import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.KeyStroke;
 
 import utility.MyLogger;
 import _workspace.MoonWorkspaceFactory;
 import _workspace.MoonWorkspaceInternalFrame;
-import _workspace.shapes.DomeShape;
+import _workspace.shapes.ConnectorDomeShape;
 import _workspace.shapes.IShape;
 
 /**
  * @author Viorel Florian
  * 
  */
-public class AddFlattDome extends AbstractIntToolbarAct {
+public class AddConnectorDome extends AbstractIntToolbarAct {
+	/** lastDome */
 	@SuppressWarnings("unused")
 	private IShape lastDome = null; //TODO link this to the ShapeListner
-	//Icon sphereIcon = new ImageIcon(getClass().getResource("/res/sphere.png"));
+	/** sphereIcon */
+	Icon sphereIcon = new ImageIcon(getClass().getResource("/res/sphere2.png"));
 
 	/**
 	 * 
 	 */
-	public AddFlattDome() {
+	public AddConnectorDome() {
 		super();
 		setDefaultPropreties();
 	}
@@ -43,9 +41,9 @@ public class AddFlattDome extends AbstractIntToolbarAct {
 	@Override
   protected void setDefaultPropreties() {
 		putValue(Action.NAME, "");
-		putValue(Action.SHORT_DESCRIPTION, "Creates a Flat Dome relative to current " +
+		putValue(Action.SHORT_DESCRIPTION, "Creates a Connector Dome relative to current " +
 				"altitude in the center of the workspace");
-		//putValue(Action.SMALL_ICON, sphereIcon);
+		putValue(Action.SMALL_ICON, this.sphereIcon);
 
 	}
 
@@ -60,10 +58,8 @@ public class AddFlattDome extends AbstractIntToolbarAct {
 		try {
 			MyLogger.info(this, "New Flat Shpere pressed");
 			if (selectedIntFr != null) {
-				d = new DomeShape(selectedIntFr.wwGLCanvas);
-				
-				double diam = ((DomeShape)d).getNorthSouthRadius();
-				((DomeShape)d).setEastWestRadius(diam);
+				d = new ConnectorDomeShape(selectedIntFr.getWwGLCanvas());
+								
 				this.lastDome = d;
 				MyLogger.info(this, "" + d.getIdentifier() + " added");
 			} else

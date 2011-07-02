@@ -54,7 +54,6 @@ public class FileNewAct extends AbstractAction  {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		MyLogger.info(this, "New has been pressed");
-		BaseFrame.editShowHideLayerTreeItem.setEnabled(true);
 		// TODO remove this
 		final ProgressDialog progressDialog = new ProgressDialog(this.f);
 

@@ -37,6 +37,7 @@ public class MyLogger {
   /**
    * 
    * @param obj
+   * @param message 
    * @return
    */
   private static String getFormatedMessage(Object obj, Object message) {

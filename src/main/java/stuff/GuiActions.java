@@ -30,10 +30,9 @@ public class GuiActions extends AbstractAction {
 	public void actionPerformed(ActionEvent e) {
 		MoonWorkspaceInternalFrame selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
 
-		if (e.getSource().equals(BaseFrame.fileNewItem)) {
+		if (e.getSource().equals(BaseFrame.getInstance().getFileNewItem())) {
 			// System.out.println("New has been pressed");
 			MyLogger.info(this, "New has been pressed");
-			BaseFrame.editShowHideLayerTreeItem.setEnabled(true);
 			// TODO remove this
 			final ProgressDialog progressDialog = new ProgressDialog(f);
 
@@ -58,7 +57,7 @@ public class GuiActions extends AbstractAction {
 
 			sw.execute();
 		}
-		if (e.getSource().equals(BaseFrame.fileExitItem)) {
+		if (e.getSource().equals(BaseFrame.getInstance().getFileExitItem())) {
 			if (JOptionPane.showConfirmDialog(null,
 					"Are you sure you wish to exit?") == JOptionPane.YES_OPTION) {
 				f.setVisible(false);
@@ -68,7 +67,7 @@ public class GuiActions extends AbstractAction {
 			}
 		}
 
-		if (e.getSource().equals(BaseFrame.editShowHideLayerTreeItem)) {
+		/*if (e.getSource().equals(BaseFrame.getInstance().getEditTiltItem())) {
 			MyLogger.info(this, "Show/hide has been pressed");
 			
 			if (selectedIntFr != null) {
@@ -79,11 +78,11 @@ public class GuiActions extends AbstractAction {
 			MyLogger.error(this, "No suitable wwCanvas was found"); //new NullPointerException()
 		}
 		
-		if (e.getSource().equals(BaseFrame.editMoveItem)) {
+		if (e.getSource().equals(BaseFrame.getInstance().getEditMoveItem())) {
 			MyLogger.getLogger().info("Move pressed");
 			//selectedIntFr.moveMe(Position.fromDegrees(1, 1, 2));
 			//selectedIntFr.wwGLCanvas.redraw();
-		}
+		}*/
 	}
 
 }

@@ -100,7 +100,7 @@ public class FileSaveAct extends AbstractAction {
     Set<Entry<String, IShape>> allShapes = ShapesPool.getInstance().getAllShapesEntries();
 
     for (Entry<String, IShape> entry : allShapes) {
-      DomeShape dome = (DomeShape) entry.getValue();
+      IShape dome = entry.getValue();
       
       File newFile = new File(dir.getAbsolutePath(), dome.getIdentifier() + "." + "mbc");
       dome.saveMe(newFile, dome.getIdentifier());

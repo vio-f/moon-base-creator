@@ -3,9 +3,11 @@
  * All rights reserved.
  * www.tba.nl
  */
-package gui;
+package gui.jaccordian;
 
 //Import the GUI classes
+import gui.jaccordian.jAccordionPanels.ResizePanel;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -227,16 +229,16 @@ public class JOutlookBar extends JPanel implements ActionListener
     outlookBar.addBar( "Four", getDummyPanel( "Four" ) );
     outlookBar.addBar( "Five", getDummyPanel( "Five" ) );*/
     
-    outlookBar.addBar( "Resize0", new ResizeBar());
-    outlookBar.addBar( "Resize1", new ResizeBar());
-    outlookBar.addBar( "Resize2", new ResizeBar());
-    outlookBar.addBar( "Resize3", new ResizeBar());
-    outlookBar.addBar( "Resize4", new ResizeBar());
-    outlookBar.addBar( "Resize5", new ResizeBar());
-    outlookBar.addBar( "Resize6", new ResizeBar());
-    outlookBar.addBar( "Resize7", new ResizeBar());
-    outlookBar.addBar( "Resize8", new ResizeBar());
-    outlookBar.addBar( "Resize9", new ResizeBar());
+    outlookBar.addBar( "Resize0", new ResizePanel());
+    outlookBar.addBar( "Resize1", new ResizePanel());
+    outlookBar.addBar( "Resize2", new ResizePanel());
+    outlookBar.addBar( "Resize3", new ResizePanel());
+    outlookBar.addBar( "Resize4", new ResizePanel());
+    outlookBar.addBar( "Resize5", new ResizePanel());
+    outlookBar.addBar( "Resize6", new ResizePanel());
+    outlookBar.addBar( "Resize7", new ResizePanel());
+    outlookBar.addBar( "Resize8", new ResizePanel());
+    outlookBar.addBar( "Resize9", new ResizePanel());
     outlookBar.setVisibleBar( 2 );
     frame.getContentPane().add( outlookBar );
 

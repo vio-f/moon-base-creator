@@ -41,7 +41,7 @@ public class CanvasLayerTree extends RenderableLayer {
 		
 
 		// Add a controller to handle input events on the layer tree.
-		this.controller = new HotSpotController(parantframe.wwGLCanvas);
+		this.controller = new HotSpotController(parantframe.getWwGLCanvas());
 
 	}
 	

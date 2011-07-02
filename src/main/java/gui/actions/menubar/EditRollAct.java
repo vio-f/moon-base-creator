@@ -7,6 +7,8 @@ import gov.nasa.worldwind.View;
 import gov.nasa.worldwind.geom.Position;
 import gui.BaseFrame;
 import gui.jaccordian.JAcordionBar;
+import gui.jaccordian.jAccordionPanels.ChangeRollPanel;
+import gui.jaccordian.jAccordionPanels.ChangeTiltPanel;
 import gui.jaccordian.jAccordionPanels.ResizePanel;
 
 import java.awt.event.ActionEvent;
@@ -24,14 +26,14 @@ import _workspace.MoonWorkspaceFactory;
  * 
  */
 @SuppressWarnings("serial")
-public class EditResizeAct extends AbstractAction {
+public class EditRollAct extends AbstractAction {
   /** COMPONET_NAME */
-  private final String  COMPONET_NAME = "Resize component";
+  private final String  COMPONET_NAME = "Roll component";
 
 	/**
 	 * 
 	 */
-	public EditResizeAct() {
+	public EditRollAct() {
 	    super();
 	    setDefaultPropreties();
 	}
@@ -41,7 +43,7 @@ public class EditResizeAct extends AbstractAction {
 	 */
 	private void setDefaultPropreties() {
 		putValue(Action.NAME, this.COMPONET_NAME);
-		KeyStroke key = KeyStroke.getKeyStroke(KeyEvent.VK_R,
+		KeyStroke key = KeyStroke.getKeyStroke(KeyEvent.VK_Y,
 				InputEvent.CTRL_DOWN_MASK);
 		putValue(Action.ACCELERATOR_KEY, key);
 
@@ -53,7 +55,7 @@ public class EditResizeAct extends AbstractAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	  
-	  BaseFrame.getInstance().getPropertiesPanel().addBar(this.COMPONET_NAME, new JAcordionBar(this.COMPONET_NAME, ResizePanel.getInstance()));
+	  BaseFrame.getInstance().getPropertiesPanel().addBar(this.COMPONET_NAME, new JAcordionBar(this.COMPONET_NAME, ChangeRollPanel.getInstance()));
 	  
 
 	}
