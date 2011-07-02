@@ -1,4 +1,3 @@
-
 package _workspace;
 
 import gov.nasa.worldwind.Model;
@@ -28,21 +27,34 @@ import _workspace.shapes.ShapeListener;
  * @author viorel.florian
  */
 public class MoonWorkspaceInternalFrame extends JInternalFrame implements InternalFrameListener {
+  /** serialVersionUID */
+  private static final long serialVersionUID = 1L;
+
+  /** openFrameCount */
   static int openFrameCount = 0;
 
+  /** XOFFSET */
+  /** YOFFSET */
   static final int XOFFSET = 20, YOFFSET = 20;
 
-  public WorldWindowGLCanvas wwGLCanvas;
+  /** wwGLCanvas */
+  private WorldWindowGLCanvas wwGLCanvas;
 
-  public CanvasLayerTree canvasLT;
+  /** canvasLT */
+  private CanvasLayerTree canvasLT;
 
+  /** layerTreeStatus */
   private Boolean layerTreeStatus = false;
 
-  // private Boolean intframeStatus = false;
-  public RenderableLayer rendLayer = new RenderableLayer();
+  /** rendLayer */
+  private RenderableLayer rendLayer = new RenderableLayer();
 
-  public AnnotationLayer annotationLayer = new AnnotationLayer();
+  /** annotationLayer */
+  private AnnotationLayer annotationLayer = new AnnotationLayer();
 
+  /**
+   * Constructs a new instance.
+   */
   protected MoonWorkspaceInternalFrame() {
     super("New workspace " + (++openFrameCount), true, // resizable
         true, // closable
@@ -53,30 +65,30 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements Intern
     // se creaza canvasul ptr luna
     // System.out.println("Creating Moon");
     MyLogger.info(this, "Creating Moon canvas");
-    
-    wwGLCanvas = new gov.nasa.worldwind.awt.WorldWindowGLCanvas();
-    MyLogger.info(this, "Canvas is double buffered:  " + this.wwGLCanvas.isDoubleBuffered());
+
+    this.setWwGLCanvas(new gov.nasa.worldwind.awt.WorldWindowGLCanvas());
+    MyLogger.info(this, "Canvas is double buffered:  " + this.getWwGLCanvas().isDoubleBuffered());
     Model m = (Model) WorldWind.createConfigurationComponent(AVKey.MODEL_CLASS_NAME);
 
     // initializam Canvasul ptr Luna
-    wwGLCanvas.setModel(m); // adauga model-ul la canvas
+    this.getWwGLCanvas().setModel(m); // adauga model-ul la canvas
 
     this.setSize(480, 320);
     this.setLocation(XOFFSET * openFrameCount, YOFFSET * openFrameCount);
     JPanel canvasContainer = new JPanel(new BorderLayout());
-    canvasContainer.add(wwGLCanvas);
+    canvasContainer.add(this.getWwGLCanvas());
     StatusBar status = new StatusBar();
     canvasContainer.add(status, BorderLayout.SOUTH);
     this.getContentPane().add(canvasContainer);
 
     MyLogger.info(this, "Moon Canvas added");
 
-    BaseFrame.desktop.add(this);
-    this.getLayers().add(rendLayer);
-    this.getLayers().add(annotationLayer);
+    BaseFrame.getInstance().getDesktop().add(this);
+    this.getLayers().add(this.getRendLayer());
+    this.getLayers().add(this.annotationLayer);
     // TODO make this optional
-    this.getLayers().add(new CustomLayerManager(wwGLCanvas));
-    wwGLCanvas.redrawNow();
+    this.getLayers().add(new CustomLayerManager(this.getWwGLCanvas()));
+    this.getWwGLCanvas().redrawNow();
 
     try {
       this.setMaximum(true);
@@ -86,23 +98,58 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements Intern
       e.printStackTrace();
     }
     this.setVisible(true);
-    
+
     new ShapeListener(this);
-    rendLayer.setName("Renderable layer");
-    annotationLayer.setName("Anotation Layer");
+    this.getRendLayer().setName("Renderable layer");
+    this.annotationLayer.setName("Anotation Layer");
   }
-  
-  
 
   /**
    * Retrives the layer list from the currently loaded model.
+   * 
    * @return A layer list of all curently loaded layers in the model
    */
   public LayerList getLayers() {
     LayerList layers = new LayerList();
-    layers = wwGLCanvas.getModel().getLayers();
+    layers = this.getWwGLCanvas().getModel().getLayers();
     return layers;
 
+  }
+
+  /**
+   * Set wwGLCanvas.
+   * 
+   * @param wwGLCanvas
+   */
+  public void setWwGLCanvas(WorldWindowGLCanvas wwGLCanvas) {
+    this.wwGLCanvas = wwGLCanvas;
+  }
+
+  /**
+   * Get wwGLCanvas.
+   * 
+   * @return wwGLCanvas
+   */
+  public WorldWindowGLCanvas getWwGLCanvas() {
+    return this.wwGLCanvas;
+  }
+
+  /**
+   * Set rendLayer.
+   * 
+   * @param rendLayer
+   */
+  public void setRendLayer(RenderableLayer rendLayer) {
+    this.rendLayer = rendLayer;
+  }
+
+  /**
+   * Get rendLayer.
+   * 
+   * @return rendLayer
+   */
+  public RenderableLayer getRendLayer() {
+    return rendLayer;
   }
 
   /**
@@ -114,11 +161,10 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements Intern
     return this.layerTreeStatus;
   }
 
+  
+  
   /**
-   * @param b <p>
-   *        <i><b>true</i></b> - <i>LayerTree</i> will become visible,
-   *        <p>
-   *        <i><b>false</i></b> - <i>LayerTree</i> will be removed
+   * TODO DESCRIPTION
    */
   public void showHideLayerTree() {
     if (this.layerTreeStatus == false) {
@@ -135,11 +181,6 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements Intern
     }
   }
 
-  /*
-   * public void setStatus(Boolean status) { this.intframeStatus = status; }
-   * 
-   * public Boolean getStatus() { return this.intframeStatus; }
-   */
 
   /**
    * @see javax.swing.event.InternalFrameListener#internalFrameActivated(javax.swing.event.InternalFrameEvent)
@@ -154,7 +195,7 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements Intern
    */
   @Override
   public void internalFrameClosed(InternalFrameEvent e) {
-    del_This_If_LastSelected();
+    this.del_This_If_LastSelected();
   }
 
   /**
@@ -162,7 +203,7 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements Intern
    */
   @Override
   public void internalFrameClosing(InternalFrameEvent e) {
-    del_This_If_LastSelected();
+    this.del_This_If_LastSelected();
   }
 
   /**
@@ -186,7 +227,7 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements Intern
    */
   @Override
   public void internalFrameIconified(InternalFrameEvent e) {
-    del_This_If_LastSelected();
+    this.del_This_If_LastSelected();
   }
 
   /**
@@ -198,6 +239,9 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements Intern
 
   }
 
+  /**
+   * In case the current frame is the last selected, it is removed 
+   */
   private void del_This_If_LastSelected() {
     if (MoonWorkspaceFactory.getInstance().getLastSelectedIntFr() == this) {
       MoonWorkspaceFactory.getInstance().setLastSelectedIntFr(null);

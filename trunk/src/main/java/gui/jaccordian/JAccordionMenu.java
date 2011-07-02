@@ -1,4 +1,4 @@
-package gui;
+package gui.jaccordian;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -81,7 +81,7 @@ public class JAccordionMenu extends JPanel implements ActionListener {
     this.add(this.centerPanel, BorderLayout.CENTER);
     this.add(this.bottomPanel, BorderLayout.SOUTH);
 
-    addDummyContent();
+    //addDummyContent();
 
   }
 
@@ -96,7 +96,7 @@ public class JAccordionMenu extends JPanel implements ActionListener {
       String barName = "name " + i;
       JAcordionBar jac = new JAcordionBar(barName);
       jac.setAsocPanel(getDummyPanel(barName));
-      jac.addActionListener(this);
+      
       addBar(barName, jac);
 
     }
@@ -298,10 +298,11 @@ public class JAccordionMenu extends JPanel implements ActionListener {
    * Used to add a bar to the display
    * 
    * @param name Bar identifier
-   * @param panel
+   * @param bar 
    */
   public void addBar(String name, JAcordionBar bar) {
     getAllBars().put(name, bar);
+    bar.addActionListener(this);
     revertAll();
   }
 
@@ -359,7 +360,11 @@ public class JAccordionMenu extends JPanel implements ActionListener {
     getTopList().clear();
     getBottomList().clear();
     getTopPanel().removeAll();
+    getCenterPanel().removeAll();
     getBottomPanel().removeAll();
+    
+    
+    getNorthLayout().setRows(getAllBars().size());
 
     // add everything
     for (Entry<String, JAcordionBar> entry : this.allBars.entrySet()) {
@@ -420,11 +425,11 @@ public class JAccordionMenu extends JPanel implements ActionListener {
 
     if (e.getSource() instanceof JAcordionBar) {
       this.centerPanel.removeAll();
-      JAcordionBar jac = (JAcordionBar) e.getSource();
-      String jacName = jac.getName();
-      MyLogger.info(this, "Source of the event is " + jacName);
-      sortAll(jacName);
-      this.centerPanel.add(jac.getAsocPanel(), BorderLayout.NORTH);
+      JAcordionBar jab = (JAcordionBar) e.getSource();
+      String jabName = jab.getName();
+      MyLogger.info(this, "Source of the event is " + jabName);
+      sortAll(jabName);
+      this.centerPanel.add(jab.getAsocPanel(), BorderLayout.CENTER);
       this.centerPanel.validate();
 
     }

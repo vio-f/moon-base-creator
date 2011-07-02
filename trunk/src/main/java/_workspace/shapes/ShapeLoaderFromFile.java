@@ -63,7 +63,7 @@ public class ShapeLoaderFromFile {
       
       //TODO implement distinction between dome.name values
       try {
-        new DomeShape(selectedIntFr.wwGLCanvas, Position.fromDegrees(latitude, longitude, elevation), nsRadius, vertRadius, evRadius);
+        new DomeShape(selectedIntFr.getWwGLCanvas(), Position.fromDegrees(latitude, longitude, elevation), nsRadius, vertRadius, evRadius);
       } catch (Exception e) {
         MyLogger.error(null, "Error while trying to create component", e);
         e.printStackTrace();

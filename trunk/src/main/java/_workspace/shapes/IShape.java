@@ -1,6 +1,8 @@
 
 package _workspace.shapes;
 
+import java.io.File;
+
 import gov.nasa.worldwind.render.Renderable;
 import gov.nasa.worldwind.render.ShapeAttributes;
 
@@ -39,4 +41,12 @@ public ShapeAttributes getAttributes();
 
 
 void removeMe() throws Exception;
+
+
+/**
+ * TODO DESCRIPTION
+ * @param newFile
+ * @param identifier
+ */
+public void saveMe(File newFile, String identifier);
 }

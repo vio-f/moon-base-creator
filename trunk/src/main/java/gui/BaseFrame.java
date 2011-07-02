@@ -1,11 +1,15 @@
 package gui;
 
+import gui.actions.menubar.EditGoToAct;
+import gui.actions.menubar.EditHeadingAct;
 import gui.actions.menubar.EditResizeAct;
-import gui.actions.menubar.EditShowHideLayerTreeAct;
+import gui.actions.menubar.EditRollAct;
+import gui.actions.menubar.EditTiltAct;
 import gui.actions.menubar.FileExitAct;
 import gui.actions.menubar.FileLoadAct;
 import gui.actions.menubar.FileNewAct;
 import gui.actions.menubar.FileSaveAct;
+import gui.jaccordian.JAccordionMenu;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -18,13 +22,27 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
-import javax.swing.JToolBar;
-import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
+import utility.MyLogger;
+
+/**
+ * TODO DESCRIPTION
+ * 
+ * @author viorel.florian
+ */
+/**
+ * TODO DESCRIPTION
+ * 
+ * @author viorel.florian
+ */
 public class BaseFrame extends JFrame {
 
-  private static BaseFrame INSTANCE = null;
+  /** serialVersionUID */
+  private static final long serialVersionUID = 1L;
+
+  /** INSTANCE */
+  private static BaseFrame INSTANCE;
 
   /*********** Mai jos sunt toate variabilele folosite ************************/
   /******************** Unele sunt initializate cu valori, altele nu **********/
@@ -32,136 +50,213 @@ public class BaseFrame extends JFrame {
   /********** Astfel componentele sunt accesibile la nevoie, ******************/
   /****** in afara acestei clase **********************************************/
 
-  public static JMenuBar menuBar = new JMenuBar();
+  public JMenuBar menuBar = new JMenuBar();
 
+  /** fileMenu */
   // meniul file
-  public static JMenu fileMenu = new JMenu("File");
+  public JMenu fileMenu = new JMenu("File");
 
+  /** fileNewItem */
   // file menu items
-  public static JMenuItem fileNewItem = new JMenuItem();
+  private JMenuItem fileNewItem = new JMenuItem();
 
-  public static JMenuItem fileOpenItem = new JMenuItem("Open...");
+  /** fileLoadItem */
+  private JMenuItem fileLoadItem = new JMenuItem();
 
-  public static JMenuItem fileSaveItem = new JMenuItem("Save...");
+  /** fileSaveItem */
+  private JMenuItem fileSaveItem = new JMenuItem();
 
-  public static JMenuItem fileExitItem = new JMenuItem("Exit...");
+  /** fileExitItem */
+  private JMenuItem fileExitItem = new JMenuItem();
 
-  // meniul Edit..
-  JMenu editMenu = new JMenu("Edit");
+  /** editMenu */
+  private JMenu editMenu = new JMenu("Edit");
 
-  // edit menu items
-  public static JMenuItem editShowHideLayerTreeItem = new JMenuItem();
+  /** editResizeItem */
+  private JMenuItem editResizeItem = new JMenuItem();
 
-  public static JMenuItem editMoveItem = new JMenuItem("MoveIt");
+  /** editTiltItem */
+  private JMenuItem editTiltItem = new JMenuItem();
 
-  public static JMenuItem editResize = new JMenuItem();
+  /** editTiltItem */
+  private JMenuItem editRollItem = new JMenuItem();
+  private JMenuItem editHeadingItem = new JMenuItem();
+  /** editGoToItem */
+  private JMenuItem editGoToItem = new JMenuItem();
 
   // meniul Help
-  JMenu helpMenu = new JMenu("Help");
+  /** helpMenu */
+  private JMenu helpMenu = new JMenu("Help");
 
   // help menu items
-  public static JMenuItem helpHelpcontentsItem = new JMenuItem("Help contents");
+  /** helpHelpcontentsItem */
+  private JMenuItem helpHelpcontentsItem = new JMenuItem("Help contents");
 
-  public static JMenuItem helpAboutItem = new JMenuItem("About");
+  /** helpAboutItem */
+  private JMenuItem helpAboutItem = new JMenuItem("About");
 
   // TODO: Add more menu items
 
-  public static JDesktopPane desktop = new JDesktopPane();
+  /** desktop */
+  private JDesktopPane desktop = new JDesktopPane();
 
-  // cream o intstanta al clasei de actiuni
+  /**
+   * ACTIONS instances
+   * 
+   * 
+   */
+  /** fileNewAction */
   FileNewAct fileNewAction = new FileNewAct(this);
-  
-  FileLoadAct fileLoadAction = new FileLoadAct(this);  
-  
-  FileSaveAct fileSaveAction = new FileSaveAct(this); 
 
+  /** fileLoadAction */
+  FileLoadAct fileLoadAction = new FileLoadAct(this);
+
+  /** fileSaveAction */
+  FileSaveAct fileSaveAction = new FileSaveAct(this);
+
+  /** fileExitAction */
   Action fileExitAction = new FileExitAct();
 
-  Action editShowHideAction = new EditShowHideLayerTreeAct();
-
+  /** editResizeAction */
   Action editResizeAction = new EditResizeAct();
 
-  public static InfoPanel iPanel = new InfoPanel();
+  /** editTiltAction */
+  Action editTiltAction = new EditTiltAct();
 
- // TODO remove this if other is finished >>>>> public static ToolWindowsPanel tPanel = new ToolWindowsPanel();
-  public static JAccordionMenu tPanel = new JAccordionMenu();
+  /** editTiltAction */
+  Action editRollAction = new EditRollAct();
+  /** editHeadingAction */
+  Action editHeadingAction = new EditHeadingAct();
 
-  /**********************************************************************/
-  /**********************************************************************/
-  /**********************************************************************/
+  /** editGoToAction */
+  Action editGoToAction = new EditGoToAct();
 
-  // the almighty constructor
+  /** infoPanel */
+  private InfoPanel infoPanel = new InfoPanel();
+
+  // TODO remove this if other is finished >>>>> public ToolWindowsPanel propertiesPanel =
+  // new ToolWindowsPanel();
+  /** propertiesPanel */
+  private JAccordionMenu propertiesPanel = new JAccordionMenu();
+
+  /**
+   * 
+   * Constructs a new instance.
+   */
   private BaseFrame() {
-    super("That's right!!! Its a \"Moon Base creator\""); // TODO think of a decent title
+    super("Moon Base creator - the future is ours");
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     this.setMinimumSize(new Dimension(480, 320));
-    this.setSize(getMaximumSize()); // TODO remove this latter
+    this.setSize(this.getMaximumSize()); // TODO remove this latter
     JPopupMenu.setDefaultLightWeightPopupEnabled(false); // without this the canvas will drawn over
                                                          // the menu
-
-    // seteaza frame LookandFeel dupa sistem
+    /*
+     * sets LOOk and Feel after the OS default
+     */
     try {
       UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
     } catch (Exception e) {
-      // TODO adauga rasp ptr exceptie
+      MyLogger.error(BaseFrame.getInstance(), "OS look and feel could not be set", e);
     }
 
-    /**********************************************************************/
-    // definim listener ptr obiecte
-    fileNewItem.setAction(fileNewAction);
-    fileSaveItem.setAction(fileSaveAction);
-    fileExitItem.setAction(fileExitAction);
-    fileOpenItem.setAction(fileLoadAction); 
+    /**
+     * Set menu item action listeners
+     */
+    this.getFileNewItem().setAction(this.fileNewAction);
+    this.fileSaveItem.setAction(this.fileSaveAction);
+    this.getFileExitItem().setAction(this.fileExitAction);
+    this.fileLoadItem.setAction(this.fileLoadAction);
 
-    editShowHideLayerTreeItem.setAction(editShowHideAction);
-    editResize.setAction(editResizeAction);
+    this.editResizeItem.setAction(this.editResizeAction);
+    this.editTiltItem.setAction(this.editTiltAction);
+    this.editRollItem.setAction(this.editRollAction);
+    this.editHeadingItem.setAction(this.editHeadingAction);
+    this.editGoToItem.setAction(this.editGoToAction);
     // TODO add more action listeners
 
     /**********************************************************************/
 
-    menuBar.add(fileMenu);
+    this.menuBar.add(this.fileMenu);
 
-    fileMenu.add(fileNewItem);
-    fileMenu.addSeparator();// adaugam un separator
-    fileMenu.add(fileOpenItem);
-    fileMenu.add(fileSaveItem);
-    fileMenu.addSeparator();// adaugam un separator
-    fileMenu.add(fileExitItem);
+    this.fileMenu.add(this.getFileNewItem());
+    this.fileMenu.addSeparator();// adaugam un separator
+    this.fileMenu.add(this.fileLoadItem);
+    this.fileMenu.add(this.fileSaveItem);
+    this.fileMenu.addSeparator();// adaugam un separator
+    this.fileMenu.add(this.fileExitItem);
 
-    menuBar.add(editMenu);
-    editShowHideLayerTreeItem.setEnabled(false);
-    editMenu.add(editShowHideLayerTreeItem);
-    editMenu.add(editMoveItem);
-    editMenu.add(editResize);
+    this.menuBar.add(this.editMenu);
+    this.editMenu.add(this.editResizeItem);
+    this.editMenu.add(this.editTiltItem);
+    this.editMenu.add(this.editRollItem);
+    this.editMenu.add(this.editHeadingAction);
+    this.fileMenu.addSeparator();// adaugam un separator
+    this.editMenu.add(this.editGoToItem);
 
-    menuBar.add(helpMenu);
-    helpMenu.add(helpHelpcontentsItem);
-    helpMenu.add(helpAboutItem);
+    this.menuBar.add(this.helpMenu);
+    this.helpMenu.add(this.helpHelpcontentsItem);
+    this.helpMenu.add(this.helpAboutItem);
 
     // adaugam menuBar la frame
-    this.setJMenuBar(menuBar);
+    this.setJMenuBar(this.menuBar);
 
     /**********************************************************************/
-    desktop.setBackground(Color.LIGHT_GRAY);
-    desktop.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
+    this.getDesktop().setBackground(Color.LIGHT_GRAY);
+    this.getDesktop().setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
     this.getContentPane().setLayout(new BorderLayout());
-    this.getContentPane().add(desktop, BorderLayout.CENTER);
+    this.getContentPane().add(this.getDesktop(), BorderLayout.CENTER);
     this.getContentPane().add(new InternalPalleteToobar(), BorderLayout.WEST);// TODO optimize for
                                                                               // add/remove
-    this.getContentPane().add(iPanel, BorderLayout.SOUTH);// TODO optimize for add/remove
-    this.getContentPane().add(tPanel, BorderLayout.EAST);// TODO optimize for add/remove
+    this.getContentPane().add(this.infoPanel, BorderLayout.SOUTH);// TODO optimize for add/remove
+    this.getContentPane().add(this.getPropertiesPanel(), BorderLayout.EAST);// TODO optimize for
+    // add/remove
 
     /**********************************************************************/
     // pornim
     this.setVisible(true);
     // pack();
   }
-  
+
   /**********************************************************************/
   /**********************************************************************/
   /**********************************************************************/
 
-  
+  /**
+   * Set desktop.
+   * 
+   * @param desktop
+   */
+  public void setDesktop(JDesktopPane desktop) {
+    this.desktop = desktop;
+  }
+
+  /**
+   * Get desktop.
+   * 
+   * @return desktop
+   */
+  public JDesktopPane getDesktop() {
+    return desktop;
+  }
+
+  /**
+   * Set fileNewItem.
+   * 
+   * @param fileNewItem
+   */
+  public void setFileNewItem(JMenuItem fileNewItem) {
+    this.fileNewItem = fileNewItem;
+  }
+
+  /**
+   * Get fileNewItem.
+   * 
+   * @return fileNewItem
+   */
+  public JMenuItem getFileNewItem() {
+    return fileNewItem;
+  }
+
   /**
    * Get instance.
    * 
@@ -175,5 +270,42 @@ public class BaseFrame extends JFrame {
     return INSTANCE;
 
   }
+
   // EOF
+
+  /**
+   * Set fileExitItem.
+   * 
+   * @param fileExitItem
+   */
+  public void setFileExitItem(JMenuItem fileExitItem) {
+    this.fileExitItem = fileExitItem;
+  }
+
+  /**
+   * Get fileExitItem.
+   * 
+   * @return fileExitItem
+   */
+  public JMenuItem getFileExitItem() {
+    return this.fileExitItem;
+  }
+
+  /**
+   * Set propertiesPanel.
+   * 
+   * @param propertiesPanel
+   */
+  public void setPropertiesPanel(JAccordionMenu propertiesPanel) {
+    this.propertiesPanel = propertiesPanel;
+  }
+
+  /**
+   * Get propertiesPanel.
+   * 
+   * @return propertiesPanel
+   */
+  public JAccordionMenu getPropertiesPanel() {
+    return propertiesPanel;
+  }
 }

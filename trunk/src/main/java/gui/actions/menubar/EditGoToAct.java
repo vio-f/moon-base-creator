@@ -7,7 +7,8 @@ import gov.nasa.worldwind.View;
 import gov.nasa.worldwind.geom.Position;
 import gui.BaseFrame;
 import gui.jaccordian.JAcordionBar;
-import gui.jaccordian.jAccordionPanels.ResizePanel;
+import gui.jaccordian.jAccordionPanels.ChangeRollPanel;
+import gui.jaccordian.jAccordionPanels.GoToPositionPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
@@ -24,14 +25,16 @@ import _workspace.MoonWorkspaceFactory;
  * 
  */
 @SuppressWarnings("serial")
-public class EditResizeAct extends AbstractAction {
-  /** COMPONET_NAME */
-  private final String  COMPONET_NAME = "Resize component";
+public class EditGoToAct extends AbstractAction {
 
-	/**
+
+  /** COMPONET_NAME */
+  private final String COMPONET_NAME = "Go To Position";
+
+  /**
 	 * 
 	 */
-	public EditResizeAct() {
+	public EditGoToAct() {
 	    super();
 	    setDefaultPropreties();
 	}
@@ -40,8 +43,8 @@ public class EditResizeAct extends AbstractAction {
 	 * Sets the default properties of the button
 	 */
 	private void setDefaultPropreties() {
-		putValue(Action.NAME, this.COMPONET_NAME);
-		KeyStroke key = KeyStroke.getKeyStroke(KeyEvent.VK_R,
+		putValue(Action.NAME, "Set view to...");
+		KeyStroke key = KeyStroke.getKeyStroke(KeyEvent.VK_G,
 				InputEvent.CTRL_DOWN_MASK);
 		putValue(Action.ACCELERATOR_KEY, key);
 
@@ -52,9 +55,7 @@ public class EditResizeAct extends AbstractAction {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-	  
-	  BaseFrame.getInstance().getPropertiesPanel().addBar(this.COMPONET_NAME, new JAcordionBar(this.COMPONET_NAME, ResizePanel.getInstance()));
-	  
+	  BaseFrame.getInstance().getPropertiesPanel().addBar(this.COMPONET_NAME, new JAcordionBar(this.COMPONET_NAME, GoToPositionPanel.getInstance()));
 
 	}
 }

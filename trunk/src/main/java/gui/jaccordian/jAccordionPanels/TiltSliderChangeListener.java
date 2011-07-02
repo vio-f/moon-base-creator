@@ -3,20 +3,14 @@
  * All rights reserved.
  * www.tba.nl
  */
-package gui.actions.toolWinPan;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+package gui.jaccordian.jAccordionPanels;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import utility.MyLogger;
 import _workspace.MoonWorkspaceFactory;
 import _workspace.MoonWorkspaceInternalFrame;
-
-import gui.ResizeComponent;
-
-import utility.MyLogger;
 
 /**
  * TODO DESCRIPTION
@@ -24,7 +18,7 @@ import utility.MyLogger;
  * @author viorel.florian
  */
 
-public class SliderChangeListener implements ChangeListener {
+public class TiltSliderChangeListener implements ChangeListener {
 
   /*
    * (non-Javadoc)
@@ -35,14 +29,14 @@ public class SliderChangeListener implements ChangeListener {
   public void stateChanged(ChangeEvent e) {
     MoonWorkspaceInternalFrame selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
 
-    ResizeComponent.setSizeBoxValue(ResizeComponent.getSlider().getValue());
+    ChangeTiltPanel.setSizeBoxValue(ChangeTiltPanel.getSlider().getValue());
     // sizeBox.setValue(sizeBoxValue);
-    ResizeComponent.getSizeBox().setValue(ResizeComponent.getSizeBoxValue());
-    ResizeComponent.resizeTo(ResizeComponent.getSizeBoxValue());
+    ChangeTiltPanel.getSizeBox().setValue(ChangeTiltPanel.getSizeBoxValue());
+    ChangeTiltPanel.tiltTo(ChangeTiltPanel.getSizeBoxValue());
     try {
-      selectedIntFr.wwGLCanvas.redraw();
+      selectedIntFr.getWwGLCanvas().redraw();
     } catch (Exception ee) {
-      MyLogger.getLogger().error("No wwd present");
+      MyLogger.error(this, "No component present", ee);
     }
   }
 }

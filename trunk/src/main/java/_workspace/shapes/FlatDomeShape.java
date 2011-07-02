@@ -21,7 +21,7 @@ import _workspace.MoonWorkspaceInternalFrame;
 /**
  * @author Viorel Florian Creates and manages "Dome" objects
  */
-public class DomeShape extends Ellipsoid implements IShape {
+public class FlatDomeShape extends Ellipsoid implements IShape {
   /** selectedIntFr */
   MoonWorkspaceInternalFrame selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
 
@@ -37,7 +37,7 @@ public class DomeShape extends Ellipsoid implements IShape {
    *        is at the time of call, with basic attributes
    * @throws Exception
    */
-  public DomeShape(WorldWindow wwd) throws Exception {
+  public FlatDomeShape(WorldWindow wwd) throws Exception {
     super();
     Position position = ShapeUtils.getNewShapePosition(wwd);
     double sizeInMeters = ShapeUtils.getViewportScaleFactor(wwd);
@@ -45,7 +45,7 @@ public class DomeShape extends Ellipsoid implements IShape {
 
     this.setCenterPosition(position);
     this.setNorthSouthRadius(diam);
-    this.setVerticalRadius(diam);
+    this.setVerticalRadius(diam/2);
     this.setEastWestRadius(diam);
     this.setAttributes(new BasicShapeAttributes());
 
@@ -69,7 +69,7 @@ public class DomeShape extends Ellipsoid implements IShape {
    *        basic attributes
    * @throws Exception
    */
-  public DomeShape(WorldWindow wwd, Position pos, double northSouthRadius, double verticalRadius,
+  public FlatDomeShape(WorldWindow wwd, Position pos, double northSouthRadius, double verticalRadius,
       double eastWestRadius) throws Exception {
     super(pos, northSouthRadius, verticalRadius, eastWestRadius);
     this.setAttributes(new BasicShapeAttributes());
@@ -106,9 +106,9 @@ public class DomeShape extends Ellipsoid implements IShape {
   private String generateName() {
     nextID++;
     if (nextID < 10) {
-      return "Dome " + "0" + nextID;
+      return "Flat dome " + "0" + nextID;
     }
-    return "Dome " + nextID;
+    return "Flat dome " + nextID;
   }
 
   /**

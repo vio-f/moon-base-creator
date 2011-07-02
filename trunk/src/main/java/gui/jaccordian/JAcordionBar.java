@@ -3,9 +3,7 @@
  * All rights reserved.
  * www.tba.nl
  */
-package gui;
-
-import java.awt.BorderLayout;
+package gui.jaccordian;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -19,36 +17,35 @@ import javax.swing.JPanel;
 public class JAcordionBar extends JButton {
   /** identifier and text displayed on the bar */
   private String name;
-  /** asocPanel - associated JPanel to be displayed when this bar is clicked*/
-  private JPanel asocPanel = null;
-  
-  
-  
 
+  /** asocPanel - associated JPanel to be displayed when this bar is clicked */
+  private JPanel asocPanel = null;
 
   /**
    * Constructs a new instance.
-   * @param name 
+   * 
+   * @param name
    */
   public JAcordionBar(String name) {
-    super (name);
+    super(name);
     this.setName(name);
     this.name = name;
   }
+
   /**
    * Constructs a new instance.
-   * @param name 
-   * @param jp 
+   * 
+   * @param name
+   * @param jp
    */
   public JAcordionBar(String name, JPanel jp) {
-    super (name);
+    super(name);
     this.name = name;
     this.setName(name);
     this.asocPanel = jp;
-    
+
   }
-  
-  
+
   /**
    * Set asocPanel.
    * 
@@ -64,7 +61,7 @@ public class JAcordionBar extends JButton {
    * @return asocPanel
    */
   public JPanel getAsocPanel() {
-    return asocPanel;
+    return this.asocPanel;
   }
 
 }

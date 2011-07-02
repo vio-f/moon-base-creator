@@ -18,21 +18,24 @@ import utility.MyLogger;
 import _workspace.MoonWorkspaceFactory;
 import _workspace.MoonWorkspaceInternalFrame;
 import _workspace.shapes.DomeShape;
+import _workspace.shapes.FlatDomeShape;
 import _workspace.shapes.IShape;
 
 /**
  * @author Viorel Florian
  * 
  */
-public class AddDome extends AbstractIntToolbarAct {
+public class AddFlatDome extends AbstractIntToolbarAct {
+	/** lastDome */
 	@SuppressWarnings("unused")
 	private IShape lastDome = null; //TODO link this to the ShapeListner
-	Icon sphereIcon = new ImageIcon(getClass().getResource("/res/sphere.png"));
+	/** sphereIcon */
+	Icon sphereIcon = new ImageIcon(getClass().getResource("/res/sphere1.png"));
 
 	/**
 	 * 
 	 */
-	public AddDome() {
+	public AddFlatDome() {
 		super();
 		setDefaultPropreties();
 	}
@@ -43,9 +46,9 @@ public class AddDome extends AbstractIntToolbarAct {
 	@Override
   protected void setDefaultPropreties() {
 		putValue(Action.NAME, "");
-		putValue(Action.SHORT_DESCRIPTION, "Creates a Dome relative to current " +
+		putValue(Action.SHORT_DESCRIPTION, "Creates a Flat Dome relative to current " +
 				"altitude in the center of the workspace");
-		putValue(Action.SMALL_ICON, sphereIcon);
+		putValue(Action.SMALL_ICON, this.sphereIcon);
 
 	}
 
@@ -58,18 +61,17 @@ public class AddDome extends AbstractIntToolbarAct {
 				.getInstance().getLastSelectedIntFr();
 		IShape d;
 		try {
-			MyLogger.info(this, "New sphere pressed");
+			MyLogger.info(this, "New Flat Shpere pressed");
 			if (selectedIntFr != null) {
-				d = new DomeShape(selectedIntFr.getWwGLCanvas());
-
+				d = new FlatDomeShape(selectedIntFr.getWwGLCanvas());
+				
+				//double diam = ((DomeShape)d).getNorthSouthRadius()/2;
+				//((DomeShape)d).setVerticalRadius(diam);
+								
 				this.lastDome = d;
 				MyLogger.info(this, "" + d.getIdentifier() + " added");
 			} else
-				MyLogger.error(this, "No suitable workspace was found"); // new
-																			// NullPointerException()
-																			// can
-																			// be
-																			// added
+				MyLogger.error(this, "No suitable workspace was found"); 
 		} catch (Exception e) {
 			MyLogger.error(this, e); // new NullPointerException() can be added
 		}
