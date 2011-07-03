@@ -1,11 +1,8 @@
 package gui;
 
-import javax.swing.SwingWorker;
-
-import _workspace.MoonWorkspaceFactory;
-import utility.MyLogger;
 import gov.nasa.worldwind.Configuration;
 import gov.nasa.worldwind.avlist.AVKey;
+import utility.MyLogger;
 
 
 public class StartMe {

@@ -13,6 +13,9 @@ import javax.swing.JSlider;
 import utility.MyLogger;
 import _workspace.MoonWorkspaceFactory;
 import _workspace.MoonWorkspaceInternalFrame;
+import _workspace.shapes.ConnectorDomeShape;
+import _workspace.shapes.DomeShape;
+import _workspace.shapes.FlatDomeShape;
 import _workspace.shapes.ShapeListener;
 
 /**
@@ -71,19 +74,29 @@ public class ResizePanel extends JPanel {
     Object obj = null;
 
     obj = ShapeListener.lastSelectedObj;
-    // String s = ShapeListener.lastSelectedObj.toString();
-    MyLogger.getLogger().error(obj);
 
     if (obj == null) {
       MyLogger.error(this, "No component selected");
       return;
 
     }
-    if (obj instanceof Ellipsoid) {
+    if (obj instanceof DomeShape) {
       ((Ellipsoid) obj).setEastWestRadius(ns * 100);
       ((Ellipsoid) obj).setNorthSouthRadius(ns * 100);
       ((Ellipsoid) obj).setVerticalRadius(ns * 100);
     }
+    if (obj instanceof FlatDomeShape) {
+    	((Ellipsoid) obj).setEastWestRadius(ns * 100);
+    	((Ellipsoid) obj).setNorthSouthRadius(ns * 100);
+    	((Ellipsoid) obj).setVerticalRadius(ns * 100 / 2);
+    }
+    if (obj instanceof ConnectorDomeShape) {
+    	((Ellipsoid) obj).setEastWestRadius(ns * 100 / 3.5);
+    	((Ellipsoid) obj).setNorthSouthRadius(ns * 100);
+    	((Ellipsoid) obj).setVerticalRadius(ns * 100 / 3.5);
+    }
+    
+    
 
   }
 

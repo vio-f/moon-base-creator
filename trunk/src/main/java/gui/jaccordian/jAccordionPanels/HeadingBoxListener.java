@@ -30,9 +30,9 @@ public class HeadingBoxListener implements ActionListener {
     @Override
     public void actionPerformed(final ActionEvent arg0) {
         MoonWorkspaceInternalFrame selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
-        ChangeHeadingPanel.setSizeBoxValue((Integer)ChangeHeadingPanel.getSizeBox().getValue());
-        ChangeHeadingPanel.getSlider().setValue(ChangeHeadingPanel.getSizeBoxValue());
-        ChangeHeadingPanel.headingTo(ChangeHeadingPanel.getSizeBoxValue());
+        ChangeHeadingPanel.getInstance().setSizeBoxValue((Integer)ChangeHeadingPanel.getInstance().getSizeBox().getValue());
+        ChangeHeadingPanel.getInstance().getSlider().setValue(ChangeHeadingPanel.getInstance().getSizeBoxValue());
+        ChangeHeadingPanel.headingTo(ChangeHeadingPanel.getInstance().getSizeBoxValue());
         try {
           selectedIntFr.getWwGLCanvas().redraw();
         } catch (Exception ee) {
