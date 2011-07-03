@@ -1,8 +1,3 @@
-/*
- * Copyright (C) TBA BV
- * All rights reserved.
- * www.tba.nl
- */
 package _workspace.shapes;
 
 import gov.nasa.worldwind.geom.Position;
@@ -19,7 +14,7 @@ import _workspace.MoonWorkspaceInternalFrame;
 import utility.MyLogger;
 
 /**
- * TODO DESCRIPTION
+ * Provides a static way to load shapes from a file
  * 
  * @author viorel.florian
  */
@@ -61,9 +56,25 @@ public class ShapeLoaderFromFile {
       double evRadius = Double.parseDouble(property.getProperty("dome.evRadius"));
       double vertRadius = Double.parseDouble(property.getProperty("dome.vertRadius"));
       
+      double tilt = Double.parseDouble(property.getProperty("dome.tilt"));
+      double roll = Double.parseDouble(property.getProperty("dome.roll"));
+      double heading = Double.parseDouble(property.getProperty("dome.heading"));
+      
       //TODO implement distinction between dome.name values
       try {
-        new DomeShape(selectedIntFr.getWwGLCanvas(), Position.fromDegrees(latitude, longitude, elevation), nsRadius, vertRadius, evRadius);
+    	  if(shapeName.startsWith("Dome")){
+    		  new DomeShape(selectedIntFr.getWwGLCanvas(), Position.fromDegrees(latitude, longitude, elevation), nsRadius, vertRadius, evRadius);
+    	  }
+    	  if(shapeName.startsWith("Flat Dome")){
+    		  new DomeShape(selectedIntFr.getWwGLCanvas(), Position.fromDegrees(latitude, longitude, elevation), nsRadius, vertRadius, evRadius);
+    	  }
+    	  if(shapeName.startsWith("Connector Dome")){
+    		  new DomeShape(selectedIntFr.getWwGLCanvas(), Position.fromDegrees(latitude, longitude, elevation), nsRadius, vertRadius, evRadius);
+    	  }
+    	  
+    	  
+    	  
+        
       } catch (Exception e) {
         MyLogger.error(null, "Error while trying to create component", e);
         e.printStackTrace();

@@ -33,26 +33,26 @@ public class ChangeHeadingPanel extends JPanel {
   private static MoonWorkspaceInternalFrame selectedIntFr = null;
 
   /** slider */
-  private static JSlider slider = new JSlider(0, 360, 15);
+  private JSlider slider = new JSlider(0, 360, 15);
 
   /** sizeBoxValue */
-  private static int sizeBoxValue = 0;
+  private int sizeBoxValue = 0;
 
   /**
    * sizeBox defines the format of the JFormattedTextField
    * */
-  private static JFormattedTextField sizeBox = new JFormattedTextField(getSizeBoxValue());
+  private JFormattedTextField sizeBox = new JFormattedTextField(getSizeBoxValue());
 
   /**
    * Constructs a new instance.
    */
   private ChangeHeadingPanel() {
-    selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
+    setSelectedIntFr(MoonWorkspaceFactory.getInstance().getLastSelectedIntFr());
     getSlider().setPreferredSize(new Dimension(110, 20));
     this.setLayout(new FlowLayout());
     getSizeBox().setColumns(6);
-    getSlider().addChangeListener(new RollSliderChangeListener());
-    getSizeBox().addActionListener(new RollBoxListener());
+    getSlider().addChangeListener(new HeadingSliderChangeListener());
+    getSizeBox().addActionListener(new HeadingBoxListener());
     this.add(getSlider());
     this.add(getSizeBox());
 
@@ -60,9 +60,9 @@ public class ChangeHeadingPanel extends JPanel {
 
   // TODO works only on mouse over
   /**
-   * @param tilt new tilt
+   * @param newHeading new tilt
    */
-  public static void headingTo(double tilt) {
+  public static void headingTo(double newHeading) {
     Object obj = null;
 
     obj = ShapeListener.lastSelectedObj;
@@ -76,7 +76,7 @@ public class ChangeHeadingPanel extends JPanel {
     }
     if (obj instanceof Ellipsoid) {
       //((Ellipsoid) obj).setTilt(Angle.fromDegrees(tilt));
-      ((Ellipsoid) obj).setHeading(Angle.fromDegrees(tilt));
+      ((Ellipsoid) obj).setHeading(Angle.fromDegrees(newHeading));
       
     }
 
@@ -87,8 +87,8 @@ public class ChangeHeadingPanel extends JPanel {
    * 
    * @param slider
    */
-  public static void setSlider(JSlider slider) {
-    ChangeHeadingPanel.slider = slider;
+  public void setSlider(JSlider slider) {
+    this.slider = slider;
   }
 
   /**
@@ -96,7 +96,7 @@ public class ChangeHeadingPanel extends JPanel {
    * 
    * @return slider
    */
-  public static JSlider getSlider() {
+  public JSlider getSlider() {
     return slider;
   }
 
@@ -105,8 +105,8 @@ public class ChangeHeadingPanel extends JPanel {
    * 
    * @param sizeBoxValue
    */
-  public static void setSizeBoxValue(int sizeBoxValue) {
-    ChangeHeadingPanel.sizeBoxValue = sizeBoxValue;
+  public void setSizeBoxValue(int sizeBoxValue) {
+    this.sizeBoxValue = sizeBoxValue;
   }
 
   /**
@@ -114,8 +114,8 @@ public class ChangeHeadingPanel extends JPanel {
    * 
    * @return sizeBoxValue
    */
-  public static int getSizeBoxValue() {
-    return sizeBoxValue;
+  public int getSizeBoxValue() {
+    return this.sizeBoxValue;
   }
 
   /**
@@ -123,8 +123,8 @@ public class ChangeHeadingPanel extends JPanel {
    * 
    * @param sizeBox
    */
-  public static void setSizeBox(JFormattedTextField sizeBox) {
-    ChangeHeadingPanel.sizeBox = sizeBox;
+  public void setSizeBox(JFormattedTextField sizeBox) {
+    this.sizeBox = sizeBox;
   }
 
   /**
@@ -132,8 +132,8 @@ public class ChangeHeadingPanel extends JPanel {
    * 
    * @return sizeBox
    */
-  public static JFormattedTextField getSizeBox() {
-    return sizeBox;
+  public JFormattedTextField getSizeBox() {
+    return this.sizeBox;
   }
 
   /**
@@ -147,5 +147,13 @@ public class ChangeHeadingPanel extends JPanel {
     }
     return INSTANCE;
   }
+
+public static void setSelectedIntFr(MoonWorkspaceInternalFrame selectedIntFr) {
+	ChangeHeadingPanel.selectedIntFr = selectedIntFr;
+}
+
+public static MoonWorkspaceInternalFrame getSelectedIntFr() {
+	return selectedIntFr;
+}
 
 }

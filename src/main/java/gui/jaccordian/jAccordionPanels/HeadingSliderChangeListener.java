@@ -28,10 +28,10 @@ public class HeadingSliderChangeListener implements ChangeListener {
   public void stateChanged(ChangeEvent e) {
     MoonWorkspaceInternalFrame selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
 
-    ChangeHeadingPanel.setSizeBoxValue(ChangeHeadingPanel.getSlider().getValue());
+    ChangeHeadingPanel.getInstance().setSizeBoxValue(ChangeHeadingPanel.getInstance().getSlider().getValue());
     // sizeBox.setValue(sizeBoxValue);
-    ChangeHeadingPanel.getSizeBox().setValue(ChangeHeadingPanel.getSizeBoxValue());
-    ChangeHeadingPanel.headingTo(ChangeHeadingPanel.getSizeBoxValue());
+    ChangeHeadingPanel.getInstance().getSizeBox().setValue(ChangeHeadingPanel.getInstance().getSizeBoxValue());
+    ChangeHeadingPanel.headingTo(ChangeHeadingPanel.getInstance().getSizeBoxValue());
     try {
       selectedIntFr.getWwGLCanvas().redraw();
     } catch (Exception ee) {

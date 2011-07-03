@@ -336,7 +336,7 @@ public class Ellipsoid extends AbstractShape
      */
     public Angle getHeading()
     {
-        return heading;
+        return this.heading;
     }
 
     /**
@@ -359,7 +359,7 @@ public class Ellipsoid extends AbstractShape
      */
     public Angle getTilt()
     {
-        return tilt;
+        return this.tilt;
     }
 
     /**
