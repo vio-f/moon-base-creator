@@ -7,24 +7,14 @@ import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
 import gov.nasa.worldwind.event.SelectEvent;
 import gov.nasa.worldwind.event.SelectListener;
 import gov.nasa.worldwind.pick.PickedObjectList;
+import gov.nasa.worldwind.render.AbstractShape;
+import gov.nasa.worldwind.render.Annotation;
 import gov.nasa.worldwind.render.Ellipsoid;
+import gov.nasa.worldwind.render.GlobeAnnotation;
 import gov.nasa.worldwind.util.BasicDragger;
+import _workspace.MoonWorkspaceFactory;
 import _workspace.MoonWorkspaceInternalFrame;
 
-/**
- * @author Viorel Florian
- * 
- */
-/**
- * TODO DESCRIPTION
- * 
- * @author viorel.florian
- */
-/**
- * TODO DESCRIPTION
- * 
- * @author viorel.florian
- */
 /**
  * TODO DESCRIPTION
  * 
@@ -68,39 +58,45 @@ public class ShapeListener {
 
     this.wwd.addSelectListener(new SelectListener() {
       public void selected(SelectEvent event) {
-
         if (event.getTopObject() instanceof Ellipsoid) {
           // TODO works only on mouse over
           lastSelectedObj = event.getTopObject();
-        }
-        // Have rollover events highlight the rolled-over object.
-        if (event.getEventAction().equals(SelectEvent.ROLLOVER)
-            && !ShapeListener.this.dragger.isDragging()) {
-          // if (highlight(event.getTopObject()))
-          ShapeListener.this.wwd.redraw();
-        }
-        // Have hover events popup an annotation about the hovered-over object.
-        else if (event.getEventAction().equals(SelectEvent.HOVER)
-            && !ShapeListener.this.dragger.isDragging()) {
-          // if (showToolTip(event.getTopObject(), event))
-          ShapeListener.this.wwd.redraw();
-        }
 
-        // Have drag events drag the selected object.
-        else if (event.getEventAction().equals(SelectEvent.DRAG_END)
-            || event.getEventAction().equals(SelectEvent.DRAG)) {
-          // Delegate dragging computations to a dragger.
-          ShapeListener.this.dragger.selected(event);
+          // Have rollover events highlight the rolled-over object.
+          if (event.getEventAction().equals(SelectEvent.ROLLOVER)
+              && !ShapeListener.this.dragger.isDragging()) {
+            // if (highlight(event.getTopObject()))
+            ShapeListener.this.wwd.redraw();
+          }
+          // Have hover events popup an annotation about the hovered-over object.
+          else if (event.getEventAction().equals(SelectEvent.HOVER)
+              && !ShapeListener.this.dragger.isDragging()) {
+            // if (showToolTip(event.getTopObject(), event))
 
-          // We missed any roll-over events while dragging, so highlight any under the cursor now,
-          // or de-highlight the dragged shape if it's no longer under the cursor.
-          if (event.getEventAction().equals(SelectEvent.DRAG_END)) {
-            PickedObjectList pol = ShapeListener.this.wwd.getObjectsAtCurrentPosition();
-            if (pol != null) {
-              // highlight(pol.getTopObject());
-              ShapeListener.this.wwd.repaint();
+            Object obj = event.getTopObject();
+            Annotation ann = new GlobeAnnotation(obj.getClass().getName(),
+                ((Ellipsoid) obj).getCenterPosition());
+            currentWorkspace.getAnnotationLayer().addAnnotation(ann);
+
+            ShapeListener.this.wwd.redraw();
+          }
+
+          // Have drag events drag the selected object.
+          else if (event.getEventAction().equals(SelectEvent.DRAG_END)
+              || event.getEventAction().equals(SelectEvent.DRAG)) {
+            // Delegate dragging computations to a dragger.
+            ShapeListener.this.dragger.selected(event);
+
+            // We missed any roll-over events while dragging, so highlight any under the cursor now,
+            // or de-highlight the dragged shape if it's no longer under the cursor.
+            if (event.getEventAction().equals(SelectEvent.DRAG_END)) {
+              PickedObjectList pol = ShapeListener.this.wwd.getObjectsAtCurrentPosition();
+              if (pol != null) {
+                // highlight(pol.getTopObject());
+                ShapeListener.this.wwd.repaint();
+              }
+
             }
-
           }
         }
       }
