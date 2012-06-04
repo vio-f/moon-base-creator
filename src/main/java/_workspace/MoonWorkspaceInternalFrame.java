@@ -85,7 +85,7 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements Intern
 
     BaseFrame.getInstance().getDesktop().add(this);
     this.getLayers().add(this.getRendLayer());
-    this.getLayers().add(this.annotationLayer);
+    this.getLayers().add(this.getAnnotationLayer());
     // TODO make this optional
     this.getLayers().add(new CustomLayerManager(this.getWwGLCanvas()));
     this.getWwGLCanvas().redrawNow();
@@ -101,7 +101,7 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements Intern
 
     new ShapeListener(this);
     this.getRendLayer().setName("Renderable layer");
-    this.annotationLayer.setName("Anotation Layer");
+    this.getAnnotationLayer().setName("Anotation Layer");
   }
 
   /**
@@ -247,6 +247,24 @@ public class MoonWorkspaceInternalFrame extends JInternalFrame implements Intern
       MoonWorkspaceFactory.getInstance().setLastSelectedIntFr(null);
     }
 
+  }
+
+  /**
+   * Set annotationLayer.
+   * 
+   * @param annotationLayer
+   */
+  public void setAnnotationLayer(AnnotationLayer annotationLayer) {
+    this.annotationLayer = annotationLayer;
+  }
+
+  /**
+   * Get annotationLayer.
+   * 
+   * @return annotationLayer
+   */
+  public AnnotationLayer getAnnotationLayer() {
+    return annotationLayer;
   }
 
 }
