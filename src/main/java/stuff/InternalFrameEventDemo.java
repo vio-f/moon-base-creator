@@ -13,7 +13,11 @@ public class InternalFrameEventDemo
                      extends JFrame
                      implements InternalFrameListener,
                                 ActionListener {
-    JTextArea display;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	JTextArea display;
     JDesktopPane desktop;
     JInternalFrame displayWindow;
     JInternalFrame listenedToWindow;

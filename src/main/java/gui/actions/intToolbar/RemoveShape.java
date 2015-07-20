@@ -4,16 +4,11 @@
 package gui.actions.intToolbar;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 
-import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.KeyStroke;
 
-import sun.security.jca.GetInstance;
 import utility.MyLogger;
 import _workspace.MoonWorkspaceFactory;
 import _workspace.MoonWorkspaceInternalFrame;
@@ -25,6 +20,10 @@ import _workspace.shapes.ShapeListener;
  * 
  */
 public class RemoveShape extends AbstractIntToolbarAct {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2220196133534513998L;
 	Icon remIcon = new ImageIcon(getClass().getResource("/res/cross.png"));
 	private MoonWorkspaceInternalFrame selectedIntFr = null;
 	private static IShape lastshape = null;

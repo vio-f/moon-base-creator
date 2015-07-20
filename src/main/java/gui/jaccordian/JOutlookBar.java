@@ -8,12 +8,23 @@ package gui.jaccordian;
 //Import the GUI classes
 import gui.jaccordian.jAccordionPanels.ResizePanel;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 // Import the Java classes
-import java.util.*;
+import java.util.Map;
+
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  * A JOutlookBar provides a component that is similar to a JTabbedPane, but instead of maintaining
@@ -22,6 +33,11 @@ import java.util.*;
 public class JOutlookBar extends JPanel implements ActionListener
 {
   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+/**
    * The top panel: contains the buttons displayed on the top of the JOutlookBar
    */
   private JPanel topPanel = new JPanel( new GridLayout( 1, 1 ) );
@@ -34,7 +50,7 @@ public class JOutlookBar extends JPanel implements ActionListener
   /**
    * A LinkedHashMap of bars: we use a linked hash map to preserve the order of the bars
    */
-  private Map bars = new LinkedHashMap();
+  private Map<String, BarInfo> bars = new LinkedHashMap<String, BarInfo>();
 
   /**
    * The currently visible bar (zero-based index)
@@ -137,7 +153,7 @@ public class JOutlookBar extends JPanel implements ActionListener
 
 
     // Get an iterator to walk through out bars with
-    Iterator itr = this.bars.keySet().iterator();
+    Iterator<String> itr = this.bars.keySet().iterator();
 
 
     // Render the top bars: remove all components, reset the GridLayout to
@@ -191,7 +207,7 @@ public class JOutlookBar extends JPanel implements ActionListener
   public void actionPerformed( ActionEvent e )
   {
     int currentBar = 0;
-    for( Iterator i=this.bars.keySet().iterator(); i.hasNext(); )
+    for( Iterator<String> i=this.bars.keySet().iterator(); i.hasNext(); )
     {
       String barName = ( String )i.next();
       BarInfo barInfo = ( BarInfo )this.bars.get( barName );

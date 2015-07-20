@@ -1,7 +1,6 @@
 package gui.jaccordian;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -35,7 +34,7 @@ public class JAccordionMenu extends JPanel implements ActionListener {
   private GridLayout northLayout = new GridLayout(5, 1);
 
   /** centerLayout - the layout set for the unopened components on the top side */
-  private GridLayout centerLayout = new GridLayout(5, 1);
+//  private GridLayout centerLayout = new GridLayout(5, 1);
 
   /** southLayout - the layout set for the unopened components on the bottom side */
   private GridLayout southLayout = new GridLayout(5, 1);
@@ -406,17 +405,17 @@ public class JAccordionMenu extends JPanel implements ActionListener {
    * @param name The name associated to a component
    * @return The current parent of this component
    */
-  public JPanel getPosition(String name) {
-
-    Component comp = null;
-    if (comp.getParent().equals(getTopPanel())) {
-      return getTopPanel();
-    }
-    if (comp.getParent().equals(getBottomPanel())) {
-      return getBottomPanel();
-    }
-    return null;
-  }
+//  public JPanel getPosition(String name) {
+//
+//    Component comp = null;
+//    if (comp.getParent().equals(getTopPanel())) {
+//      return getTopPanel();
+//    }
+//    if (comp.getParent().equals(getBottomPanel())) {
+//      return getBottomPanel();
+//    }
+//    return null;
+//  }
 
   /**
    * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)

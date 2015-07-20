@@ -10,16 +10,18 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 
-import _workspace.MoonWorkspaceFactory;
-import _workspace.MoonWorkspaceInternalFrame;
-
 import utility.MyLogger;
+import _workspace.MoonWorkspaceFactory;
 
 //TODO explore EVENTHANDLER
 /**
  * 
  */
 public class GuiActions extends AbstractAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JFrame f;
 
 	GuiActions(JFrame f) {
@@ -28,7 +30,7 @@ public class GuiActions extends AbstractAction {
 
 	// @Override
 	public void actionPerformed(ActionEvent e) {
-		MoonWorkspaceInternalFrame selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
+//		MoonWorkspaceInternalFrame selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
 
 		if (e.getSource().equals(BaseFrame.getInstance().getFileNewItem())) {
 			// System.out.println("New has been pressed");

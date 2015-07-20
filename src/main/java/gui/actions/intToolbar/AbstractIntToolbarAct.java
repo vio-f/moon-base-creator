@@ -5,20 +5,8 @@ package gui.actions.intToolbar;
 
 
 import java.awt.event.ActionEvent;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.KeyStroke;
-
-import utility.MyLogger;
-import _workspace.MoonWorkspaceFactory;
-import _workspace.MoonWorkspaceInternalFrame;
-import _workspace.shapes.DomeShape;
-import _workspace.shapes.IShape;
 
 /**
  * @author Viorel Florian
@@ -26,6 +14,12 @@ import _workspace.shapes.IShape;
  */
 public abstract class AbstractIntToolbarAct extends AbstractAction {
 	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 
 	/**
 	 * Constructor

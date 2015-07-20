@@ -5,14 +5,10 @@ package gui.actions.intToolbar;
 
 
 import java.awt.event.ActionEvent;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 
-import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.KeyStroke;
 
 import utility.MyLogger;
 import _workspace.MoonWorkspaceFactory;
@@ -25,6 +21,10 @@ import _workspace.shapes.IShape;
  * 
  */
 public class AddDome extends AbstractIntToolbarAct {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7271820311126222043L;
 	@SuppressWarnings("unused")
 	private IShape lastDome = null; //TODO link this to the ShapeListner
 	Icon sphereIcon = new ImageIcon(getClass().getResource("/res/sphere.png"));

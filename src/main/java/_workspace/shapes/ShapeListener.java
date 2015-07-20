@@ -7,12 +7,10 @@ import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
 import gov.nasa.worldwind.event.SelectEvent;
 import gov.nasa.worldwind.event.SelectListener;
 import gov.nasa.worldwind.pick.PickedObjectList;
-import gov.nasa.worldwind.render.AbstractShape;
 import gov.nasa.worldwind.render.Annotation;
 import gov.nasa.worldwind.render.Ellipsoid;
 import gov.nasa.worldwind.render.GlobeAnnotation;
 import gov.nasa.worldwind.util.BasicDragger;
-import _workspace.MoonWorkspaceFactory;
 import _workspace.MoonWorkspaceInternalFrame;
 
 /**

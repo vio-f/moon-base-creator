@@ -4,14 +4,11 @@ import gov.nasa.worldwind.geom.Position;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Properties;
 
+import utility.MyLogger;
 import _workspace.MoonWorkspaceFactory;
 import _workspace.MoonWorkspaceInternalFrame;
-
-import utility.MyLogger;
 
 /**
  * Provides a static way to load shapes from a file
@@ -56,9 +53,9 @@ public class ShapeLoaderFromFile {
       double evRadius = Double.parseDouble(property.getProperty("dome.evRadius"));
       double vertRadius = Double.parseDouble(property.getProperty("dome.vertRadius"));
       
-      double tilt = Double.parseDouble(property.getProperty("dome.tilt"));
-      double roll = Double.parseDouble(property.getProperty("dome.roll"));
-      double heading = Double.parseDouble(property.getProperty("dome.heading"));
+//      double tilt = Double.parseDouble(property.getProperty("dome.tilt"));
+//      double roll = Double.parseDouble(property.getProperty("dome.roll"));
+//      double heading = Double.parseDouble(property.getProperty("dome.heading"));
       
       //TODO implement distinction between dome.name values
       try {

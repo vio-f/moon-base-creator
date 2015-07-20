@@ -109,10 +109,10 @@ public class BaseFrame extends JFrame {
   FileNewAct fileNewAction = new FileNewAct(this);
 
   /** fileLoadAction */
-  FileLoadAct fileLoadAction = new FileLoadAct(this);
+  FileLoadAct fileLoadAction = new FileLoadAct();
 
   /** fileSaveAction */
-  FileSaveAct fileSaveAction = new FileSaveAct(this);
+  FileSaveAct fileSaveAction = new FileSaveAct();
 
   /** fileExitAction */
   Action fileExitAction = new FileExitAct();

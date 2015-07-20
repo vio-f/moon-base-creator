@@ -2,7 +2,6 @@ package gui.jaccordian.jAccordionPanels;
 
 import gov.nasa.worldwind.render.Ellipsoid;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
@@ -11,8 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 
 import utility.MyLogger;
-import _workspace.MoonWorkspaceFactory;
-import _workspace.MoonWorkspaceInternalFrame;
 import _workspace.shapes.ConnectorDomeShape;
 import _workspace.shapes.DomeShape;
 import _workspace.shapes.FlatDomeShape;
@@ -40,7 +37,7 @@ public class ResizePanel extends JPanel {
   private static JFormattedTextField sizeBox = new JFormattedTextField(getSizeBoxValue());
 
   /** selectedIntFr */
-  private static MoonWorkspaceInternalFrame selectedIntFr = null;
+//  private static MoonWorkspaceInternalFrame selectedIntFr = null;
 
   /** sliderListener */
   private static ResizeSliderChangeListener sliderListener = new ResizeSliderChangeListener();
@@ -53,7 +50,7 @@ public class ResizePanel extends JPanel {
    * Constructs a new instance.
    */
   public ResizePanel() {
-    selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
+//    selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
     getSlider().setPreferredSize(new Dimension(110, 20));
     this.setLayout(new FlowLayout());
     getSizeBox().setColumns(6);

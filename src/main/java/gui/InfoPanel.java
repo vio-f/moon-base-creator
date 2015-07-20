@@ -16,6 +16,11 @@ import javax.swing.JTextPane;
  */
 public class InfoPanel extends JPanel {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 *  mbcOutput Logger writes here too  
 	 * 
 	 */

@@ -1,29 +1,19 @@
 package stuff;
 
-import gov.nasa.worldwind.geom.Position;
-import gov.nasa.worldwind.layers.RenderableLayer;
-import gov.nasa.worldwind.render.Ellipsoid;
-import gui.InternalPalleteToobar;
-
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
-import javax.swing.JFrame;
-import javax.swing.event.AncestorListener;
-
-import _workspace.MoonWorkspaceFactory;
-import _workspace.MoonWorkspaceInternalFrame;
-import _workspace.shapes.CompoundConnector;
-import _workspace.shapes.DomeShape;
-import _workspace.shapes.ShapesPool;
-
-import utility.MyLogger;
 
 //TODO explore EVENTHANDLER
 /**
  * 
  */
 public class ToolbarActions extends AbstractAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/*
 	static ToolbarActions instance = null;
 

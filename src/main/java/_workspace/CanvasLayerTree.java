@@ -3,15 +3,12 @@
  */
 package _workspace;
 
-//import gov.nasa.worldwind.avlist.AVKey;
-import gov.nasa.worldwind.WorldWindow;
 import gov.nasa.worldwind.examples.LayerTree;
 import gov.nasa.worldwind.examples.util.HotSpotController;
 import gov.nasa.worldwind.layers.CompassLayer;
 import gov.nasa.worldwind.layers.Layer;
 import gov.nasa.worldwind.layers.LayerList;
 import gov.nasa.worldwind.layers.RenderableLayer;
-import gov.nasa.worldwind.examples.ApplicationTemplate;
 
 /**
  * @author Vio This class has been adapted to fit the needs of this project

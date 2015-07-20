@@ -15,6 +15,11 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class ProgressDialog extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	JProgressBar pBar = new JProgressBar(0, 500);
 
 	boolean keepRunning = false;

@@ -21,6 +21,10 @@ import _workspace.shapes.IShape;
  * 
  */
 public class AddConnectorDome extends AbstractIntToolbarAct {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1194003663059489315L;
 	/** lastDome */
 	@SuppressWarnings("unused")
 	private IShape lastDome = null; //TODO link this to the ShapeListner

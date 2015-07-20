@@ -3,11 +3,8 @@
  */
 package gui.actions.menubar;
 
-import gov.nasa.worldwind.View;
-import gov.nasa.worldwind.geom.Position;
 import gui.BaseFrame;
 import gui.jaccordian.JAcordionBar;
-import gui.jaccordian.jAccordionPanels.ChangeRollPanel;
 import gui.jaccordian.jAccordionPanels.GoToPositionPanel;
 
 import java.awt.event.ActionEvent;
@@ -17,8 +14,6 @@ import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.KeyStroke;
-
-import _workspace.MoonWorkspaceFactory;
 
 /**
  * @author Viorel Florian

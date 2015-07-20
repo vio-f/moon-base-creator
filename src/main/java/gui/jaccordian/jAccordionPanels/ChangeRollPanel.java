@@ -14,8 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 
 import utility.MyLogger;
-import _workspace.MoonWorkspaceFactory;
-import _workspace.MoonWorkspaceInternalFrame;
 import _workspace.shapes.ShapeListener;
 
 /**
@@ -30,7 +28,7 @@ public class ChangeRollPanel extends JPanel {
   private static ChangeRollPanel INSTANCE = null;
 
   /** selectedIntFr */
-  private static MoonWorkspaceInternalFrame selectedIntFr = null;
+//  private static MoonWorkspaceInternalFrame selectedIntFr = null;
 
   /** slider */
   private static JSlider slider = new JSlider(0, 360, 15);
@@ -47,7 +45,7 @@ public class ChangeRollPanel extends JPanel {
    * Constructs a new instance.
    */
   private ChangeRollPanel() {
-    selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
+//    selectedIntFr = MoonWorkspaceFactory.getInstance().getLastSelectedIntFr();
     getSlider().setPreferredSize(new Dimension(110, 20));
     this.setLayout(new FlowLayout());
     getSizeBox().setColumns(6);

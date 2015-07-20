@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-import javax.swing.Icon;
 
 /**
  * TODO DESCRIPTION
@@ -15,6 +14,11 @@ import javax.swing.Icon;
 public class MyAction extends AbstractAction {
 
   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+/**
    * Constructs a new instance.
    */
   public MyAction() {

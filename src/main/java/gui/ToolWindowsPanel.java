@@ -7,17 +7,19 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.LayoutManager;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 /**
  * @author Viorel Florian
  * 
  */
 public class ToolWindowsPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static JDesktopPane twpDesk = new JDesktopPane();
 
 	/**

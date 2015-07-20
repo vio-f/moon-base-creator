@@ -15,9 +15,6 @@ import javax.swing.JPanel;
  */
 @SuppressWarnings("serial")
 public class JAcordionBar extends JButton {
-  /** identifier and text displayed on the bar */
-  private String name;
-
   /** asocPanel - associated JPanel to be displayed when this bar is clicked */
   private JPanel asocPanel = null;
 
@@ -29,7 +26,6 @@ public class JAcordionBar extends JButton {
   public JAcordionBar(String name) {
     super(name);
     this.setName(name);
-    this.name = name;
   }
 
   /**
@@ -40,7 +36,6 @@ public class JAcordionBar extends JButton {
    */
   public JAcordionBar(String name, JPanel jp) {
     super(name);
-    this.name = name;
     this.setName(name);
     this.asocPanel = jp;
 

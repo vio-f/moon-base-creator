@@ -5,18 +5,16 @@
  */
 package gui.jaccordian.jAccordionPanels;
 
+import gov.nasa.worldwind.View;
+import gov.nasa.worldwind.geom.Position;
+
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import gov.nasa.worldwind.View;
-import gov.nasa.worldwind.geom.Position;
-
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
-
-import com.sun.org.apache.xpath.internal.operations.Gte;
 
 import _workspace.MoonWorkspaceFactory;
 
