@@ -1,1 +1,6 @@
+/.settings/
 /bin/
+/build/
+/target/
+/runtime/
+mbc.log
