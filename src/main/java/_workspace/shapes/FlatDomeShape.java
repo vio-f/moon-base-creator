@@ -4,7 +4,7 @@
 package _workspace.shapes;
 
 import gov.nasa.worldwind.WorldWindow;
-import gov.nasa.worldwind.examples.util.ShapeUtils;
+import gov.nasa.worldwindx.examples.util.ShapeUtils;
 import gov.nasa.worldwind.geom.Angle;
 import gov.nasa.worldwind.geom.Position;
 import gov.nasa.worldwind.render.BasicShapeAttributes;
@@ -94,7 +94,7 @@ public class FlatDomeShape extends Ellipsoid implements IShape {
 		super(pos, northSouthRadius, verticalRadius, eastWestRadius, Angle
 				.fromDegrees(heading), Angle.fromDegrees(tilt), Angle
 				.fromDegrees(roll));
-		//break
+		// break
 		this.setAttributes(new BasicShapeAttributes());
 		this.domeName = this.generateName();
 		this.selectedIntFr.getRendLayer().addRenderable(this);
@@ -194,9 +194,8 @@ public class FlatDomeShape extends Ellipsoid implements IShape {
 
 		p.setProperty("dome.tilt", String.valueOf(0));
 		p.setProperty("dome.roll", String.valueOf(0));
-		p.setProperty("dome.heading",
-				String.valueOf(0));
-		
+		p.setProperty("dome.heading", String.valueOf(0));
+
 		MyLogger.error(this, "Tilt, Roll, Heading - will not be saved");
 		try {
 

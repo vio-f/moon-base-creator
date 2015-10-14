@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry including="*.*" kind="src" path="lib">
-		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="moon-base-creator/lib"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="src" path="src/main/java"/>
-	<classpathentry kind="src" path="wwdeps"/>
-	<classpathentry exported="true" kind="lib" path="lib/log4j-1.2.16.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/gdal.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/gluegen-rt.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jogl.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/gdal.jar"/>
+	<classpathentry kind="lib" path="lib/gluegen-rt-natives-windows-amd64.jar"/>
+	<classpathentry kind="lib" path="lib/gluegen-rt.jar"/>
+	<classpathentry kind="lib" path="lib/jogl-all-natives-windows-amd64.jar"/>
+	<classpathentry kind="lib" path="lib/jogl-all.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="lib/worldwind.jar"/>
+	<classpathentry kind="lib" path="lib/worldwindx.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

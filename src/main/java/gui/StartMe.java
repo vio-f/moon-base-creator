@@ -24,8 +24,9 @@ public class StartMe {
 		
 		MyLogger.getLogger().info("App started");
 		//setarile necesare ptr vizualizarea Lunii
-		
-		Configuration.setValue(AVKey.GLOBE_CLASS_NAME, gov.nasa.worldwind.globes.Moon.class.getName());// seteaza tipul astrului care urmeaza a fi vizualiza
+		//TODO get the moon back
+//		Configuration.setValue(AVKey.GLOBE_CLASS_NAME, gov.nasa.worldwind.globes.Moon.class.getName());// seteaza tipul astrului care urmeaza a fi vizualiza
+		Configuration.setValue(AVKey.GLOBE_CLASS_NAME, gov.nasa.worldwind.globes.Earth.class.getName());// seteaza tipul astrului care urmeaza a fi vizualiza
         Configuration.setValue(AVKey.MOON_ELEVATION_MODEL_CONFIG_FILE, "config/Moon/MoonElevationModel.xml");//seteaza  ce fisier de elevatie (inaltimi) sa se foloseasca
         Configuration.setValue(AVKey.LAYERS_CLASS_NAMES, LAYERS);// LAYERS a fost definit mai sus
         Configuration.setValue(AVKey.INITIAL_ALTITUDE, 5000e3);  // 50000km

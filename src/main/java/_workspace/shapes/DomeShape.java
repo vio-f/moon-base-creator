@@ -4,7 +4,7 @@
 package _workspace.shapes;
 
 import gov.nasa.worldwind.WorldWindow;
-import gov.nasa.worldwind.examples.util.ShapeUtils;
+import gov.nasa.worldwindx.examples.util.ShapeUtils;
 import gov.nasa.worldwind.geom.Position;
 import gov.nasa.worldwind.render.BasicShapeAttributes;
 import gov.nasa.worldwind.render.Ellipsoid;

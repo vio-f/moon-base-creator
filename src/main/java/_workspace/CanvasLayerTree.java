@@ -3,8 +3,8 @@
  */
 package _workspace;
 
-import gov.nasa.worldwind.examples.LayerTree;
-import gov.nasa.worldwind.examples.util.HotSpotController;
+import gov.nasa.worldwind.util.layertree.LayerTree;
+import gov.nasa.worldwindx.examples.util.HotSpotController;
 import gov.nasa.worldwind.layers.CompassLayer;
 import gov.nasa.worldwind.layers.Layer;
 import gov.nasa.worldwind.layers.LayerList;
